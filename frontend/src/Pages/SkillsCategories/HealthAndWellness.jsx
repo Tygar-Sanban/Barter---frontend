@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Navbar from "../../Components/Navbar";
 
-function Educational() {
+function HealthAndWellness() {
   const [skills, setSkills] = useState([]);
 
   async function getAllSkills() {
@@ -22,11 +22,11 @@ function Educational() {
     <div>
       <Navbar />
       <div className="title">
-        <h3>Educational Services</h3>
+        <h3>Health and Wellness Services</h3>
       </div>
       <div className="bullet-points">
         {skills.map((elem) => {
-          if (elem.serviceCategory === "Educational") {
+          if (elem.serviceCategory === "Health and Wellness") {
             return <div key={elem._id}>{elem.name}</div>;
           }
         })}
@@ -35,4 +35,4 @@ function Educational() {
   );
 }
 
-export default Educational;
+export default HealthAndWellness;

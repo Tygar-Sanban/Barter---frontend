@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../Context/authContext";
 import { Navigate } from "react-router-dom";
 import axios from "axios";
+import Navbar from "../Components/Navbar";
 
 function ProfilePage() {
   const { isLoggedIn, isLoading, user } = useContext(AuthContext);
@@ -40,6 +41,7 @@ function ProfilePage() {
 
   return (
     <div>
+      <Navbar />
       <h1>Profile Page</h1>
       <div>{user.name}</div>
       {skills.length !== 0 && userSkills.length !== 0 ? (

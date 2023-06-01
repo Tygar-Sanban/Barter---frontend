@@ -1,20 +1,26 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useContext, useEffect } from "react";
+import { Link, Navigate, useNavigate } from "react-router-dom";
+import Navbar from "../Components/Navbar";
+import { AuthContext } from "../Context/authContext";
 
 function Homepage() {
+  const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (user) {
+      navigate("/profile");
+    }
+  }, []);
+
   return (
     <div>
+      <Navbar />
       <Link to="/signup">
         <button>Sign up, bitch !</button>
       </Link>
       <Link to="/login">
         <button>Log in, bitch !</button>
-      </Link>
-      <Link to="/profile">
-        <button>Profile, bitch !</button>
-      </Link>
-      <Link to="/search">
-        <button>Search, bitch !</button>
       </Link>
     </div>
   );

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import SelectSkills from "../Components/SelectSkills";
+import Navbar from "../Components/Navbar";
 
 function SignUp() {
   const [email, setEmail] = useState("");
