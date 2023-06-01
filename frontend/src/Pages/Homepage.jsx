@@ -13,6 +13,9 @@ function Homepage() {
       <Link to="/profile">
         <button>Profile, bitch !</button>
       </Link>
+      <Link to="/search">
+        <button>Search, bitch !</button>
+      </Link>
     </div>
   );
 }

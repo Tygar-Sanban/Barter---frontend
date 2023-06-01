@@ -12,10 +12,6 @@ function ProfilePage() {
     try {
       const response = await axios.get("http://localhost:5005/skills");
       setSkills(response.data);
-      const skillBrowsing = skills.filter((elem) =>
-        user.skills.includes(elem._id)
-      );
-      setUserSkills(skillBrowsing);
     } catch (error) {
       console.log(error);
     }
@@ -23,8 +19,20 @@ function ProfilePage() {
 
   useEffect(() => {
     fetchAllSkills();
-    console.log("those are the skills", userSkills);
   }, []);
+
+  useEffect(() => {
+    if (skills.length > 0 && !isLoading) {
+      const skillBrowsing = skills.filter((elem) =>
+        user.skills.includes(elem._id)
+      );
+      setUserSkills(skillBrowsing);
+    }
+  }, [skills]);
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
 
   if (!isLoggedIn) {
     return <Navigate to={"/login"} />;
@@ -34,10 +42,13 @@ function ProfilePage() {
     <div>
       <h1>Profile Page</h1>
       <div>{user.name}</div>
-      {skills &&
+      {skills.length !== 0 && userSkills.length !== 0 ? (
         userSkills.map((elem) => {
           return <div key={elem._id}>{elem.name}</div>;
-        })}
+        })
+      ) : (
+        <div>Loading...</div>
+      )}
     </div>
   );
 }
