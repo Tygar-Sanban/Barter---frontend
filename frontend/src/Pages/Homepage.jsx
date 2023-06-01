@@ -7,6 +7,12 @@ function Homepage() {
       <Link to="/signup">
         <button>Sign up, bitch !</button>
       </Link>
+      <Link to="/login">
+        <button>Log in, bitch !</button>
+      </Link>
+      <Link to="/profile">
+        <button>Profile, bitch !</button>
+      </Link>
     </div>
   );
 }
