@@ -1,9 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Navbar from "../Components/Navbar";
 
 function Search() {
   return (
     <div>
+      <Navbar />
       <div className="page-title">
         <h2>Search</h2>
       </div>
