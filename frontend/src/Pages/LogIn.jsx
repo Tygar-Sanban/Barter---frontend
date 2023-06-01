@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../Context/authContext";
 
@@ -8,6 +8,7 @@ function LogIn() {
   const { authenticateUser } = useContext(AuthContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   async function handleSubmit() {
     event.preventDefault();
@@ -20,6 +21,7 @@ function LogIn() {
       localStorage.setItem("token", response.data.token);
       console.log("this is the response.data.token", response.data.token);
       await authenticateUser();
+      navigate("/profile");
     } catch (error) {
       console.log(error);
     }

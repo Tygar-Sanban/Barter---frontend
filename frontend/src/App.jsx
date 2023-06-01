@@ -7,6 +7,8 @@ import Homepage from "./Pages/Homepage";
 import SignUp from "./Pages/SignUp";
 import LogIn from "./Pages/LogIn";
 import ProfilePage from "./Pages/ProfilePage";
+import Search from "./Pages/Search";
+import Personal from "./Pages/SkillsCategories/Personal";
 
 function App() {
   return (
@@ -16,6 +18,14 @@ function App() {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<LogIn />} />
         <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/search" element={<Search />} />
+        <Route path="/personal" element={<Personal />} />
+        <Route path="/professional" element={<Personal />} />
+        <Route path="/health-and-wellness" element={<Personal />} />
+        <Route path="/professional" element={<Personal />} />
+        <Route path="/professional" element={<Personal />} />
+        <Route path="/professional" element={<Personal />} />
+        <Route path="/professional" element={<Personal />} />
       </Routes>
     </>
   );
