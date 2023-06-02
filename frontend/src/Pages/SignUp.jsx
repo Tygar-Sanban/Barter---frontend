@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import service from "../service/service.js";
 import { useNavigate } from "react-router-dom";
 import SelectSkills from "../Components/SelectSkills";
 import Navbar from "../Components/Navbar";
@@ -29,7 +29,7 @@ function SignUp() {
       skills: selectedSkill,
     };
     try {
-      await axios.post("http://localhost:5005/auth/signup", objectToPost);
+      await service.post("/auth/signup", objectToPost);
       navigate("/");
     } catch (error) {
       console.log(error);

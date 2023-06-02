@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import service from "../../service/service.js";
 import Navbar from "../../Components/Navbar";
 import { Link } from "react-router-dom";
 
@@ -7,7 +7,7 @@ function Educational() {
   const [skills, setSkills] = useState([]);
 
   async function getAllSkills() {
-    const response = await axios.get("http://localhost:5005/skills");
+    const response = await service.get("/skills");
     setSkills(response.data);
   }
 

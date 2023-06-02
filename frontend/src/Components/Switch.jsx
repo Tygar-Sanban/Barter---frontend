@@ -1,6 +1,6 @@
 // Switch.js
 import React, { useState, useContext, useEffect } from "react";
-import axios from "axios";
+import service from "../service/service.js";
 import { AuthContext } from "../Context/authContext";
 
 function Switch() {
@@ -11,7 +11,7 @@ function Switch() {
     try {
       const updatedAvailability = !isAvailable;
 
-      await axios.patch(`http://localhost:5005/user/${user._id}`, {
+      await service.patch(`/user/${user._id}`, {
         availability: updatedAvailability,
       });
       setIsAvailable(updatedAvailability);
