@@ -40,10 +40,12 @@ function SearchResults() {
   return (
     <div>
       <Navbar />
-      {selectedUsers.length > 0 &&
-        selectedUsers.map((elem) => {
-          return <div key={elem._id}>{elem.name}</div>;
-        })}
+      <div style={{ paddingTop: "8vh" }}>
+        {selectedUsers.length > 0 &&
+          selectedUsers.map((elem) => {
+            return <div key={elem._id}>{elem.name}</div>;
+          })}
+      </div>
     </div>
   );
 }

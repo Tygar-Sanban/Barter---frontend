@@ -49,7 +49,7 @@ function ProfilePage() {
     <>
       <div>
         <Navbar />
-        <h1 style={{ paddingTop: "8%" }}>Profile Page</h1>
+        <h1 style={{ paddingTop: "8vh" }}>Profile Page</h1>
         <div>{user.name}</div>
         {user.skills.map((elem) => {
           return <div key={elem._id}>{elem.name}</div>;

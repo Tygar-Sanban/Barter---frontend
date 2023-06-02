@@ -4,31 +4,28 @@ import service from "../service/service.js";
 import { AuthContext } from "../Context/authContext";
 
 function Switch() {
-  const [isAvailable, setIsAvailable] = useState(false);
-  const { user } = useContext(AuthContext);
+  const { user, isLoading, authenticateUser } = useContext(AuthContext);
 
-  async function handleSwitch() {
+  async function handleSwitch(event) {
     try {
-      const updatedAvailability = !isAvailable;
-
       await service.patch(`/user/${user._id}`, {
-        availability: updatedAvailability,
+        availability: event.target.checked,
       });
-      setIsAvailable(updatedAvailability);
+      await authenticateUser();
     } catch (error) {
       console.log(error);
     }
   }
 
-  //   useEffect(() => {
-  //     console.log("this is the availability", user.availability);
-  //   }, [user.availability]);
-
   return (
     <div>
       <label>
-        <input type="checkbox" checked={isAvailable} onChange={handleSwitch} />
-        Availability: {isAvailable ? "Available" : "Not Available"}
+        <input
+          type="checkbox"
+          checked={user.availability}
+          onChange={handleSwitch}
+        />
+        Availability: {user.availability ? "Available" : "Not Available"}
       </label>
     </div>
   );

@@ -1,5 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../Context/authContext";
+import Navbar from "../Components/Navbar";
+=======
 import service from "../service/service.js";
 
 function ModifySkills() {
@@ -46,7 +48,8 @@ function ModifySkills() {
 
   return (
     <>
-      <div>modifySkills</div>
+      <Navbar />
+      <div style={{ paddingTop: "8vh" }}>modifySkills</div>
       <div>
         User skills:
         {getUserSkillsNames().map((skillName) => (
