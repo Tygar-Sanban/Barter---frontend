@@ -6,6 +6,7 @@ import Navbar from "../Components/Navbar";
 function SearchResults() {
   const [allUsers, setAllUsers] = useState([]);
   const [selectedUsers, setSelectedUsers] = useState([]);
+  const [availableBrowsedUsers, setAvailableBrowsedUsers] = useState([]);
   const params = useParams();
 
   async function getAllUsers() {
@@ -24,9 +25,15 @@ function SearchResults() {
       });
       setSelectedUsers(usersBrowsing);
     }
+    if (selectedUsers.length > 0) {
+      const availableUsers = selectedUsers.filter((elem) => {
+        return elem.availability === true;
+      });
+      setAvailableBrowsedUsers(availableUsers);
+    }
   }, [allUsers, params]);
 
-  if (selectedUsers.length === 0) {
+  if (availableBrowsedUsers.length === 0) {
     return <div>Loading...</div>;
   }
 

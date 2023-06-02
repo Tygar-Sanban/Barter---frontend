@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Navbar from "../../Components/Navbar";
+import { Link } from "react-router-dom";
 
 function Creative() {
   const [skills, setSkills] = useState([]);
@@ -26,8 +27,13 @@ function Creative() {
       </div>
       <div className="bullet-points">
         {skills.map((elem) => {
-          if (elem.serviceCategory === "Creative") {
-            return <div key={elem._id}>{elem.name}</div>;
+          if (elem.serviceCategory === "Creative" && elem.availability) {
+            const url = `/search-result/${elem._id}`;
+            return (
+              <Link key={elem._id} to={url}>
+                <div>{elem.name}</div>
+              </Link>
+            );
           }
         })}
       </div>

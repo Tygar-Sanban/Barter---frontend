@@ -5,7 +5,6 @@ import axios from "axios";
 import Navbar from "../Components/Navbar";
 import Switch from "../Components/Switch";
 
-
 function ProfilePage() {
   const { isLoggedIn, isLoading, user, logOutUser } = useContext(AuthContext);
   const [skills, setSkills] = useState([]);
@@ -90,8 +89,8 @@ function ProfilePage() {
   return (
     <>
       <div>
-      <Navbar />
-        <h1>Profile Page</h1>
+        <Navbar />
+        <h1 style={{ paddingTop: "8%" }}>Profile Page</h1>
         <div>{user.name}</div>
         {skills.length !== 0 && userSkills.length !== 0 ? (
           userSkills.map((elem) => {
