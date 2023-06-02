@@ -1,8 +1,7 @@
 import axios from "axios";
 
 const service = axios.create({
-  baseURL:
-    "mongodb+srv://admin:s2OPtuiTrb6LwX4y@cluster0.j2x1pms.mongodb.net/BarterDB?retryWrites=true&w=majority",
+  baseURL: "https://barter-backend-nkn6.onrender.com/",
 });
 
 service.interceptors.request.use((request) => {
