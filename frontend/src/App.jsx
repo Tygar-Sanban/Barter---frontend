@@ -14,6 +14,7 @@ import Creative from "./Pages/SkillsCategories/Creative";
 import Educational from "./Pages/SkillsCategories/Educational";
 import Discussion from "./Pages/Discussion";
 import SearchResults from "./Pages/SearchResults";
+import ModifySkills from "./Pages/modifySkills";
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
         <Route path="/educational" element={<Educational />} />
         <Route path="/discussion" element={<Discussion />} />
         <Route path="/search-result/:query" element={<SearchResults />} />
+        <Route path="/modifySkills" element={<ModifySkills />}></Route>
       </Routes>
     </>
   );
