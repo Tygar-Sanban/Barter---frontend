@@ -90,7 +90,7 @@ function ProfilePage() {
     <>
       <div>
         <Navbar />
-        <h1 style={{ paddingTop: "8%" }}>Profile Page</h1>
+        <h1 style={{ paddingTop: "8vh" }}>Profile Page</h1>
         <div>{user.name}</div>
         {skills.length !== 0 && userSkills.length !== 0 ? (
           userSkills.map((elem) => {

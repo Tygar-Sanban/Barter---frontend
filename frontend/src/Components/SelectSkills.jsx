@@ -16,10 +16,6 @@ const SelectSkills = (props) => {
       });
   }, []);
 
-  useEffect(() => {
-    console.log("thoses are the selected skilzzzzz!", props.selectedSkill);
-  }, [props.selectedSkill]);
-
   const handleSkillSelection = (event) => {
     if (props.selectedSkill.includes(event.target.dataset.value)) {
       const deleted = props.selectedSkill.filter((elem) => {

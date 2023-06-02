@@ -22,7 +22,7 @@ function Personal() {
   return (
     <div>
       <Navbar />
-      <div className="title">
+      <div className="title" style={{ paddingTop: "8vh" }}>
         <h3>Personal Services</h3>
       </div>
       <div className="bullet-points">

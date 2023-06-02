@@ -22,7 +22,7 @@ function HealthAndWellness() {
   return (
     <div>
       <Navbar />
-      <div className="title">
+      <div className="title" style={{ paddingTop: "8vh" }}>
         <h3>Health and Wellness Services</h3>
       </div>
       <div className="bullet-points">

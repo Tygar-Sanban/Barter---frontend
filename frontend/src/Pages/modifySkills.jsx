@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../Context/authContext";
 import axios from "axios";
+import Navbar from "../Components/Navbar";
 
 function ModifySkills() {
   const { user } = useContext(AuthContext);
@@ -45,7 +46,8 @@ function ModifySkills() {
 
   return (
     <>
-      <div>modifySkills</div>
+      <Navbar />
+      <div style={{ paddingTop: "8vh" }}>modifySkills</div>
       <div>
         User skills:
         {getUserSkillsNames().map((skillName) => (

@@ -6,7 +6,7 @@ function Search() {
   return (
     <div>
       <Navbar />
-      <div className="page-title" style={{ paddingTop: "8%" }}>
+      <div className="page-title" style={{ paddingTop: "8vh" }}>
         <h2>Search</h2>
       </div>
       <div className="indications">

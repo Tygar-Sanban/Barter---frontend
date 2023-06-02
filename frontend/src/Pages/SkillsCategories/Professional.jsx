@@ -22,7 +22,7 @@ function Professional() {
   return (
     <div>
       <Navbar />
-      <div className="title">
+      <div className="title" style={{ paddingTop: "8vh" }}>
         <h3>Professional Services</h3>
       </div>
       <div className="bullet-points">
