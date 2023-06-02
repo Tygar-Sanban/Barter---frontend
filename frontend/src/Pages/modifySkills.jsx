@@ -1,7 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../Context/authContext";
-import axios from "axios";
 import Navbar from "../Components/Navbar";
+=======
+import service from "../service/service.js";
 
 function ModifySkills() {
   const { user } = useContext(AuthContext);
@@ -12,7 +13,7 @@ function ModifySkills() {
 
   async function fetchAllSkills() {
     try {
-      const response = await axios.get("http://localhost:5005/skills");
+      const response = await service.get("/skills");
       console.log("This is fetchAllSkills response:", response);
       setSkills(response.data);
     } catch (error) {
@@ -20,7 +21,7 @@ function ModifySkills() {
     }
   }
 
-  async function deleteOneSkill(event) {
+  async function addSkillToUser(event) {
     const skillName = event.target.value;
     console.log(skillName);
   }
@@ -31,6 +32,7 @@ function ModifySkills() {
 
   useEffect(() => {
     setUserSkills(user.skills);
+    console.log("this is the user skillzzz", userSkills);
   }, [user.skills]);
 
   const filteredSkills = skills.filter(
@@ -38,8 +40,8 @@ function ModifySkills() {
   );
 
   const getUserSkillsNames = () => {
-    return userSkills.map((skillId) => {
-      const userSkill = skills.find((skill) => skill._id === skillId);
+    return userSkills.map((elem) => {
+      const userSkill = skills.find((skill) => skill._id === elem);
       return userSkill ? userSkill.name : "";
     });
   };
@@ -57,7 +59,7 @@ function ModifySkills() {
       <div>
         All skills without user skills:
         {filteredSkills.map((elem) => (
-          <div onClick={deleteOneSkill} key={elem._id}>
+          <div onClick={addSkillToUser} key={elem._id}>
             {elem.name}
           </div>
         ))}
