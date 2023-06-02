@@ -4,7 +4,7 @@ import service from "../service/service.js";
 const SelectSkills = (props) => {
   useEffect(() => {
     // Fetch the skills from the server
-    axios
+    service
       .get("/skills")
       .then((response) => {
         console.log("this si the response yo !", response);

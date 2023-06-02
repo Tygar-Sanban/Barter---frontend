@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../Context/authContext";
 import Navbar from "../Components/Navbar";
-
 import service from "../service/service.js";
 
 function ModifySkills() {
