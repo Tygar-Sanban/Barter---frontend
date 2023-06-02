@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const service = axios.create({
-  baseURL: "http://localhost:5005",
+  baseURL: "https://barter-backend-nkn6.onrender.com/",
 });
 
 service.interceptors.request.use((request) => {
