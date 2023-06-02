@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axios from "axios";
+import service from "../service/service.js";
 import { Link, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../Context/authContext";
@@ -15,10 +15,7 @@ function LogIn() {
     event.preventDefault();
     try {
       const userToLogin = { email, password };
-      const response = await axios.post(
-        "http://localhost:5005/auth/login",
-        userToLogin
-      );
+      const response = await service.post("/auth/login", userToLogin);
       localStorage.setItem("token", response.data.token);
       console.log("this is the response.data.token", response.data.token);
       await authenticateUser();

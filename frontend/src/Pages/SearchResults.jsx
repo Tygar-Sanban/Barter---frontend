@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import service from "../service/service.js";
 import { useParams } from "react-router-dom";
 import Navbar from "../Components/Navbar";
 
@@ -10,7 +10,7 @@ function SearchResults() {
   const params = useParams();
 
   async function getAllUsers() {
-    const response = await axios.get("http://localhost:5005/user");
+    const response = await service.get("/user");
     setAllUsers(response.data);
   }
 

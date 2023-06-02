@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import service from "../service/service.js";
 
 const SelectSkills = (props) => {
   useEffect(() => {
     // Fetch the skills from the server
     axios
-      .get("http://localhost:5005/skills")
+      .get("/skills")
       .then((response) => {
         console.log("this si the response yo !", response);
         props.setSkill(response.data);
@@ -15,10 +15,6 @@ const SelectSkills = (props) => {
         console.error("Error fetching skills:", error);
       });
   }, []);
-
-  useEffect(() => {
-    console.log("thoses are the selected skilzzzzz!", props.selectedSkill);
-  }, [props.selectedSkill]);
 
   const handleSkillSelection = (event) => {
     if (props.selectedSkill.includes(event.target.dataset.value)) {
