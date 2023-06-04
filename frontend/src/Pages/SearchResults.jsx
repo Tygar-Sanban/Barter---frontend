@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import service from "../service/service.js";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Navbar from "../Components/Navbar";
 
 function SearchResults() {
@@ -41,9 +41,14 @@ function SearchResults() {
     <div>
       <Navbar />
       <div style={{ paddingTop: "8vh" }}>
-        {selectedUsers.length > 0 &&
-          selectedUsers.map((elem) => {
-            return <div key={elem._id}>{elem.name}</div>;
+        {availableBrowsedUsers.length > 0 &&
+          availableBrowsedUsers.map((elem) => {
+            const url = `/provider-profile/${elem._id}`;
+            return (
+              <Link key={elem._id} to={url}>
+                <div>{elem.name}</div>
+              </Link>
+            );
           })}
       </div>
     </div>
