@@ -9,16 +9,11 @@ const AuthContextWrapper = ({ children }) => {
   const [isLoading, setIsLoading] = useState(true);
 
   const removeToken = () => {
-    // <== ADD
-    // Upon logout, remove the token from the localStorage
     localStorage.removeItem("token");
   };
 
   const logOutUser = () => {
-    // <== ADD
-    // To log out the user, remove the token
     removeToken();
-    // and update the state variables
     authenticateUser();
   };
 
@@ -35,7 +30,6 @@ const AuthContextWrapper = ({ children }) => {
             Authorization: `Bearer ${token}`,
           },
         });
-        console.log(response);
 
         setUser(response.data);
         setIsLoggedIn(true);
