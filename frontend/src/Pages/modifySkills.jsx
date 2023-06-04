@@ -4,25 +4,36 @@ import Navbar from "../Components/Navbar";
 import service from "../service/service.js";
 
 function ModifySkills() {
-  const { user } = useContext(AuthContext);
-  console.log("first user", user);
-  console.log("first user skills", user.skills);
-  const [skills, setSkills] = useState([]);
+  const { user, isLoading } = useContext(AuthContext);
+  const [allSkills, setAllSkills] = useState([]);
   const [userSkills, setUserSkills] = useState([]);
+  const [filteredSkills, setFilteredSkills] = useState([]);
 
   async function fetchAllSkills() {
     try {
       const response = await service.get("/skills");
-      console.log("This is fetchAllSkills response:", response);
-      setSkills(response.data);
+      setAllSkills(response.data);
+      setFilteredSkills(
+        response.data.filter((skill) => !userSkills.includes(skill))
+      );
     } catch (error) {
       console.log(error);
     }
   }
 
-  async function addSkillToUser(event) {
-    const skillName = event.target.value;
-    console.log(skillName);
+  // const filteredSkills = allSkills.filter((elem) => !userSkills.includes(elem));
+
+  async function handleDeleteSkill(skillId) {
+    try {
+      // Remove the skill from the userSkills state
+      const updatedSkills = userSkills.filter((skill) => skill._id !== skillId);
+      setUserSkills(updatedSkills);
+
+      // Make the API request to remove the skill from the user's skills
+      await service.patch("/user/removeSkills", { skillId });
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   useEffect(() => {
@@ -30,38 +41,61 @@ function ModifySkills() {
   }, []);
 
   useEffect(() => {
-    setUserSkills(user.skills);
-    console.log("this is the user skillzzz", userSkills);
+    if (user.skills) {
+      setUserSkills(user.skills);
+      console.log("User skills:", user.skills);
+    }
   }, [user.skills]);
 
-  const filteredSkills = skills.filter(
-    (skill) => !userSkills.includes(skill._id)
-  );
-
-  const getUserSkillsNames = () => {
-    return userSkills.map((elem) => {
-      const userSkill = skills.find((skill) => skill._id === elem);
-      return userSkill ? userSkill.name : "";
-    });
-  };
+  async function handleAddSkill(skillId) {
+    try {
+      const updatedUserSkills = [...userSkills, skillId];
+      setUserSkills(updatedUserSkills);
+      await service.patch("/user", {
+        skills: updatedUserSkills,
+      });
+      setFilteredSkills(
+        filteredSkills.filter((skill) => skill._id !== skillId)
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   return (
     <>
       <Navbar />
-      <div style={{ paddingTop: "8vh" }}>modifySkills</div>
       <div>
-        User skills:
-        {getUserSkillsNames().map((skillName) => (
-          <div key={skillName}>{skillName}</div>
-        ))}
+        {isLoading ? (
+          <p>Loading user skills...</p>
+        ) : (
+          <>
+            User skills:
+            {userSkills &&
+              userSkills.map((elem) => (
+                <div key={elem._id} onClick={() => handleDeleteSkill(elem._id)}>
+                  {elem.name}
+                </div>
+              ))}
+          </>
+        )}
       </div>
       <div>
-        All skills without user skills:
-        {filteredSkills.map((elem) => (
-          <div onClick={addSkillToUser} key={elem._id}>
-            {elem.name}
-          </div>
-        ))}
+        {isLoading ? (
+          <p>Loading all skills...</p>
+        ) : (
+          <>
+            All Skills excluding user skills:
+            {filteredSkills.map((skill) => (
+              <div
+                key={`filtered_${skill._id}`}
+                onClick={() => handleAddSkill(skill._id)}
+              >
+                {skill.name}
+              </div>
+            ))}
+          </>
+        )}
       </div>
     </>
   );

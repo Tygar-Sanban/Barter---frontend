@@ -15,7 +15,9 @@ import Educational from "./Pages/SkillsCategories/Educational";
 import Discussion from "./Pages/Discussion";
 import SearchResults from "./Pages/SearchResults";
 import ModifySkills from "./Pages/modifySkills";
+import Request from "./Pages/Request";
 import ProviderProfile from "./Pages/ProviderProfile";
+
 
 function App() {
   return (
@@ -36,10 +38,12 @@ function App() {
         <Route path="/discussion" element={<Discussion />} />
         <Route path="/search-result/:query" element={<SearchResults />} />
         <Route path="/modifySkills" element={<ModifySkills />}></Route>
+        <Route path="/request" element={<Request />}></Route>
         <Route
           path="/provider-profile/:provider"
           element={<ProviderProfile />}
         ></Route>
+
       </Routes>
     </>
   );
