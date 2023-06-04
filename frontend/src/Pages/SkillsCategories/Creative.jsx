@@ -27,7 +27,7 @@ function Creative() {
       </div>
       <div className="bullet-points">
         {skills.map((elem) => {
-          if (elem.serviceCategory === "Creative" && elem.availability) {
+          if (elem.serviceCategory === "Creative") {
             const url = `/search-result/${elem._id}`;
             return (
               <Link key={elem._id} to={url}>

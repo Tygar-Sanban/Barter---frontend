@@ -8,7 +8,7 @@ function Switch() {
 
   async function handleSwitch(event) {
     try {
-      await service.patch(`/user/${user._id}`, {
+      await service.patch(`/user`, {
         availability: event.target.checked,
       });
       await authenticateUser();
