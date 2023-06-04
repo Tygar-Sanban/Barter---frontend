@@ -32,6 +32,8 @@ function ProfilePage() {
       console.log(response.data);
       setUserServiceProvided(response.data.provided);
       setUserServiceRequested(response.data.requested);
+      console.log(userServiceProvided);
+      console.log(userServiceRequested);
     } catch (error) {
       console.log(error);
     }
