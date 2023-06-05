@@ -8,12 +8,14 @@ function Request() {
   const { user } = useContext(AuthContext);
   const params = useParams();
   console.log("this is the params", params.query);
+  console.log("this is the skill param", params.skill);
 
   const [provider, setProvider] = useState(null);
   const [firstMessage, setFirstMessage] = useState("");
   const [requestTitle, setRequestTitle] = useState("");
   const [requestDetail, setRequestDetail] = useState("");
   const [bbAmount, setBbAmount] = useState(0);
+  const [providerSkill, setProviderSkill] = useState("");
 
   async function getProvider() {
     try {
@@ -27,8 +29,19 @@ function Request() {
     }
   }
 
+  async function getSkillCategory() {
+    try {
+      const response = await service.get(`/skills/${params.skill}`);
+      console.log("this is the skill response", response);
+      await setProviderSkill(response.data.name);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   useEffect(() => {
     getProvider();
+    getSkillCategory();
   }, []);
 
   async function handleSubmit(event) {
@@ -40,7 +53,9 @@ function Request() {
           provider: params.query,
           requester: user._id,
           bbAmount: bbAmount,
+          category: params.skill,
           firstMessage: requestDetail,
+          acceptButton: false,
         });
       } catch (error) {
         console.log(error);
@@ -72,6 +87,7 @@ function Request() {
             type="number"
             onChange={(event) => setBbAmount(event.target.value)}
           />
+          <div>Request category : {providerSkill}</div>
           <button>Post your commentary</button>
         </form>
       </div>

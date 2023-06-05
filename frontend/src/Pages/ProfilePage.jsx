@@ -11,6 +11,8 @@ function ProfilePage() {
   const [userServiceProvided, setUserServiceProvided] = useState([]);
   const [userServiceRequested, setUserServiceRequested] = useState([]);
   const [wallet, setWallet] = useState({});
+  const [selectedCategory, setSelectedCategory] = useState(null);
+  const [filteredSkills, setFilteredSkills] = useState([]);
 
   async function fetchWallet() {
     try {
@@ -40,6 +42,18 @@ function ProfilePage() {
     }
   }
 
+  function handleCategoryClick(category) {
+    setSelectedCategory(category);
+  }
+
+  useEffect(() => {
+    user &&
+      user.skills.length > 0 &&
+      setFilteredSkills(
+        user.skills.filter((elem) => elem.serviceCategory === selectedCategory)
+      );
+  }, [selectedCategory]);
+
   if (isLoading) {
     return <div>Loading...</div>;
   }
@@ -54,7 +68,40 @@ function ProfilePage() {
       <div>
         <h1 style={{ paddingTop: "8vh" }}>Profile Page</h1>
         <div>{user.name}</div>
-        <SkillsFactor />
+        <div>
+          <h2>Categories</h2>
+          <ul>
+            <li onClick={() => handleCategoryClick("Personal")}>Personal</li>
+            <li onClick={() => handleCategoryClick("Professional")}>
+              Professional
+            </li>
+            <li onClick={() => handleCategoryClick("Health and Wellness")}>
+              Health and Wellness
+            </li>
+            <li onClick={() => handleCategoryClick("Educational")}>
+              Educational
+            </li>
+            <li onClick={() => handleCategoryClick("Creative")}>Creative</li>
+            <li onClick={() => handleCategoryClick("Home")}>Home</li>
+            <li onClick={() => handleCategoryClick("Transportation")}>
+              Transportation
+            </li>
+          </ul>
+
+          {selectedCategory && (
+            <>
+              <h2>Skills</h2>
+              <ul>
+                {user.skills.length > 0 &&
+                  filteredSkills.map((elem) => (
+                    <Link key={elem._id}>
+                      <li>{elem.name}</li>
+                    </Link>
+                  ))}
+              </ul>
+            </>
+          )}
+        </div>
         <Link to={"/modifySkills"}>
           <button>Modify Skills</button>
         </Link>

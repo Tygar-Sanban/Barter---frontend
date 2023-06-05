@@ -16,6 +16,7 @@ import Discussion from "./Pages/Discussion";
 import SearchResults from "./Pages/SearchResults";
 import ModifySkills from "./Pages/modifySkills";
 import Request from "./Pages/Request";
+import AllRequests from "./Pages/AllRequests";
 import ProviderProfile from "./Pages/ProviderProfile";
 
 function App() {
@@ -37,7 +38,9 @@ function App() {
         <Route path="/discussion" element={<Discussion />} />
         <Route path="/search-result/:query" element={<SearchResults />} />
         <Route path="/modifySkills" element={<ModifySkills />}></Route>
-        <Route path="/request/:query" element={<Request />}></Route>
+        <Route path="/request/:query/:skill" element={<Request />}></Route>
+        <Route path="/my-requests" element={<AllRequests />}></Route>
+
         <Route
           path="/provider-profile/:provider"
           element={<ProviderProfile />}

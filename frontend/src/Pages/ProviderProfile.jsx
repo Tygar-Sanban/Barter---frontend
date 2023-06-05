@@ -65,11 +65,13 @@ function ProviderProfile() {
         <div>
           <Navbar />
           <h1 style={{ paddingTop: "8vh" }}>{provider.name}'s Page</h1>
-          <Link to={`/request/${provider._id}`}>MAKE A REQUEST</Link>
+          MAKE A REQUEST
           {provider.skills &&
-            provider.skills.map((elem) => {
-              return <div key={elem._id}>{elem.name}</div>;
-            })}
+            provider.skills.map((elem) => (
+              <Link to={`/request/${provider._id}/${elem._id}`} key={elem._id}>
+                <div>{elem.name}</div>
+              </Link>
+            ))}
           <h2>Services rendus</h2>
           {userServiceProvided && userServiceProvided.length !== 0 ? (
             userServiceProvided.map((elem) => {
