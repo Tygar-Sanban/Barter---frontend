@@ -4,6 +4,7 @@ import { Navigate, Link } from "react-router-dom";
 import Navbar from "../Components/Navbar";
 import Switch from "../Components/Switch";
 import service from "./../service/service.js";
+import SkillsFactor from "../Components/SkillsFactor";
 
 function ProfilePage() {
   const { isLoggedIn, isLoading, user, logOutUser } = useContext(AuthContext);
@@ -53,9 +54,7 @@ function ProfilePage() {
       <div>
         <h1 style={{ paddingTop: "8vh" }}>Profile Page</h1>
         <div>{user.name}</div>
-        {user.skills.map((elem) => {
-          return <div key={elem._id}>{elem.name}</div>;
-        })}
+        <SkillsFactor />
         <Link to={"/modifySkills"}>
           <button>Modify Skills</button>
         </Link>
