@@ -49,8 +49,8 @@ function ProfilePage() {
 
   return (
     <>
+      <Navbar />
       <div>
-        <Navbar />
         <h1 style={{ paddingTop: "8vh" }}>Profile Page</h1>
         <div>{user.name}</div>
         {user.skills.map((elem) => {

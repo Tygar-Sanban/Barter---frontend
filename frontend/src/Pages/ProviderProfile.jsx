@@ -19,7 +19,7 @@ function ProviderProfile() {
       const response = await service.get(`/user/${params.provider}`);
       await setProvider(response.data.oneUser);
       console.log("this is the response", response);
-      console.log("this is the provider", provider);
+      console.log("this is the provider", params.provider);
       setUserServiceProvided(response.data.userService);
     } catch (error) {
       console.log(error);
@@ -64,6 +64,7 @@ function ProviderProfile() {
         <div>
           <Navbar />
           <h1 style={{ paddingTop: "8vh" }}>{provider.name}'s Page</h1>
+          <Link to={`/request/${provider._id}`}>MAKE A REQUEST</Link>
           {provider.skills &&
             provider.skills.map((elem) => {
               return <div key={elem._id}>{elem.name}</div>;
