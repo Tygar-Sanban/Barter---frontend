@@ -6,34 +6,31 @@ import Switch from "../Components/Switch";
 import service from "../service/service.js";
 
 function ProviderProfile() {
-  const { user } = useContext(AuthContext);
   const [provider, setProvider] = useState(null);
   const [userServiceProvided, setUserServiceProvided] = useState([]);
   const [commentary, setCommentary] = useState("");
-  const [allCommentaries, setAllCommentaries] = useState([]);
   const [displayedCommentaries, setDisplayedCommentaries] = useState([]);
   const params = useParams();
 
   async function getProvider() {
     try {
       const response = await service.get(`/user/${params.provider}`);
-      await setProvider(response.data.oneUser);
-      console.log("this is the response", response);
-      console.log("this is the provider", provider);
+      setProvider(response.data.oneUser);
       setUserServiceProvided(response.data.userService);
     } catch (error) {
       console.log(error);
     }
   }
+
   async function getCommentaries() {
     try {
-      const response = await service.get("/commentary");
-      setAllCommentaries(response.data);
-      const filteredCommentaries = allCommentaries.filter((elem) => {
-        console.log("this is the elem", elem);
-        return elem.commented === provider._id;
-      });
-      setDisplayedCommentaries(filteredCommentaries);
+      if (provider) {
+        const response = await service.get("/commentary");
+        const filteredCommentaries = response.data.filter((elem) => {
+          return elem.commented === provider._id;
+        });
+        setDisplayedCommentaries(filteredCommentaries);
+      }
     } catch (error) {
       console.log(error);
     }
@@ -47,6 +44,7 @@ function ProviderProfile() {
         commentary,
       });
       getCommentaries();
+      setCommentary("");
     } catch (error) {
       console.log(error);
     }
@@ -54,12 +52,15 @@ function ProviderProfile() {
 
   useEffect(() => {
     getProvider();
-    getCommentaries();
-    console.log("those are the diplayed commentaries", displayedCommentaries);
   }, []);
 
-  if (provider) {
-    return (
+  useEffect(() => {
+    getCommentaries();
+  }, [provider]);
+
+  return (
+    provider &&
+    displayedCommentaries.length > 0 && (
       <>
         <div>
           <Navbar />
@@ -82,6 +83,7 @@ function ProviderProfile() {
             <label htmlFor="commentaries">Leave a commentary</label>
             <input
               type="text"
+              value={commentary}
               onChange={(event) => setCommentary(event.target.value)}
             />
             <button>Post your commentary</button>
@@ -96,8 +98,8 @@ function ProviderProfile() {
           </div>
         </div>
       </>
-    );
-  }
+    )
+  );
 }
 
 export default ProviderProfile;
