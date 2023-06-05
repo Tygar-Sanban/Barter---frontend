@@ -94,7 +94,9 @@ function ProfilePage() {
               <ul>
                 {user.skills.length > 0 &&
                   filteredSkills.map((elem) => (
+
                     <li key={elem._id}>{elem.name}</li>
+
                   ))}
               </ul>
             </>

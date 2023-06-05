@@ -7,6 +7,7 @@ function ModifySkills() {
   const { user, isLoading, authenticateUser } = useContext(AuthContext);
   const [filteredSkills, setFilteredSkills] = useState([]);
   const [selectedSkills, setSelectedSkills] = useState([]);
+
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [otherSelectedCategory, setOtherSelectedCategory] = useState(null);
   const [skills, setSkills] = useState([]);
@@ -21,7 +22,6 @@ function ModifySkills() {
             user.skills.every((elem) => elem._id !== skill._id)
           )
         );
-        console.log("this is the user", user);
       } catch (error) {
         console.log(error);
       }
@@ -52,6 +52,7 @@ function ModifySkills() {
   };
 
   useEffect(() => {
+
     fetchAllSkills();
     if (user) {
       setSelectedSkills(user.skills);
@@ -85,6 +86,7 @@ function ModifySkills() {
         ) : (
           <>
             <h2>User skills:</h2>
+
             <div>
               <h3>Categories</h3>
               <ul>
@@ -135,6 +137,7 @@ function ModifySkills() {
         ) : (
           <>
             <h2>All Skills excluding user skills:</h2>
+
             <div>
               <h3>Categories</h3>
               <ul>
@@ -180,6 +183,7 @@ function ModifySkills() {
                 </>
               )}
             </div>
+
           </>
         )}
       </div>
