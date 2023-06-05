@@ -12,7 +12,7 @@ import Transportation from "./Pages/SkillsCategories/Transportation";
 import HealthAndWellness from "./Pages/SkillsCategories/HealthAndWellness";
 import Creative from "./Pages/SkillsCategories/Creative";
 import Educational from "./Pages/SkillsCategories/Educational";
-import Discussion from "./Pages/Discussion";
+import Discussions from "./Pages/Discussions";
 import SearchResults from "./Pages/SearchResults";
 import ModifySkills from "./Pages/modifySkills";
 import Request from "./Pages/Request";
@@ -34,7 +34,7 @@ function App() {
         <Route path="/transportation" element={<Transportation />} />
         <Route path="/creative" element={<Creative />} />
         <Route path="/educational" element={<Educational />} />
-        <Route path="/discussion" element={<Discussion />} />
+        <Route path="/discussions" element={<Discussions />} />
         <Route path="/search-result/:query" element={<SearchResults />} />
         <Route path="/modifySkills" element={<ModifySkills />}></Route>
         <Route path="/request/:query" element={<Request />}></Route>

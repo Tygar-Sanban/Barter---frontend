@@ -5,8 +5,8 @@ function Navbar() {
   return (
     <div>
       <navbar className="top-navbar">
-        <Link to="/discussion" className="bottom-navbar-component">
-          <div>Discussion</div>
+        <Link to="/discussions" className="bottom-navbar-component">
+          <div>Discussions</div>
         </Link>
         <Link to="/search" className="bottom-navbar-component">
           <div>Search</div>
