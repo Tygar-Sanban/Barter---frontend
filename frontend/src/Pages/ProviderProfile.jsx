@@ -65,6 +65,7 @@ function ProviderProfile() {
         <div>
           <Navbar />
           <h1 style={{ paddingTop: "8vh" }}>{provider.name}'s Page</h1>
+          <Link to={`/request/${provider._id}`}>MAKE A REQUEST</Link>
           {provider.skills &&
             provider.skills.map((elem) => {
               return <div key={elem._id}>{elem.name}</div>;
