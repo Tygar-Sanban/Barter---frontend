@@ -44,10 +44,16 @@ function SearchResults() {
         {availableBrowsedUsers.length > 0 &&
           availableBrowsedUsers.map((elem) => {
             const url = `/provider-profile/${elem._id}`;
+            const url2 = `/request/${elem._id}/${params.query}`;
             return (
-              <Link key={elem._id} to={url}>
-                <div>{elem.name}</div>
-              </Link>
+              <>
+                <Link key={elem._id} to={url}>
+                  <div>{elem.name}</div>
+                </Link>
+                <Link to={url2}>
+                  <div>Request a service</div>
+                </Link>
+              </>
             );
           })}
       </div>
