@@ -36,7 +36,11 @@ function AllRequests() {
 
   return (
     <>
-      <div>AllRequests</div>
+      <Navbar />
+      <div style={{ paddingTop: "8vh" }}>
+        {" "}
+        <h2>AllRequests</h2>{" "}
+      </div>
       {ownRequests &&
         ownRequests.map((elem) => {
           return (
