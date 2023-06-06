@@ -18,6 +18,8 @@ import ModifySkills from "./Pages/modifySkills";
 import Request from "./Pages/Request";
 import AllRequests from "./Pages/AllRequests";
 import ProviderProfile from "./Pages/ProviderProfile";
+import CurrentMissions from "./Pages/CurrentMissions";
+import CurrentMission from "./Pages/CurrentMission";
 
 function App() {
   return (
@@ -40,6 +42,8 @@ function App() {
         <Route path="/modifySkills" element={<ModifySkills />}></Route>
         <Route path="/request/:query/:skill" element={<Request />}></Route>
         <Route path="/my-requests" element={<AllRequests />}></Route>
+        <Route path="/current-missions" element={<CurrentMissions />}></Route>
+        <Route path="/current-mission/:id" element={<CurrentMission />}></Route>
 
         <Route
           path="/provider-profile/:provider"

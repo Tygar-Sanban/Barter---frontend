@@ -83,13 +83,8 @@ function ProviderProfile() {
           <Navbar />
           <h1 style={{ paddingTop: "8vh" }}>{provider.name}'s Page</h1>
 
-          MAKE A REQUEST
-          {provider.skills &&
-            provider.skills.map((elem) => (
-              <Link to={`/request/${provider._id}/${elem._id}`} key={elem._id}>
-                <div>{elem.name}</div>
-              </Link>
-            ))}
+          <h2>Click on {provider.name}'s skills to make a service request.</h2>
+
           <div>
             <h2>Categories</h2>
             <ul>
@@ -116,7 +111,10 @@ function ProviderProfile() {
                 <ul>
                   {provider.skills.length > 0 &&
                     filteredSkills.map((elem) => (
-                      <Link key={elem._id}>
+                      <Link
+                        key={elem._id}
+                        to={`/request/${provider._id}/${elem._id}`}
+                      >
                         <li>{elem.name}</li>
                       </Link>
                     ))}

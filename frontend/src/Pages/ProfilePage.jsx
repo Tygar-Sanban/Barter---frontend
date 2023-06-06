@@ -66,7 +66,8 @@ function ProfilePage() {
     <>
       <Navbar />
       <div>
-        <h1 style={{ paddingTop: "8vh" }}>Profile Page</h1>
+        <h1 style={{ paddingTop: "8vh" }}>Your profile</h1>
+        <img src={user.picture} alt="profile picture" className="profile-pic" />
         <div>{user.name}</div>
         <div>
           <h2>Categories</h2>
@@ -94,16 +95,14 @@ function ProfilePage() {
               <ul>
                 {user.skills.length > 0 &&
                   filteredSkills.map((elem) => (
-
                     <li key={elem._id}>{elem.name}</li>
-
                   ))}
               </ul>
             </>
           )}
         </div>
         <Link to={"/modifySkills"}>
-          <button>Modify Skills</button>
+          <button>Modify your profile</button>
         </Link>
       </div>
       <div>
