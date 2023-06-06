@@ -53,7 +53,8 @@ function Messages() {
       console.log("second params.query", params.query);
       console.log("postMessage response", response);
       //   Update the messages state with the newly created message
-      setMessages([...messages, response.data]);
+      // setMessages([...messages, response.data]);
+      fetchMessages();
       // Clear the newMessage state
       setNewMessage("");
     } catch (error) {
@@ -61,45 +62,36 @@ function Messages() {
     }
   }
 
-  async function getAllMessages() {
-    try {
-      const response = await service.get("/message");
-
-      setAllMessages(response.data);
-
-      console.log("all messages", allMessages);
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
   useEffect(() => {
     fetchMessages();
-    getAllMessages();
   }, []);
 
   useEffect(() => {
     fetchRequester();
+    console.log("is there an infinite loop ?");
   }, [requester]);
 
   return (
     <div>
-      {messages.map((message, index) => (
-        <div key={index}>
-          {message.sender === user._id ? (
-            <p>Sent: {message.content}</p>
-          ) : (
-            <p>Received: {message.content}</p>
-          )}
-        </div>
-      ))}
+      <Navbar />
+      <div style={{ paddingTop: "8vh" }}>
+        {messages.map((message, index) => (
+          <div key={index}>
+            {message.sender === user._id ? (
+              <p>Sent: {message.content}</p>
+            ) : (
+              <p>Received: {message.content}</p>
+            )}
+          </div>
+        ))}
 
-      <input
-        type="text"
-        value={newMessage}
-        onChange={(event) => setNewMessage(event.target.value)}
-      />
-      <button onClick={postMessage}>Send</button>
+        <input
+          type="text"
+          value={newMessage}
+          onChange={(event) => setNewMessage(event.target.value)}
+        />
+        <button onClick={postMessage}>Send</button>
+      </div>
     </div>
   );
 }

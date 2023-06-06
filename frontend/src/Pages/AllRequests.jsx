@@ -17,7 +17,11 @@ function AllRequests() {
     try {
       const response = await service.get("/request/me");
       console.log("response data from the fetch own requests", response.data);
-      setOwnRequests(response.data);
+      setOwnRequests(
+        response.data.filter((elem) => {
+          return elem.acceptButton === false;
+        })
+      );
     } catch (error) {
       console.log(error);
     }
@@ -31,6 +35,8 @@ function AllRequests() {
     try {
       console.log("this is the elem of the handle Accept", elem);
       await service.patch(`/request/${elem._id}`, { acceptButton: true });
+      await service.post(`/current-mission/`, { request: elem._id });
+      fetchUserRequests();
     } catch (error) {
       console.log(error);
     }
@@ -38,7 +44,8 @@ function AllRequests() {
   async function handleDecline(elem) {
     try {
       console.log("this is the elem of the handle Decline", elem);
-      await service.patch(`/request/${elem._id}`, { acceptButton: false });
+      await service.delete(`/request/${elem._id}`);
+      fetchUserRequests();
     } catch (error) {
       console.log(error);
     }
@@ -56,14 +63,9 @@ function AllRequests() {
 
   return (
     <>
-
-      
-
       <Navbar />
       <div style={{ paddingTop: "8vh" }}>
-    <div>Requests received</div>
-        {" "}
-        <h2>AllRequests</h2>{" "}
+        <div>Requests received</div> <h2>AllRequests</h2>{" "}
       </div>
 
       {ownRequests &&

@@ -8,6 +8,9 @@ function Navbar() {
         <Link to="/my-requests" className="bottom-navbar-component">
           <div>My requests</div>
         </Link>
+        <Link to="/sent-requests" className="bottom-navbar-component">
+          <div>My requests sent</div>
+        </Link>
         <Link to="/search" className="bottom-navbar-component">
           <div>Search</div>
         </Link>
