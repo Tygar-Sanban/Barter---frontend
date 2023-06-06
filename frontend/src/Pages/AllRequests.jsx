@@ -3,11 +3,13 @@ import { AuthContext } from "../Context/authContext";
 import Navbar from "../Components/Navbar";
 import service from "../service/service.js";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 function AllRequests() {
   const { user } = useContext(AuthContext);
   const [ownRequests, setOwnRequests] = useState([]);
   const [acceptRequest, setAcceptRequest] = useState(false);
+  const [messageInput, setMessageInput] = useState("");
 
   // route créée dans le back pour gérer les requetes qui matchent mon id avec le payload.
   //
@@ -33,10 +35,28 @@ function AllRequests() {
       console.log(error);
     }
   }
+  async function handleDecline(elem) {
+    try {
+      console.log("this is the elem of the handle Decline", elem);
+      await service.patch(`/request/${elem._id}`, { acceptButton: false });
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async function handleMessage(elem) {
+    try {
+      await service.patch(`/request/${elem._id}`, { messages: messageInput });
+
+      setMessageInput("");
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   return (
     <>
-      <div>AllRequests</div>
+      <div>Requests received</div>
       {ownRequests &&
         ownRequests.map((elem) => {
           return (
@@ -45,8 +65,21 @@ function AllRequests() {
               <div>Barter Bucks offered : {elem.bbAmount}</div>
               <div>Message from the requester : {elem.messages}</div>
               <button onClick={() => handleAccept(elem)}>Accept request</button>
-
-              <button>Decline request</button>
+              <button onClick={() => handleDecline(elem)}>
+                Decline request
+              </button>
+              <Link to={`/messages/${elem._id}`}>
+                <button>Send a message to the requester</button>
+              </Link>
+              <input
+                type="text"
+                value={messageInput}
+                onChange={(event) => setMessageInput(event.target.value)}
+                placeholder="Enter your message"
+              />
+              <button onClick={() => handleMessage(elem)}>
+                Send a message to the requester
+              </button>
             </div>
           );
         })}
