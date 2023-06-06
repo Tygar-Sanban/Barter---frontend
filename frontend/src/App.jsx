@@ -19,8 +19,13 @@ import Request from "./Pages/Request";
 import AllRequests from "./Pages/AllRequests";
 import AllRequestsSent from "./Pages/AllRequestsSent";
 import ProviderProfile from "./Pages/ProviderProfile";
+
 import Negociate from "./Pages/Negociate";
 import Messages from "./Pages/Messages";
+
+import CurrentMissions from "./Pages/CurrentMissions";
+import CurrentMission from "./Pages/CurrentMission";
+
 
 function App() {
   return (
@@ -43,9 +48,14 @@ function App() {
         <Route path="/modifySkills" element={<ModifySkills />}></Route>
         <Route path="/request/:query/:skill" element={<Request />}></Route>
         <Route path="/my-requests" element={<AllRequests />}></Route>
+
         <Route path="/sent-requests" element={<AllRequestsSent />}></Route>
         <Route path="/sent-requests/:query" element={<Negociate />}></Route>
         <Route path="/messages/:query" element={<Messages />}></Route>
+
+        <Route path="/current-missions" element={<CurrentMissions />}></Route>
+        <Route path="/current-mission/:id" element={<CurrentMission />}></Route>
+
 
         <Route
           path="/provider-profile/:provider"

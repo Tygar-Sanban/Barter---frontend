@@ -7,11 +7,12 @@ function ModifySkills() {
   const { user, isLoading, authenticateUser } = useContext(AuthContext);
   const [filteredSkills, setFilteredSkills] = useState([]);
   const [selectedSkills, setSelectedSkills] = useState([]);
-
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [otherSelectedCategory, setOtherSelectedCategory] = useState(null);
   const [skills, setSkills] = useState([]);
   const [otherSkills, setOtherSkills] = useState([]);
+  const [picture, setPicture] = useState("");
+  const [name, setName] = useState("");
 
   async function fetchAllSkills() {
     if (user?.skills) {
@@ -52,7 +53,11 @@ function ModifySkills() {
   };
 
   useEffect(() => {
+    console.log("this is the picture", picture);
+    console.log("this is the user.picture", user.picture);
+  }, [picture, user.picture]);
 
+  useEffect(() => {
     fetchAllSkills();
     if (user) {
       setSelectedSkills(user.skills);
@@ -77,6 +82,27 @@ function ModifySkills() {
     setOtherSelectedCategory(category);
   }
 
+  async function handlePictureSubmit(event) {
+    event.preventDefault();
+    try {
+      const response = await service.patch("/user", { picture: picture });
+      await authenticateUser();
+      setPicture("");
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  async function handleNameSubmit(event) {
+    event.preventDefault();
+    try {
+      const response = await service.patch("/user", { name: name });
+      await authenticateUser();
+      setName("");
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   return (
     <>
       <Navbar />
@@ -85,7 +111,25 @@ function ModifySkills() {
           <p>Loading user skills...</p>
         ) : (
           <>
-            <h2>User skills:</h2>
+            <form onSubmit={handlePictureSubmit}>
+              <label htmlFor="picture">Post the link of your new picture</label>
+              <input
+                type="text"
+                value={picture}
+                onChange={(event) => setPicture(event.target.value)}
+              />
+              <button>Change your profile picture</button>
+            </form>
+            <form onSubmit={handleNameSubmit}>
+              <label htmlFor="name">Type your new name.</label>
+              <input
+                type="text"
+                value={name}
+                onChange={(event) => setName(event.target.value)}
+              />
+              <button>Change your name</button>
+            </form>
+            <h2>Click to remove a skill:</h2>
 
             <div>
               <h3>Categories</h3>
@@ -136,7 +180,7 @@ function ModifySkills() {
           <p>Loading all skills...</p>
         ) : (
           <>
-            <h2>All Skills excluding user skills:</h2>
+            <h2>Click to add another skill:</h2>
 
             <div>
               <h3>Categories</h3>
@@ -183,7 +227,6 @@ function ModifySkills() {
                 </>
               )}
             </div>
-
           </>
         )}
       </div>

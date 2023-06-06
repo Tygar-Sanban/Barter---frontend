@@ -16,12 +16,14 @@ function Homepage() {
   return (
     <div>
       <Navbar />
-      <Link to="/signup" style={{ paddingTop: "8vh" }}>
-        <button>Sign up, bitch !</button>
-      </Link>
-      <Link to="/login" style={{ paddingTop: "8vh" }}>
-        <button>Log in, bitch !</button>
-      </Link>
+      <div style={{ paddingTop: "8vh" }}>
+        <Link to="/signup" style={{ paddingTop: "8vh" }}>
+          <button>Sign up, bitch !</button>
+        </Link>
+        <Link to="/login" style={{ paddingTop: "8vh" }}>
+          <button>Log in, bitch !</button>
+        </Link>
+      </div>
     </div>
   );
 }

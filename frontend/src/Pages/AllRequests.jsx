@@ -56,7 +56,16 @@ function AllRequests() {
 
   return (
     <>
-      <div>Requests received</div>
+
+      
+
+      <Navbar />
+      <div style={{ paddingTop: "8vh" }}>
+    <div>Requests received</div>
+        {" "}
+        <h2>AllRequests</h2>{" "}
+      </div>
+
       {ownRequests &&
         ownRequests.map((elem) => {
           return (
