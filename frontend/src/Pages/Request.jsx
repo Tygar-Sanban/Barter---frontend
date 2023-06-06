@@ -7,6 +7,7 @@ import Navbar from "./../Components/Navbar";
 function Request() {
   const { user } = useContext(AuthContext);
   const params = useParams();
+
   console.log("this is the params", params.query);
   console.log("this is the skill param", params.skill);
 
