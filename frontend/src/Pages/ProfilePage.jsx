@@ -13,6 +13,7 @@ function ProfilePage() {
   const [wallet, setWallet] = useState({});
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [filteredSkills, setFilteredSkills] = useState([]);
+  const [userFinishedMission, setUserFinishedMission] = useState([]);
 
   async function fetchWallet() {
     try {
@@ -24,9 +25,30 @@ function ProfilePage() {
     }
   }
 
+  async function getUserMission() {
+    try {
+      const response = await service.get("/current-mission");
+      console.log("response user mission", response);
+      if (response) {
+        setUserFinishedMission(
+          response.data.filter((elem) => {
+            console.log("this is THE ELEM", elem);
+            return (
+              elem.validation === true && elem.request.provider === user._id
+            );
+          })
+        );
+        console.log("user finished mission", userFinishedMission);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   useEffect(() => {
     getAllServices();
     fetchWallet();
+    getUserMission();
   }, []);
 
   async function getAllServices() {
@@ -110,9 +132,9 @@ function ProfilePage() {
       </div>
       <div>
         <h2>Services rendus</h2>
-        {userServiceProvided.length !== 0 ? (
-          userServiceProvided.map((elem) => {
-            return <div key={elem._id}>{elem.name}</div>;
+        {userFinishedMission.length !== 0 ? (
+          userFinishedMission.map((elem) => {
+            return <div key={elem._id}>{elem.request.name}</div>;
           })
         ) : (
           <div>You didn't provide any service yet, bitch</div>

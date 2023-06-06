@@ -14,6 +14,7 @@ function Messages() {
   const [request, setRequest] = useState(null);
   const [provider, setProvider] = useState(null);
   const [providerName, setProviderName] = useState("");
+  const [requesterName, setRequesterName] = useState("");
 
   async function fetchMessages() {
     try {
@@ -50,7 +51,11 @@ function Messages() {
       const responseTwo = await service.get(`/user/${provider}`);
       // console.log(providerName.data.oneUser.name);
       setProviderName(responseTwo.data.oneUser.name);
-      console.log("response two", responseTwo);
+      console.log("response two", providerName);
+      const responseThree = await service.get(`/user/${requester}`);
+      // console.log(providerName.data.oneUser.name);
+      setRequesterName(responseThree.data.oneUser.name);
+      console.log("response three", requesterName);
     } catch (error) {
       console.log(error);
     }
@@ -75,7 +80,6 @@ function Messages() {
     }
   }
 
-
   async function getAllMessages() {
     try {
       const response = await service.get("/message");
@@ -91,7 +95,6 @@ function Messages() {
     fetchUsers();
   }, [requester]);
 
-
   useEffect(() => {
     fetchUserRequests();
     fetchMessages();
@@ -100,7 +103,7 @@ function Messages() {
   return (
     request && (
       <>
-      <Navbar />
+        <Navbar />
         <div style={{ paddingTop: "8vh" }}>Title: {request.name}</div>
         <div>Detail : {request.firstMessage}</div>
         <div>BarterBucks amount : {request.bbAmount}</div>
@@ -109,7 +112,7 @@ function Messages() {
             <div key={index}>
               {message.sender === user._id ? (
                 <p>
-                  {user.name}: {message.content}
+                  {requesterName}: {message.content}
                 </p>
               ) : (
                 <p>
