@@ -6,6 +6,7 @@ import Switch from "../Components/Switch";
 import service from "../service/service.js";
 
 function ProviderProfile() {
+  const { user } = useContext(AuthContext);
   const [provider, setProvider] = useState(null);
   const [userServiceProvided, setUserServiceProvided] = useState([]);
   const [commentary, setCommentary] = useState("");
@@ -76,12 +77,26 @@ function ProviderProfile() {
     setSelectedCategory(category);
   }
 
+  async function handleCommentaryClick(id) {
+    try {
+      const deletedCommentary = await service.delete(`/commentary/${id}`);
+      getCommentaries();
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   return (
     provider && (
       <>
         <div>
           <Navbar />
           <h1 style={{ paddingTop: "8vh" }}>{provider.name}'s Page</h1>
+          <img
+            src={provider.picture}
+            alt="profile-picture"
+            className="profile-pic"
+          />
 
           <h2>Click on {provider.name}'s skills to make a service request.</h2>
 
@@ -146,7 +161,19 @@ function ProviderProfile() {
           <h3>Commentaries about {provider.name}</h3>
           <div>
             {displayedCommentaries.map((elem) => {
-              return <div key={elem._id}>{elem.commentary}</div>;
+              return (
+                <div key={elem._id}>
+                  <div>{elem.commentator.name}</div>
+                  <div>{elem.commentary}</div>
+                  {elem.commentator.name === user.name ? (
+                    <div onClick={() => handleCommentaryClick(elem._id)}>
+                      Delete this commentary
+                    </div>
+                  ) : (
+                    ""
+                  )}
+                </div>
+              );
             })}
           </div>
         </div>

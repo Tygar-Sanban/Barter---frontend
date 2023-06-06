@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import service from "../service/service.js";
 import { Link, useParams } from "react-router-dom";
 import Navbar from "../Components/Navbar";
+import { AuthContext } from "../Context/authContext.jsx";
 
 function SearchResults() {
+  const { user } = useContext(AuthContext);
   const [allUsers, setAllUsers] = useState([]);
   const [selectedUsers, setSelectedUsers] = useState([]);
   const [availableBrowsedUsers, setAvailableBrowsedUsers] = useState([]);
@@ -19,9 +21,10 @@ function SearchResults() {
   }, []);
 
   useEffect(() => {
-    if (allUsers.length > 0) {
+    if (user && allUsers.length > 0) {
       const usersBrowsing = allUsers.filter((elem) => {
-        return elem.skills.includes(params.query);
+        console.log("this is the elem", elem);
+        return elem._id !== user._id && elem.skills.includes(params.query);
       });
       setSelectedUsers(usersBrowsing);
     }
