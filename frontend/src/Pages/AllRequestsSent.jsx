@@ -14,7 +14,11 @@ function AllRequestsSent() {
     try {
       const response = await service.get("/request/sentRequests");
       console.log("response data from the fetch sent requests", response.data);
-      setSentRequests(response.data);
+      setSentRequests(
+        response.data.filter((elem) => {
+          return elem.acceptButton === false;
+        })
+      );
     } catch (error) {
       console.log(error);
     }
@@ -46,6 +50,15 @@ function AllRequestsSent() {
   //   </form>
   //   }
 
+  async function handleDelete(id) {
+    try {
+      const deletedRequest = await service.delete(`/request/${id}`);
+      fetchUserRequests();
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   return (
     <>
       <Navbar />
@@ -55,6 +68,7 @@ function AllRequestsSent() {
       </div>
       {sentRequests &&
         sentRequests.map((elem) => {
+          console.log("this is the elem", elem);
           return (
             <div key={elem._id}>
               <div>Request title: {elem.name}</div>
@@ -65,6 +79,9 @@ function AllRequestsSent() {
               <Link to={`/messages/${elem._id}`}>
                 <button>Go to discussion</button>
               </Link>
+              <button onClick={() => handleDelete(elem._id)}>
+                Delete this request
+              </button>
             </div>
           );
         })}

@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import Navbar from "../Components/Navbar";
 import service from "../service/service";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { AuthContext } from "../Context/authContext";
 
 function CurrentMission() {
@@ -62,20 +62,29 @@ function CurrentMission() {
           </div>
           <div>
             {user?._id === currentMission.request.provider ? (
-              <div></div>
-            ) : (
               <div>
-                <label htmlFor="validation">
-                  Validate the success of this mission (you won't be able to
-                  cancel the validation)
-                </label>
-                <input
-                  type="checkbox"
-                  checked={currentMission.validation}
-                  onChange={handleSwitch}
-                />
-                Status: {currentMission.validation ? "Finished" : "Ongoing"}
+                <Link to={`/messages/${currentMission.request._id}`}>
+                  <button>Go to discussion</button>
+                </Link>
               </div>
+            ) : (
+              <>
+                <div>
+                  <label htmlFor="validation">
+                    Validate the success of this mission (you won't be able to
+                    cancel the validation)
+                  </label>
+                  <input
+                    type="checkbox"
+                    checked={currentMission.validation}
+                    onChange={handleSwitch}
+                  />
+                  Status: {currentMission.validation ? "Finished" : "Ongoing"}
+                </div>
+                <Link to={`/messages/${currentMission.request._id}`}>
+                  <button>Go to discussion</button>
+                </Link>
+              </>
             )}
           </div>
         </div>
