@@ -66,13 +66,15 @@ function Messages() {
       console.log("second params.query", params.query);
       console.log("postMessage response", response);
       //   Update the messages state with the newly created message
-      setMessages([...messages, response.data]);
+      // setMessages([...messages, response.data]);
+      fetchMessages();
       // Clear the newMessage state
       setNewMessage("");
     } catch (error) {
       console.log(error);
     }
   }
+
 
   async function getAllMessages() {
     try {
@@ -89,16 +91,17 @@ function Messages() {
     fetchUsers();
   }, [requester]);
 
+
   useEffect(() => {
     fetchUserRequests();
     fetchMessages();
-    getAllMessages();
   }, []);
 
   return (
     request && (
       <>
-        <div>Title: {request.name}</div>
+      <Navbar />
+        <div style={{ paddingTop: "8vh" }}>Title: {request.name}</div>
         <div>Detail : {request.firstMessage}</div>
         <div>BarterBucks amount : {request.bbAmount}</div>
         <div>

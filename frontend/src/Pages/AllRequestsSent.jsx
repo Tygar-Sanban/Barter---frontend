@@ -48,14 +48,17 @@ function AllRequestsSent() {
 
   return (
     <>
-      <div>AllRequests</div>
+      <Navbar />
+      <div style={{ paddingTop: "8vh" }}>
+        {" "}
+        <h2>Sent requests</h2>{" "}
+      </div>
       {sentRequests &&
         sentRequests.map((elem) => {
           return (
             <div key={elem._id}>
               <div>Request title: {elem.name}</div>
               <div>Barter Bucks offered: {elem.bbAmount}</div>
-              <div>{elem._id}</div>
               <Link to={`/sent-requests/${elem._id}`}>
                 <button>Set a new price</button>
               </Link>

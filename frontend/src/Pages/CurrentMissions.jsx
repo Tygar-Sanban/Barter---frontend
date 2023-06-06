@@ -17,14 +17,17 @@ function CurrentMissions() {
     try {
       const response = await service.get("/current-mission");
       console.log("this is the response", response);
-      setUserCurrentMissions(
-        response.data.filter((elem) => {
-          return (
-            elem.request.provider === user._id ||
-            elem.request.requester === user._id
-          );
-        })
-      );
+      if (response) {
+        setUserCurrentMissions(
+          response.data.filter((elem) => {
+            console.log("this is the elem", elem);
+            return (
+              elem.request.provider === user._id ||
+              elem.request.requester === user._id
+            );
+          })
+        );
+      }
     } catch (error) {
       console.log(error);
     }

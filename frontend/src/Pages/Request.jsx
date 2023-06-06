@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../Context/authContext";
-import { Navigate, Link, useParams } from "react-router-dom";
+import { Navigate, Link, useParams, useNavigate } from "react-router-dom";
 import service from "../service/service.js";
 import Navbar from "./../Components/Navbar";
 
@@ -17,6 +17,7 @@ function Request() {
   const [requestDetail, setRequestDetail] = useState("");
   const [bbAmount, setBbAmount] = useState(0);
   const [providerSkill, setProviderSkill] = useState("");
+  const navigate = useNavigate();
 
   async function getProvider() {
     try {
@@ -58,6 +59,7 @@ function Request() {
           firstMessage: requestDetail,
           acceptButton: false,
         });
+        navigate("/sent-requests");
       } catch (error) {
         console.log(error);
       }
@@ -89,7 +91,7 @@ function Request() {
             onChange={(event) => setBbAmount(event.target.value)}
           />
           <div>Request category : {providerSkill}</div>
-          <button>Post your commentary</button>
+          <button>Send your request</button>
         </form>
       </div>
     </>

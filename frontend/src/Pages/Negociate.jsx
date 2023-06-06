@@ -15,8 +15,8 @@ function Negociate() {
     console.log(params.query);
 
     try {
-      await service.patch(`/request/${params.query}`, { bbAmount: bbAmount });
       navigate("/sent-requests");
+      await service.patch(`/request/${params.query}`, { bbAmount: bbAmount });
     } catch (error) {
       console.log(error);
     }
@@ -38,7 +38,10 @@ function Negociate() {
 
   return (
     <>
-      <div>Title of your request : {sentRequests.name}</div>
+      <Navbar />
+      <div style={{ paddingTop: "8vh" }}>
+        Title of your request : {sentRequests.name}
+      </div>
       <div>Detail of your request : {sentRequests.firstMessage}</div>
       <div>Current Bb offer you made: {sentRequests.bbAmount}</div>
 

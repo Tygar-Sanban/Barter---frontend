@@ -26,7 +26,6 @@ import Messages from "./Pages/Messages";
 import CurrentMissions from "./Pages/CurrentMissions";
 import CurrentMission from "./Pages/CurrentMission";
 
-
 function App() {
   return (
     <>
@@ -55,7 +54,6 @@ function App() {
 
         <Route path="/current-missions" element={<CurrentMissions />}></Route>
         <Route path="/current-mission/:id" element={<CurrentMission />}></Route>
-
 
         <Route
           path="/provider-profile/:provider"
