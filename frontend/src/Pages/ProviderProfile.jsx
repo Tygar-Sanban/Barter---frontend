@@ -13,14 +13,36 @@ function ProviderProfile() {
   const [displayedCommentaries, setDisplayedCommentaries] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [filteredSkills, setFilteredSkills] = useState([]);
+  const [userFinishedMission, setUserFinishedMission] = useState([]);
 
   const params = useParams();
+
+  async function getUserMission() {
+    try {
+      const response = await service.get("/current-mission");
+      console.log("response user mission", response);
+      if (response) {
+        setUserFinishedMission(
+          response.data.filter((elem) => {
+            console.log("this is THE ELEM", elem);
+            return (
+              elem.validation === true &&
+              elem.request.provider === params.provider
+            );
+          })
+        );
+        console.log("provider finished mission", userFinishedMission);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   async function getProvider() {
     try {
       const response = await service.get(`/user/${params.provider}`);
       setProvider(response.data.oneUser);
-      console.log("this is the provider", provider);
+      console.log("this is the provider", params.provider);
       setUserServiceProvided(response.data.userService);
     } catch (error) {
       console.log(error);
@@ -57,6 +79,9 @@ function ProviderProfile() {
 
   useEffect(() => {
     getProvider();
+  }, []);
+  useEffect(() => {
+    getUserMission();
   }, []);
 
   useEffect(() => {
@@ -138,9 +163,9 @@ function ProviderProfile() {
             )}
           </div>
           <h2>Services rendus</h2>
-          {userServiceProvided && userServiceProvided.length !== 0 ? (
-            userServiceProvided.map((elem) => {
-              return <div key={elem._id}>{elem.name}</div>;
+          {userFinishedMission.length !== 0 ? (
+            userFinishedMission.map((elem) => {
+              return <div key={elem._id}>{elem.request.name}</div>;
             })
           ) : (
             <div>That bitch didn't provide any service yet</div>
