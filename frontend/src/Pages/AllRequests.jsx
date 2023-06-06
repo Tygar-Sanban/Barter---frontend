@@ -56,14 +56,9 @@ function AllRequests() {
 
   return (
     <>
-
-      
-
       <Navbar />
       <div style={{ paddingTop: "8vh" }}>
-    <div>Requests received</div>
-        {" "}
-        <h2>AllRequests</h2>{" "}
+        <div>Requests received</div> <h2>AllRequests</h2>{" "}
       </div>
 
       {ownRequests &&
@@ -80,15 +75,6 @@ function AllRequests() {
               <Link to={`/messages/${elem._id}`}>
                 <button>Send a message to the requester</button>
               </Link>
-              <input
-                type="text"
-                value={messageInput}
-                onChange={(event) => setMessageInput(event.target.value)}
-                placeholder="Enter your message"
-              />
-              <button onClick={() => handleMessage(elem)}>
-                Send a message to the requester
-              </button>
             </div>
           );
         })}

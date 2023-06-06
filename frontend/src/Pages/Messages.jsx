@@ -11,6 +11,9 @@ function Messages() {
   const [newMessage, setNewMessage] = useState("");
   const [allMessages, setAllMessages] = useState([]);
   const [requester, setRequester] = useState(null);
+  const [request, setRequest] = useState(null);
+  const [provider, setProvider] = useState(null);
+  const [providerName, setProviderName] = useState("");
 
   async function fetchMessages() {
     try {
@@ -25,23 +28,33 @@ function Messages() {
     }
   }
 
-  async function fetchRequester() {
+  async function fetchUserRequests() {
     try {
       const response = await service.get(`/request/${params.query}`);
-      setRequester(response.data.requester);
-      console.log("this is the requester", requester);
+      console.log("response data from the fetch sent requests", response.data);
+      setRequest(response.data);
     } catch (error) {
       console.log(error);
     }
   }
 
-  //   async function fetRequest() {
-  //     try {
-  //         const response = await service.get()
-  //     } catch (error) {
-  //         console.log(error);
-  //     }
-  //   }
+  async function fetchUsers() {
+    try {
+      const response = await service.get(`/request/${params.query}`);
+      console.log("response data fetch Requester", response.data);
+      setRequester(response.data.requester);
+      setProvider(response.data.provider);
+      console.log("this is the requester", requester);
+      console.log("this is the provider", provider);
+
+      const responseTwo = await service.get(`/user/${provider}`);
+      // console.log(providerName.data.oneUser.name);
+      setProviderName(responseTwo.data.oneUser.name);
+      console.log("response two", responseTwo);
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   async function postMessage() {
     try {
@@ -72,35 +85,46 @@ function Messages() {
       console.log(error);
     }
   }
+  useEffect(() => {
+    fetchUsers();
+  }, [requester]);
 
   useEffect(() => {
+    fetchUserRequests();
     fetchMessages();
     getAllMessages();
   }, []);
 
-  useEffect(() => {
-    fetchRequester();
-  }, [requester]);
-
   return (
-    <div>
-      {messages.map((message, index) => (
-        <div key={index}>
-          {message.sender === user._id ? (
-            <p>Sent: {message.content}</p>
-          ) : (
-            <p>Received: {message.content}</p>
-          )}
-        </div>
-      ))}
+    request && (
+      <>
+        <div>Title: {request.name}</div>
+        <div>Detail : {request.firstMessage}</div>
+        <div>BarterBucks amount : {request.bbAmount}</div>
+        <div>
+          {messages.map((message, index) => (
+            <div key={index}>
+              {message.sender === user._id ? (
+                <p>
+                  {user.name}: {message.content}
+                </p>
+              ) : (
+                <p>
+                  {providerName}: {message.content}
+                </p>
+              )}
+            </div>
+          ))}
 
-      <input
-        type="text"
-        value={newMessage}
-        onChange={(event) => setNewMessage(event.target.value)}
-      />
-      <button onClick={postMessage}>Send</button>
-    </div>
+          <input
+            type="text"
+            value={newMessage}
+            onChange={(event) => setNewMessage(event.target.value)}
+          />
+          <button onClick={postMessage}>Send</button>
+        </div>
+      </>
+    )
   );
 }
 

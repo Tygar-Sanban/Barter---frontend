@@ -40,7 +40,7 @@ function Negociate() {
     <>
       <div>Title of your request : {sentRequests.name}</div>
       <div>Detail of your request : {sentRequests.firstMessage}</div>
-      <div>Initial Bb offer you made: {sentRequests.bbAmount}</div>
+      <div>Current Bb offer you made: {sentRequests.bbAmount}</div>
 
       <form onSubmit={handleNegociate}>
         <label htmlFor="bbAmount">Modify the BB Amount of this request</label>
