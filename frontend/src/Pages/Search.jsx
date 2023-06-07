@@ -14,25 +14,25 @@ function Search() {
       </div>
       <div className="category-buttons">
         <Link to={"/personal"}>
-          <button>Personal</button>
+          <button className="category-buttons">Personal</button>
         </Link>
         <Link to={"/professional"}>
-          <button>Professional</button>
+          <button className="category-buttons">Professional</button>
         </Link>
         <Link to={"/health-and-wellness"}>
-          <button>Health and Wellness</button>
+          <button className="category-buttons">Health and Wellness</button>
         </Link>
         <Link to={"/educational"}>
-          <button>Educational</button>
+          <button className="category-buttons">Educational</button>
         </Link>
         <Link to={"/creative"}>
-          <button>Creative</button>
+          <button className="category-buttons">Creative</button>
         </Link>
         <Link to={"/home"}>
-          <button>Home</button>
+          <button className="category-buttons">Home</button>
         </Link>
         <Link to={"/transportation"}>
-          <button>Transportation</button>
+          <button className="category-buttons">Transportation</button>
         </Link>
       </div>
     </div>
