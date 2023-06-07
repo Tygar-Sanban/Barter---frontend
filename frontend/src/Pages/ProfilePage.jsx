@@ -2,9 +2,8 @@ import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../Context/authContext";
 import { Navigate, Link } from "react-router-dom";
 import Navbar from "../Components/Navbar";
-import Switch from "../Components/Switch";
+import SwitchComponent from "../Components/SwitchComponent";
 import service from "./../service/service.js";
-import SkillsFactor from "../Components/SkillsFactor";
 
 function ProfilePage() {
   const { isLoggedIn, isLoading, user, logOutUser } = useContext(AuthContext);
@@ -109,76 +108,134 @@ function ProfilePage() {
   return (
     <>
       <Navbar />
-      <div>
-        <h1 style={{ paddingTop: "8vh" }}>Your profile</h1>
-        <img src={user.picture} alt="profile picture" className="profile-pic" />
-        <div>{user.name}</div>
-        <div>
-          <h2>Categories</h2>
-          <ul>
-            <li onClick={() => handleCategoryClick("Personal")}>Personal</li>
-            <li onClick={() => handleCategoryClick("Professional")}>
+      <div style={{ paddingTop: "8vh" }}>
+        <div className="profile-info">
+          <img
+            src={user.picture}
+            alt="profile picture"
+            className="profile-pic"
+          />
+          <div>
+            <h2>{user.name}</h2>
+            <div className="divider"></div>
+            <div>
+              <h3>Your Wallet</h3>
+              <div className="barterbucks">
+                {wallet.barterBucks === 0 ? "You poor :(" : wallet.barterBucks}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="switch">
+          <SwitchComponent />
+        </div>
+        <div className="categories">
+          <h2>Categories you're skilled in</h2>
+          <div className="divider-container">
+            <div className="divider"></div>
+          </div>
+          <div className="category-buttons">
+            <button
+              onClick={() => handleCategoryClick("Personal")}
+              className={selectedCategory === "Personal" ? "active" : ""}
+            >
+              Personal
+            </button>
+            <button
+              onClick={() => handleCategoryClick("Professional")}
+              className={selectedCategory === "Professional" ? "active" : ""}
+            >
               Professional
-            </li>
-            <li onClick={() => handleCategoryClick("Health and Wellness")}>
+            </button>
+            <button
+              onClick={() => handleCategoryClick("Health and Wellness")}
+              className={
+                selectedCategory === "Health and Wellness" ? "active" : ""
+              }
+            >
               Health and Wellness
-            </li>
-            <li onClick={() => handleCategoryClick("Educational")}>
+            </button>
+            <button
+              onClick={() => handleCategoryClick("Educational")}
+              className={selectedCategory === "Educational" ? "active" : ""}
+            >
               Educational
-            </li>
-            <li onClick={() => handleCategoryClick("Creative")}>Creative</li>
-            <li onClick={() => handleCategoryClick("Home")}>Home</li>
-            <li onClick={() => handleCategoryClick("Transportation")}>
+            </button>
+            <button
+              onClick={() => handleCategoryClick("Creative")}
+              className={selectedCategory === "Creative" ? "active" : ""}
+            >
+              Creative
+            </button>
+            <button
+              onClick={() => handleCategoryClick("Home")}
+              className={selectedCategory === "Home" ? "active" : ""}
+            >
+              Home
+            </button>
+            <button
+              onClick={() => handleCategoryClick("Transportation")}
+              className={selectedCategory === "Transportation" ? "active" : ""}
+            >
               Transportation
-            </li>
-          </ul>
+            </button>
+          </div>
 
           {selectedCategory && (
             <>
-              <h2>Skills</h2>
-              <ul>
+              <div className="category-buttons">
+                <h2>Skills details</h2>
+
+                <img
+                  onClick={() => setSelectedCategory(null)}
+                  src={"/public/Icons/close.png"}
+                  alt="Close"
+                  className="close-icon"
+                />
+              </div>
+              <div className="category-buttons">
                 {user.skills.length > 0 &&
                   filteredSkills.map((elem) => (
-                    <li key={elem._id}>{elem.name}</li>
+                    <button key={elem._id}>{elem.name}</button>
                   ))}
-              </ul>
+              </div>
             </>
           )}
         </div>
-        <Link to={"/modifySkills"}>
-          <button>Modify your profile</button>
-        </Link>
-      </div>
-      <div>
-        <Switch />
-      </div>
-      <div>
-        <h2>Services rendus</h2>
-        {userFinishedMission.length !== 0 ? (
-          userFinishedMission.map((elem) => {
-            return <div key={elem._id}>{elem.request.name}</div>;
-          })
-        ) : (
-          <div>You didn't provide any service yet, bitch</div>
-        )}
-      </div>
-      <div>
-        <h2>Services demandés</h2>
-        {userServicesAsked.length !== 0 ? (
-          userServicesAsked.map((elem) => {
-            return <div key={elem._id}>{elem.request.name}</div>;
-          })
-        ) : (
-          <div>No one answered your requests ...</div>
-        )}
-      </div>
-      <div>
-        <h2>Your BarterBucks</h2>
-        <div>
-          {wallet.barterBucks === 0 ? "You poor :(" : wallet.barterBucks}
+
+        <div className="divider-container">
+          <div className="divider"></div>
         </div>
       </div>
-      <div>
+
+      <div className="services">
+        <div>
+          <h2>Services rendus</h2>
+          {userFinishedMission.length !== 0 ? (
+            userFinishedMission.map((elem) => {
+              return <div key={elem._id}>{elem.request.name}</div>;
+            })
+          ) : (
+            <div>You didn't provide any service yet, bitch</div>
+          )}
+        </div>
+        <div>
+          <h2>Services demandés</h2>
+          {userServicesAsked.length !== 0 ? (
+            userServicesAsked.map((elem) => {
+              return <div key={elem._id}>{elem.request.name}</div>;
+            })
+          ) : (
+            <div>No one answered your requests ...</div>
+          )}
+        </div>
+      </div>
+      <div className="modifyDiv">
+        <Link to={"/modifySkills"}>
+          <button className="modifyBtn">Modify your profile</button>
+        </Link>
+      </div>
+      <div className="logout">
         <button onClick={logOutUser}>Logout</button>
       </div>
     </>
