@@ -65,7 +65,6 @@ function Messages() {
     try {
       const response = await service.post("/message", {
         content: newMessage,
-        receiver: requester,
         requestId: params.query,
       });
       console.log("second params.query", params.query);
@@ -80,17 +79,6 @@ function Messages() {
     }
   }
 
-  async function getAllMessages() {
-    try {
-      const response = await service.get("/message");
-
-      setAllMessages(response.data);
-
-      console.log("all messages", allMessages);
-    } catch (error) {
-      console.log(error);
-    }
-  }
   useEffect(() => {
     fetchUsers();
   }, [requester]);
@@ -112,11 +100,11 @@ function Messages() {
             <div key={index}>
               {message.sender === user._id ? (
                 <p>
-                  {requesterName}: {message.content}
+                  {message.sender.name}: {message.content}
                 </p>
               ) : (
                 <p>
-                  {providerName}: {message.content}
+                  {message.sender.name}: {message.content}
                 </p>
               )}
             </div>
