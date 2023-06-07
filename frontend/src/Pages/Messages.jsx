@@ -81,7 +81,7 @@ function Messages() {
 
   useEffect(() => {
     fetchUsers();
-  }, [requester]);
+  }, []);
 
   useEffect(() => {
     fetchUserRequests();
@@ -92,10 +92,12 @@ function Messages() {
     request && (
       <>
         <Navbar />
-        <div style={{ paddingTop: "8vh" }}>Title: {request.name}</div>
-        <div>Detail : {request.firstMessage}</div>
-        <div>BarterBucks amount : {request.bbAmount}</div>
-        <div>
+        <div className="request-discussion">
+          <div style={{ paddingTop: "8vh" }}>Title: {request.name}</div>
+          <div>Detail : {request.firstMessage}</div>
+          <div>BarterBucks amount : {request.bbAmount}</div>
+        </div>
+        <div style={{ paddingTop: "2vh" }}>
           {messages.map((message, index) => (
             <div key={index}>
               {message.sender === user._id ? (
@@ -103,19 +105,23 @@ function Messages() {
                   {message.sender.name}: {message.content}
                 </p>
               ) : (
-                <p>
-                  {message.sender.name}: {message.content}
-                </p>
+                <>
+                  <p className="chat-name">{message.sender.name} : </p>
+                  <p className="chat-bubble">{message.content}</p>
+                </>
               )}
             </div>
           ))}
-
-          <input
-            type="text"
-            value={newMessage}
-            onChange={(event) => setNewMessage(event.target.value)}
-          />
-          <button onClick={postMessage}>Send</button>
+          <div className="textarea-container">
+            <div>
+              <textarea
+                type="text"
+                value={newMessage}
+                onChange={(event) => setNewMessage(event.target.value)}
+              />
+            </div>
+            <button onClick={postMessage}>Send</button>
+          </div>
         </div>
       </>
     )

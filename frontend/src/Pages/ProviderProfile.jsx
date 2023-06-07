@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../Context/authContext";
 import { Navigate, Link, useParams } from "react-router-dom";
 import Navbar from "../Components/Navbar";
-import Switch from "../Components/Switch";
+import SwitchComponent from "../Components/SwitchComponent";
 import service from "../service/service.js";
 
 function ProviderProfile() {
@@ -114,72 +114,117 @@ function ProviderProfile() {
   return (
     provider && (
       <>
-        <div>
-          <Navbar />
-          <h1 style={{ paddingTop: "8vh" }}>{provider.name}'s Page</h1>
-          <img
-            src={provider.picture}
-            alt="profile-picture"
-            className="profile-pic"
-          />
-
+        <Navbar />
+        <div style={{ paddingTop: "8vh" }}>
+          <div className="profile-info">
+            <h1>{provider.name}'s Page</h1>
+            <img
+              src={provider.picture}
+              alt="profile-picture"
+              className="profile-pic"
+            />
+          </div>
           <h2>Click on {provider.name}'s skills to make a service request.</h2>
-
-          <div>
-            <h2>Categories</h2>
-            <ul>
-              <li onClick={() => handleCategoryClick("Personal")}>Personal</li>
-              <li onClick={() => handleCategoryClick("Professional")}>
+          <div className="categories">
+            <h2>Tap to browse a category</h2>
+            <div className="category-buttons">
+              <button
+                onClick={() => handleCategoryClick("Personal")}
+                className={selectedCategory === "Personal" ? "active" : ""}
+              >
+                Personal
+              </button>
+              <button
+                onClick={() => handleCategoryClick("Professional")}
+                className={selectedCategory === "Professional" ? "active" : ""}
+              >
                 Professional
-              </li>
-              <li onClick={() => handleCategoryClick("Health and Wellness")}>
+              </button>
+              <button
+                onClick={() => handleCategoryClick("Health and Wellness")}
+                className={
+                  selectedCategory === "Health and Wellness" ? "active" : ""
+                }
+              >
                 Health and Wellness
-              </li>
-              <li onClick={() => handleCategoryClick("Educational")}>
+              </button>
+              <button
+                onClick={() => handleCategoryClick("Educational")}
+                className={selectedCategory === "Educational" ? "active" : ""}
+              >
                 Educational
-              </li>
-              <li onClick={() => handleCategoryClick("Creative")}>Creative</li>
-              <li onClick={() => handleCategoryClick("Home")}>Home</li>
-              <li onClick={() => handleCategoryClick("Transportation")}>
+              </button>
+              <button
+                onClick={() => handleCategoryClick("Creative")}
+                className={selectedCategory === "Creative" ? "active" : ""}
+              >
+                Creative
+              </button>
+              <button
+                onClick={() => handleCategoryClick("Home")}
+                className={selectedCategory === "Home" ? "active" : ""}
+              >
+                Home
+              </button>
+              <button
+                onClick={() => handleCategoryClick("Transportation")}
+                className={
+                  selectedCategory === "Transportation" ? "active" : ""
+                }
+              >
                 Transportation
-              </li>
-            </ul>
+              </button>
+            </div>
 
             {selectedCategory && (
               <>
-                <h2>Skills</h2>
-                <ul>
+                <div className="category-buttons">
+                  <h2>Skills details</h2>
+                  <img
+                    onClick={() => setSelectedCategory(null)}
+                    src={"/public/Icons/close.png"}
+                    alt="Close"
+                    className="close-icon"
+                  />
+                </div>
+                <div className="category-buttons">
                   {provider.skills.length > 0 &&
                     filteredSkills.map((elem) => (
                       <Link
                         key={elem._id}
                         to={`/request/${provider._id}/${elem._id}`}
                       >
-                        <li>{elem.name}</li>
+                        <button>{elem.name}</button>
                       </Link>
                     ))}
-                </ul>
+                </div>
               </>
             )}
           </div>
-          <h2>Services rendus</h2>
-          {userFinishedMission.length !== 0 ? (
-            userFinishedMission.map((elem) => {
-              return <div key={elem._id}>{elem.request.name}</div>;
-            })
-          ) : (
-            <div>That bitch didn't provide any service yet</div>
-          )}
+
+          <div style={{ textAlign: "center" }}>
+            <h2>Services rendus</h2>
+            {userFinishedMission.length !== 0 ? (
+              userFinishedMission.map((elem) => {
+                return <div key={elem._id}>{elem.request.name}</div>;
+              })
+            ) : (
+              <div>That bitch didn't provide any service yet</div>
+            )}
+          </div>
         </div>
         <div>
-          <form onSubmit={handleSubmit}>
+          <form className="form" onSubmit={handleSubmit}>
             <label htmlFor="commentaries">Leave a commentary</label>
-            <input
+            <textarea
+              className="textarea"
               type="text"
               value={commentary}
               onChange={(event) => setCommentary(event.target.value)}
             />
-            <button>Post your commentary</button>
+            <div>
+              <button>Post your commentary</button>
+            </div>
           </form>
         </div>
         <div>
