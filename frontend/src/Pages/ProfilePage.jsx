@@ -183,6 +183,7 @@ function ProfilePage() {
 
           {selectedCategory && (
             <>
+
               <div className="category-buttons">
                 <h2>Skills details</h2>
 
@@ -194,6 +195,7 @@ function ProfilePage() {
                 />
               </div>
               <div className="category-buttons">
+
                 {user.skills.length > 0 &&
                   filteredSkills.map((elem) => (
                     <button key={elem._id}>{elem.name}</button>

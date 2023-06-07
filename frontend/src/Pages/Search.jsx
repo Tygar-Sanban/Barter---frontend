@@ -6,7 +6,7 @@ function Search() {
   return (
     <div>
       <Navbar />
-      <div className="page-title" style={{ paddingTop: "8vh" }}>
+      <div className="page-title" style={{ paddingTop: "13vh" }}>
         <h2>Search</h2>
       </div>
       <div className="indications">
@@ -14,25 +14,25 @@ function Search() {
       </div>
       <div className="category-buttons">
         <Link to={"/personal"}>
-          <button className="category-buttons">Personal</button>
+          <button>Personal</button>
         </Link>
         <Link to={"/professional"}>
-          <button className="category-buttons">Professional</button>
+          <button>Professional</button>
         </Link>
         <Link to={"/health-and-wellness"}>
-          <button className="category-buttons">Health and Wellness</button>
+          <button>Health and Wellness</button>
         </Link>
         <Link to={"/educational"}>
-          <button className="category-buttons">Educational</button>
+          <button>Educational</button>
         </Link>
         <Link to={"/creative"}>
-          <button className="category-buttons">Creative</button>
+          <button>Creative</button>
         </Link>
         <Link to={"/home"}>
-          <button className="category-buttons">Home</button>
+          <button>Home</button>
         </Link>
         <Link to={"/transportation"}>
-          <button className="category-buttons">Transportation</button>
+          <button>Transportation</button>
         </Link>
       </div>
     </div>

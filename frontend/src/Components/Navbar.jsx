@@ -6,17 +6,17 @@ function Navbar() {
     <div>
       <navbar className="top-navbar">
         <Link to="/request-page" className="bottom-navbar-component">
-          <div>My requests</div>
+          <div>Requests</div>
         </Link>
         <Link to="/current-missions" className="bottom-navbar-component">
-          <div>Current missions</div>
+          <div>Current Services</div>
         </Link>
         <Link to="/search" className="bottom-navbar-component">
           <div>Search</div>
         </Link>
         <Link
           to="/profile"
-          className="top-navbar-component profilepicAndwallet"
+          className="bottom-navbar-component profilepicAndwallet"
         >
           <div>Profile</div>
           <div>Wallet</div>

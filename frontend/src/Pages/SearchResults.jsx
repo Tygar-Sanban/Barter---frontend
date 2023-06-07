@@ -43,20 +43,23 @@ function SearchResults() {
   return (
     <div>
       <Navbar />
-      <div style={{ paddingTop: "8vh" }}>
+      <div style={{ paddingTop: "10vh" }}>
+        <div className="indications">
+          <h3>Pick whomever</h3>
+        </div>
         {availableBrowsedUsers.length > 0 &&
           availableBrowsedUsers.map((elem) => {
             const url = `/provider-profile/${elem._id}`;
             const url2 = `/request/${elem._id}/${params.query}`;
             return (
-              <>
+              <div className="results" key={elem._id}>
                 <Link key={elem._id} to={url}>
-                  <div>{elem.name}</div>
+                  <div>{elem.name}'s profile</div>
                 </Link>
                 <Link to={url2}>
-                  <div>Request a service</div>
+                  <div>Request</div>
                 </Link>
-              </>
+              </div>
             );
           })}
       </div>
