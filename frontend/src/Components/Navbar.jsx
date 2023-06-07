@@ -18,7 +18,7 @@ function Navbar() {
           to="/profile"
           className="top-navbar-component profilepicAndwallet"
         >
-          <div>ProfilePic</div>
+          <div>Profile</div>
           <div>Wallet</div>
         </Link>
       </navbar>

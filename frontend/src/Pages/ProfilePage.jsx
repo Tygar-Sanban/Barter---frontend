@@ -14,6 +14,7 @@ function ProfilePage() {
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [filteredSkills, setFilteredSkills] = useState([]);
   const [userFinishedMission, setUserFinishedMission] = useState([]);
+  const [userServicesAsked, setUserServicesAsked] = useState([]);
 
   async function fetchWallet() {
     try {
@@ -45,10 +46,31 @@ function ProfilePage() {
     }
   }
 
+  async function getUserServicesAsked() {
+    try {
+      const response = await service.get("/current-mission");
+      console.log("response user mission", response);
+      if (response) {
+        setUserServicesAsked(
+          response.data.filter((elem) => {
+            console.log("this is THE ELEM", elem);
+            return (
+              elem.validation === true && elem.request.requester === user._id
+            );
+          })
+        );
+        console.log("user services asked", userServicesAsked);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   useEffect(() => {
     getAllServices();
     fetchWallet();
     getUserMission();
+    getUserServicesAsked();
   }, []);
 
   async function getAllServices() {
@@ -142,12 +164,12 @@ function ProfilePage() {
       </div>
       <div>
         <h2>Services demandés</h2>
-        {userServiceRequested.length !== 0 ? (
-          userServiceRequested.map((elem) => {
-            return <div key={elem._id}>{elem.name}</div>;
+        {userServicesAsked.length !== 0 ? (
+          userServicesAsked.map((elem) => {
+            return <div key={elem._id}>{elem.request.name}</div>;
           })
         ) : (
-          <div>You didn't request any service yet, bitch</div>
+          <div>No one answered your requests ...</div>
         )}
       </div>
       <div>

@@ -1,4 +1,5 @@
 import "./App.css";
+import { useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import Homepage from "./Pages/Homepage";
 import SignUp from "./Pages/SignUp";
@@ -26,6 +27,9 @@ import Messages from "./Pages/Messages";
 import CurrentMissions from "./Pages/CurrentMissions";
 import CurrentMission from "./Pages/CurrentMission";
 import RequestPage from "./Pages/RequestPage";
+
+// import { ToastContainer } from "react-toastify";
+// import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   return (
@@ -62,6 +66,7 @@ function App() {
         ></Route>
         <Route path="/request-page" element={<RequestPage />} />
       </Routes>
+      {/* <ToastContainer position="top-right" autoClose={3000} hideProgressBar /> */}
     </>
   );
 }

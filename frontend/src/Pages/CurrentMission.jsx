@@ -9,11 +9,21 @@ function CurrentMission() {
   const [currentMission, setCurrentMission] = useState(null);
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
+  console.log(params);
 
   async function getSingleCurrentMission() {
     try {
       const response = await service.get(`/current-mission/${params.id}`);
       setCurrentMission(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async function deleteMission() {
+    try {
+      navigate("/current-missions");
+      const response = await service.delete(`/current-mission/${params.id}`);
     } catch (error) {
       console.log(error);
     }
@@ -66,6 +76,7 @@ function CurrentMission() {
                 <Link to={`/messages/${currentMission.request._id}`}>
                   <button>Go to discussion</button>
                 </Link>
+                <button onClick={deleteMission}>Delete this mission</button>
               </div>
             ) : (
               <>
@@ -84,6 +95,7 @@ function CurrentMission() {
                 <Link to={`/messages/${currentMission.request._id}`}>
                   <button>Go to discussion</button>
                 </Link>
+                <button onClick={deleteMission}>Delete this mission</button>
               </>
             )}
           </div>

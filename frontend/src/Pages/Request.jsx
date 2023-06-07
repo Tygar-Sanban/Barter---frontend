@@ -28,7 +28,7 @@ function Request() {
       console.log(error);
     }
   }
-
+  // console.log("this is the provider", provider.email);
   async function getSkillCategory() {
     try {
       const response = await service.get(`/skills/${params.skill}`);
@@ -82,6 +82,7 @@ function Request() {
       console.log(error);
     }
   }
+
 
   async function handleReset() {
     setCanUpdate(true);
