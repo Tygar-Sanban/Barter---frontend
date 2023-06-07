@@ -84,7 +84,7 @@ function Negociate() {
         <div>
           <Navbar />
           <div style={{ paddingTop: "8vh" }}>
-            You tried to offer more BarterBucks than you posess.
+            You tried to offer more BarterBucks than you possess.
           </div>
           <button onClick={handleReset}>
             Click here to try reseting a BarterBucks amount.

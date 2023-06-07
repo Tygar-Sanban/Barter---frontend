@@ -25,6 +25,7 @@ import Messages from "./Pages/Messages";
 
 import CurrentMissions from "./Pages/CurrentMissions";
 import CurrentMission from "./Pages/CurrentMission";
+import RequestPage from "./Pages/RequestPage";
 
 function App() {
   return (
@@ -59,6 +60,7 @@ function App() {
           path="/provider-profile/:provider"
           element={<ProviderProfile />}
         ></Route>
+        <Route path="/request-page" element={<RequestPage />} />
       </Routes>
     </>
   );

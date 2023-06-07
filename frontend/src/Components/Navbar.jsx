@@ -5,17 +5,14 @@ function Navbar() {
   return (
     <div>
       <navbar className="top-navbar">
-        <Link to="/my-requests" className="bottom-navbar-component">
+        <Link to="/request-page" className="bottom-navbar-component">
           <div>My requests</div>
-        </Link>
-        <Link to="/sent-requests" className="bottom-navbar-component">
-          <div>My requests sent</div>
-        </Link>
-        <Link to="/search" className="bottom-navbar-component">
-          <div>Search</div>
         </Link>
         <Link to="/current-missions" className="bottom-navbar-component">
           <div>Current missions</div>
+        </Link>
+        <Link to="/search" className="bottom-navbar-component">
+          <div>Search</div>
         </Link>
         <Link
           to="/profile"
