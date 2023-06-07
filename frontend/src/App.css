@@ -1,21 +1,74 @@
+@font-face {
+  font-family: "Title";
+  src: url("../public/Fonts/Curva.ttf");
+}
+
+@font-face {
+  font-family: "Body";
+  src: url("../public/Fonts/CercoDEMO-Regular.otf");
+}
+
+h1 {
+  font-family: "Title";
+}
+
+h2 {
+  font-family: "Title";
+}
+
+h3 {
+  font-family: "body";
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  text-decoration: none;
 }
+
+body {
+  background-color: #ffddd2;
+}
+
+/*Styling the Navbar */
 
 .top-navbar {
   width: 100%;
   height: 8vh;
-  background-color: black;
+  background-color: #006d77;
   display: flex;
   justify-content: space-around;
   align-items: center;
   position: fixed;
+  color: #edf6f9;
+  text-decoration: none;
+  font-family: "Body";
+  text-decoration: none;
+}
+
+.top-navbar a {
+  color: #edf6f9;
+  font-family: "Body";
+}
+
+.top-navbar div {
+  font-family: "Body";
 }
 
 .top-navbar-component {
   align-self: center;
+}
+
+.bottom-navbar-component {
+  font-family: "Body";
+}
+
+.bullet-points {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 .profilepicAndwallet {
@@ -26,6 +79,182 @@
   width: 10%;
 }
 
-body {
-  background-color: #ffddd2;
+/* Styling the search page*/
+
+.page-title {
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Title";
+}
+
+.indications {
+  font-family: "Body";
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  margin: 0 0 0.5rem;
+}
+
+.category-buttons {
+  margin: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.category-buttons button {
+  font-family: "Body";
+  font-size: 1rem;
+  font-weight: 900;
+  box-shadow: 3px 3px 3px black;
+  border: 1px solid black;
+  border-radius: 10px;
+  margin: 0.6rem;
+  padding: 1rem;
+}
+
+/* Styling the category page*/
+
+.title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Title";
+  padding: 1rem;
+}
+
+.bullet-points {
+  margin: 0.5rem;
+}
+
+.bullet-points button {
+  font-family: "Body";
+  font-size: 0.9rem;
+  font-weight: 600;
+  box-shadow: 3px 3px 3px black;
+  border: 1px solid black;
+  border-radius: 10px;
+  margin: 0.3rem;
+  padding: 1rem;
+}
+
+/* Styling the results page*/
+
+.results {
+  background-color: #edf6f9;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-family: "Body";
+  font-weight: 900;
+  height: 10vh;
+  border: 3px solid black;
+  border-radius: 10px;
+  margin: 1rem;
+  text-decoration: none;
+  color: black;
+}
+
+.results a {
+  color: black;
+}
+
+/* styling the request page */
+
+.request-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  font-family: "body";
+}
+
+.form-request-context {
+  display: flex;
+  margin: 0.5rem;
+  align-items: center;
+}
+
+.form-request-context label {
+  margin: 0.5rem 1rem;
+  text-align: center;
+}
+
+.request-button {
+  margin: 1.5rem;
+  padding: 1rem;
+  font-family: "Body";
+  border-radius: 10px;
+  background-color: #edf6f9;
+}
+
+.form-request-context input {
+  font-family: "Body";
+  border-radius: 10px;
+  padding: 0.5rem;
+}
+
+.form-request-context textarea {
+  font-family: "Body";
+  border-radius: 10px;
+  padding: 0.5rem;
+  height: 15vh;
+  border: 1.5px solid black;
+}
+
+.request-paths {
+  display: flex;
+  height: 80vh;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.request-paths button {
+  font-family: "Body";
+  font-size: 1rem;
+  font-weight: 900;
+  box-shadow: 3px 3px 3px black;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 2rem;
+  border-radius: 10px;
+}
+
+/* Styling the requests pages */
+
+.request-received {
+  padding: 1rem;
+  background-color: #edf6f9;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-family: "Body";
+  border: 3px solid black;
+  border-radius: 10px;
+  margin: 1rem;
+  text-decoration: none;
+  color: black;
+}
+
+.request-received button {
+  margin: 0.2rem;
+  font-family: "Body";
+  font-size: 1rem;
+  font-weight: 900;
+  box-shadow: 3px 3px 3px black;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 0.5rem;
+  border-radius: 10px;
+  background-color: #83c5be;
+}
+
+.request-buttons {
+  display: flex;
+  justify-content: center;
+  margin: 1rem;
 }

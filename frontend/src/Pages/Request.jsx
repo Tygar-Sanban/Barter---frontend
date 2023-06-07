@@ -83,7 +83,6 @@ function Request() {
     }
   }
 
-
   async function handleReset() {
     setCanUpdate(true);
   }
@@ -93,30 +92,38 @@ function Request() {
       {canUpdate && (
         <>
           <Navbar />
-          <div className="title" style={{ paddingTop: "8vh" }}>
-            Request
+          <div className="title" style={{ paddingTop: "13vh" }}>
+            <h3>Request</h3>
           </div>
           <div>
-            <form onSubmit={handleSubmit}>
-              <label htmlFor="Request name">Title of your request</label>
-              <input
-                type="text"
-                onChange={(event) => setRequestTitle(event.target.value)}
-              />
-              <label htmlFor="Request detail">Detail your request</label>
-              <input
-                type="textarea"
-                onChange={(event) => setRequestDetail(event.target.value)}
-              />
-              <label htmlFor="BB Amount">
-                Set a BB amount for this request
-              </label>
-              <input
-                type="number"
-                onChange={(event) => setBbAmount(event.target.value)}
-              />
-              <div>Request category : {providerSkill}</div>
-              <button>Send your request</button>
+            <form className="request-content" onSubmit={handleSubmit}>
+              <div className="form-request-context">
+                Skill requested : {providerSkill}
+              </div>
+              <div className="form-request-context">
+                <label htmlFor="Request name">Title of your request</label>
+                <input
+                  type="text"
+                  onChange={(event) => setRequestTitle(event.target.value)}
+                />
+              </div>
+              <div className="form-request-context">
+                <label htmlFor="Request detail">Detail your request</label>
+                <textarea
+                  type="textarea"
+                  onChange={(event) => setRequestDetail(event.target.value)}
+                />
+              </div>
+              <div className="form-request-context">
+                <label htmlFor="BB Amount">
+                  Set a BB amount for this request
+                </label>
+                <input
+                  type="number"
+                  onChange={(event) => setBbAmount(event.target.value)}
+                />
+              </div>
+              <button className="request-button">Send your request</button>
             </form>
           </div>
         </>

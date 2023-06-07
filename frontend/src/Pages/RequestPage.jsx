@@ -6,7 +6,7 @@ function RequestPage() {
   return (
     <div>
       <Navbar />
-      <div style={{ paddingTop: "8vh" }}>
+      <div className="request-paths" style={{ paddingTop: "13vh" }}>
         <Link to="/my-requests">
           <button>Requests you received</button>
         </Link>

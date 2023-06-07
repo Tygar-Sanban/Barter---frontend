@@ -62,7 +62,7 @@ function AllRequestsSent() {
   return (
     <>
       <Navbar />
-      <div style={{ paddingTop: "8vh" }}>
+      <div className="title" style={{ paddingTop: "13vh" }}>
         {" "}
         <h2>Sent requests</h2>{" "}
       </div>
@@ -70,18 +70,20 @@ function AllRequestsSent() {
         sentRequests.map((elem) => {
           console.log("this is the elem", elem);
           return (
-            <div key={elem._id}>
-              <div>Request title: {elem.name}</div>
+            <div className="request-received" key={elem._id}>
+              <div>{elem.name}</div>
               <div>Barter Bucks offered: {elem.bbAmount}</div>
-              <Link to={`/sent-requests/${elem._id}`}>
-                <button>Set a new price</button>
-              </Link>
-              <Link to={`/messages/${elem._id}`}>
-                <button>Go to discussion</button>
-              </Link>
-              <button onClick={() => handleDelete(elem._id)}>
-                Delete this request
-              </button>
+              <div className="request-buttons">
+                <Link to={`/sent-requests/${elem._id}`}>
+                  <button>Set a new price</button>
+                </Link>
+                <Link to={`/messages/${elem._id}`}>
+                  <button>Go to discussion</button>
+                </Link>
+                <button onClick={() => handleDelete(elem._id)}>
+                  Delete this request
+                </button>
+              </div>
             </div>
           );
         })}

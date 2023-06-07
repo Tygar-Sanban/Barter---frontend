@@ -103,7 +103,7 @@ function CurrentMissions() {
     <>
       <Navbar />
       {twoButtons && (
-        <div style={{ paddingTop: "8vh" }}>
+        <div className="request-paths" style={{ paddingTop: "8vh" }}>
           <button onClick={handleClickProvider}>Services you provide</button>
           <button onClick={handleClickRequester}>Services you request</button>
         </div>

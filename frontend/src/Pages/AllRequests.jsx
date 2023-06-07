@@ -64,24 +64,28 @@ function AllRequests() {
   return (
     <>
       <Navbar />
-      <div style={{ paddingTop: "8vh" }}>
-        <div>Requests received</div> <h2>AllRequests</h2>{" "}
+      <div className="title" style={{ paddingTop: "13vh" }}>
+        <h2>They're waiting for you !</h2>{" "}
       </div>
 
       {ownRequests &&
         ownRequests.map((elem) => {
           return (
-            <div key={elem._id}>
-              <div>Request title : {elem.name}</div>
+            <div className="request-received" key={elem._id}>
+              <h3>{elem.name}</h3>
               <div>Barter Bucks offered : {elem.bbAmount}</div>
               <div>Message from the requester : {elem.messages}</div>
-              <button onClick={() => handleAccept(elem)}>Accept request</button>
-              <button onClick={() => handleDecline(elem)}>
-                Decline request
-              </button>
-              <Link to={`/messages/${elem._id}`}>
-                <button>Send a message to the requester</button>
-              </Link>
+              <div className="request-buttons">
+                <button onClick={() => handleAccept(elem)}>
+                  Accept request
+                </button>
+                <button onClick={() => handleDecline(elem)}>
+                  Decline request
+                </button>
+                <Link to={`/messages/${elem._id}`}>
+                  <button>Send a message to the requester</button>
+                </Link>
+              </div>
             </div>
           );
         })}

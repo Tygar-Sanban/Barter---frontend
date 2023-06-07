@@ -22,8 +22,11 @@ function Home() {
   return (
     <div>
       <Navbar />
-      <div className="title" style={{ paddingTop: "8vh" }}>
-        <h3>Home Services</h3>
+      <div className="title" style={{ paddingTop: "13vh" }}>
+        <h2>Home Services</h2>
+      </div>
+      <div className="indications">
+        <h4>Which skill are you looking for ?</h4>
       </div>
       <div className="bullet-points">
         {skills.map((elem) => {
@@ -31,7 +34,7 @@ function Home() {
             const url = `/search-result/${elem._id}`;
             return (
               <Link key={elem._id} to={url}>
-                <div>{elem.name}</div>
+                <button>{elem.name}</button>
               </Link>
             );
           }

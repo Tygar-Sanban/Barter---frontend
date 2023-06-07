@@ -135,7 +135,7 @@ function ProfilePage() {
 
           {selectedCategory && (
             <>
-              <h2>Skills</h2>
+              <h2 onClick={() => setSelectedCategory(null)}>Skills</h2>
               <ul>
                 {user.skills.length > 0 &&
                   filteredSkills.map((elem) => (
