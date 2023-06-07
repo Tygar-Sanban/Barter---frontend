@@ -7,10 +7,8 @@ import Navbar from "./../Components/Navbar";
 function Request() {
   const { user } = useContext(AuthContext);
   const params = useParams();
-
-  console.log("this is the params", params.query);
-  console.log("this is the skill param", params.skill);
-
+  const [wallet, setWallet] = useState(0);
+  const [canUpdate, setCanUpdate] = useState(true);
   const [provider, setProvider] = useState(null);
   const [firstMessage, setFirstMessage] = useState("");
   const [requestTitle, setRequestTitle] = useState("");
@@ -46,55 +44,95 @@ function Request() {
     getSkillCategory();
   }, []);
 
+  useEffect(() => {
+    getWalletBB();
+  }, [user]);
+
   async function handleSubmit(event) {
-    try {
-      event.preventDefault();
+    if (bbAmount <= wallet) {
       try {
-        const response = await service.post("/request", {
-          name: requestTitle,
-          provider: params.query,
-          requester: user._id,
-          bbAmount: bbAmount,
-          category: params.skill,
-          firstMessage: requestDetail,
-          acceptButton: false,
-        });
-        navigate("/sent-requests");
+        event.preventDefault();
+        try {
+          const response = await service.post("/request", {
+            name: requestTitle,
+            provider: params.query,
+            requester: user._id,
+            bbAmount: bbAmount,
+            category: params.skill,
+            firstMessage: requestDetail,
+            acceptButton: false,
+          });
+          navigate("/sent-requests");
+        } catch (error) {
+          console.log(error);
+        }
       } catch (error) {
         console.log(error);
       }
+    } else {
+      setCanUpdate(false);
+    }
+  }
+
+  async function getWalletBB() {
+    try {
+      const walletBB = await service.get(`/wallet`);
+      setWallet(walletBB.data.barterBucks);
     } catch (error) {
       console.log(error);
     }
   }
 
+
+  async function handleReset() {
+    setCanUpdate(true);
+  }
+
   return (
     <>
-      <Navbar />
-      <div className="title" style={{ paddingTop: "8vh" }}>
-        Request
-      </div>
-      <div>
-        <form onSubmit={handleSubmit}>
-          <label htmlFor="Request name">Title of your request</label>
-          <input
-            type="text"
-            onChange={(event) => setRequestTitle(event.target.value)}
-          />
-          <label htmlFor="Request detail">Detail your request</label>
-          <input
-            type="textarea"
-            onChange={(event) => setRequestDetail(event.target.value)}
-          />
-          <label htmlFor="BB Amount">Set a BB amount for this request</label>
-          <input
-            type="number"
-            onChange={(event) => setBbAmount(event.target.value)}
-          />
-          <div>Request category : {providerSkill}</div>
-          <button>Send your request</button>
-        </form>
-      </div>
+      {canUpdate && (
+        <>
+          <Navbar />
+          <div className="title" style={{ paddingTop: "8vh" }}>
+            Request
+          </div>
+          <div>
+            <form onSubmit={handleSubmit}>
+              <label htmlFor="Request name">Title of your request</label>
+              <input
+                type="text"
+                onChange={(event) => setRequestTitle(event.target.value)}
+              />
+              <label htmlFor="Request detail">Detail your request</label>
+              <input
+                type="textarea"
+                onChange={(event) => setRequestDetail(event.target.value)}
+              />
+              <label htmlFor="BB Amount">
+                Set a BB amount for this request
+              </label>
+              <input
+                type="number"
+                onChange={(event) => setBbAmount(event.target.value)}
+              />
+              <div>Request category : {providerSkill}</div>
+              <button>Send your request</button>
+            </form>
+          </div>
+        </>
+      )}
+
+      {!canUpdate && (
+        <div>
+          <Navbar />
+          <div style={{ paddingTop: "8vh" }}>
+            You tried to offer more BarterBucks than you possess.
+          </div>
+          <button onClick={handleReset}>
+            Click here to try reseting a BarterBucks amount.
+          </button>
+        </div>
+      )}
     </>
   );
 }
