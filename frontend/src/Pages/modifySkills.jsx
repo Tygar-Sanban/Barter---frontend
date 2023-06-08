@@ -133,42 +133,79 @@ function ModifySkills() {
 
             <div>
               <h3>Categories</h3>
-              <ul>
-                <li onClick={() => handleCategoryClick("Personal")}>
+              <div className="category-buttons">
+                <button
+                  onClick={() => handleCategoryClick("Personal")}
+                  className={selectedCategory === "Personal" ? "active" : ""}
+                >
                   Personal
-                </li>
-                <li onClick={() => handleCategoryClick("Professional")}>
+                </button>
+                <button
+                  onClick={() => handleCategoryClick("Professional")}
+                  className={
+                    selectedCategory === "Professional" ? "active" : ""
+                  }
+                >
                   Professional
-                </li>
-                <li onClick={() => handleCategoryClick("Health and Wellness")}>
+                </button>
+                <button
+                  onClick={() => handleCategoryClick("Health and Wellness")}
+                  className={
+                    selectedCategory === "Health and Wellness" ? "active" : ""
+                  }
+                >
                   Health and Wellness
-                </li>
-                <li onClick={() => handleCategoryClick("Educational")}>
+                </button>
+                <button
+                  onClick={() => handleCategoryClick("Educational")}
+                  className={selectedCategory === "Educational" ? "active" : ""}
+                >
                   Educational
-                </li>
-                <li onClick={() => handleCategoryClick("Creative")}>
+                </button>
+                <button
+                  onClick={() => handleCategoryClick("Creative")}
+                  className={selectedCategory === "Creative" ? "active" : ""}
+                >
                   Creative
-                </li>
-                <li onClick={() => handleCategoryClick("Home")}>Home</li>
-                <li onClick={() => handleCategoryClick("Transportation")}>
+                </button>
+                <button
+                  onClick={() => handleCategoryClick("Home")}
+                  className={selectedCategory === "Home" ? "active" : ""}
+                >
+                  Home
+                </button>
+                <button
+                  onClick={() => handleCategoryClick("Transportation")}
+                  className={
+                    selectedCategory === "Transportation" ? "active" : ""
+                  }
+                >
                   Transportation
-                </li>
-              </ul>
+                </button>
+              </div>
 
               {selectedCategory && (
                 <>
-                  <h3>Skills</h3>
-                  <ul>
+                  <div>
+                    <h3>Skills</h3>
+                    <img
+                      onClick={() => setSelectedCategory(null)}
+                      src={"/public/Icons/close.png"}
+                      alt="Close"
+                      className="close-icon"
+                    />
+                  </div>
+                  <div className="category-buttons">
                     {selectedSkills.length > 0 &&
                       skills.map((elem) => (
-                        <li
+                        <button
                           key={elem._id}
                           onClick={() => handleDeleteSkill(elem._id)}
                         >
                           {elem.name}
-                        </li>
+                        </button>
                       ))}
-                  </ul>
+                  </div>
                 </>
               )}
             </div>
@@ -184,46 +221,89 @@ function ModifySkills() {
 
             <div>
               <h3>Categories</h3>
-              <ul>
-                <li onClick={() => handleOtherCategoryClick("Personal")}>
+              <div className="category-buttons">
+                <button
+                  onClick={() => handleOtherCategoryClick("Personal")}
+                  className={
+                    otherSelectedCategory === "Personal" ? "active" : ""
+                  }
+                >
                   Personal
-                </li>
-                <li onClick={() => handleOtherCategoryClick("Professional")}>
+                </button>
+                <button
+                  onClick={() => handleOtherCategoryClick("Professional")}
+                  className={
+                    otherSelectedCategory === "Professional" ? "active" : ""
+                  }
+                >
                   Professional
-                </li>
-                <li
+                </button>
+                <button
                   onClick={() =>
                     handleOtherCategoryClick("Health and Wellness")
                   }
+                  className={
+                    otherSelectedCategory === "Health and Wellness"
+                      ? "active"
+                      : ""
+                  }
                 >
                   Health and Wellness
-                </li>
-                <li onClick={() => handleOtherCategoryClick("Educational")}>
+                </button>
+                <button
+                  onClick={() => handleOtherCategoryClick("Educational")}
+                  className={
+                    otherSelectedCategory === "Educational" ? "active" : ""
+                  }
+                >
                   Educational
-                </li>
-                <li onClick={() => handleOtherCategoryClick("Creative")}>
+                </button>
+                <button
+                  onClick={() => handleOtherCategoryClick("Creative")}
+                  className={
+                    otherSelectedCategory === "Creative" ? "active" : ""
+                  }
+                >
                   Creative
-                </li>
-                <li onClick={() => handleOtherCategoryClick("Home")}>Home</li>
-                <li onClick={() => handleOtherCategoryClick("Transportation")}>
+                </button>
+                <button
+                  onClick={() => handleOtherCategoryClick("Home")}
+                  className={otherSelectedCategory === "Home" ? "active" : ""}
+                >
+                  Home
+                </button>
+                <button
+                  onClick={() => handleOtherCategoryClick("Transportation")}
+                  className={
+                    otherSelectedCategory === "Transportation" ? "active" : ""
+                  }
+                >
                   Transportation
-                </li>
-              </ul>
+                </button>
+              </div>
 
               {otherSelectedCategory && (
                 <>
-                  <h3>Skills</h3>
-                  <ul>
+                  <div>
+                    <h3>Skills</h3>
+                    <img
+                      onClick={() => setOtherSelectedCategory(null)}
+                      src={"/public/Icons/close.png"}
+                      alt="Close"
+                      className="close-icon"
+                    />
+                  </div>
+                  <div className="category-buttons">
                     {filteredSkills.length > 0 &&
                       otherSkills.map((elem) => (
-                        <li
+                        <button
                           key={elem._id}
                           onClick={() => handleAddSkill(elem._id)}
                         >
                           {elem.name}
-                        </li>
+                        </button>
                       ))}
-                  </ul>
+                  </div>
                 </>
               )}
             </div>

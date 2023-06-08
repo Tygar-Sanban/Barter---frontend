@@ -10,18 +10,19 @@
 }
 
 h1 {
-  font-family: "Title";
+  /* font-family: "Title"; */
+  font-family: "Roboto", sans-serif;
 }
 
 h2 {
-  font-family: "Title";
+  /* font-family: "Title"; */
+  font-family: "Roboto", sans-serif;
 }
 
 h3 {
-  font-family: "body";
-=======
-  src: url("../public/Fonts/TT\ Rounds\ Neue\ Trial\ Regular.ttf");
-
+  /* font-family: "body"; */
+  font-family: "Roboto", sans-serif;
+  /* src: url("../public/Fonts/TT\ Rounds\ Neue\ Trial\ Regular.ttf"); */
 }
 
 * {
@@ -50,7 +51,6 @@ body {
 
   font-family: "Body";
   text-decoration: none;
-
 }
 
 .top-navbar a {
@@ -61,7 +61,6 @@ body {
 
 .top-navbar div {
   font-family: "Body";
-
 }
 
 .top-navbar-component {
@@ -83,12 +82,16 @@ body {
   display: flex;
 }
 
-
 .profile-pic {
   width: 10%;
 }
 
 /* Styling the search page*/
+
+.arrow-right {
+  width: 25px;
+  padding: 5px;
+}
 
 .page-title {
   padding: 1rem;
@@ -123,6 +126,10 @@ body {
   border-radius: 10px;
   margin: 0.6rem;
   padding: 1rem;
+}
+
+.request-container {
+  display: flex;
 }
 
 /* Styling the category page*/
@@ -251,6 +258,7 @@ body {
 
 .request-received button {
   margin: 0.2rem;
+  height: 17vh;
   font-family: "Body";
   font-size: 1rem;
   font-weight: 900;
@@ -266,7 +274,6 @@ body {
   display: flex;
   justify-content: center;
   margin: 1rem;
-
 }
 .divider-container {
   display: flex;
@@ -344,6 +351,10 @@ body {
 .category-buttons button.active {
   background-color: #e29578;
   color: white;
+}
+
+.categories {
+  margin: 0.5rem;
 }
 
 .categories h2 {
@@ -448,7 +459,7 @@ body {
   height: 50px;
   padding: 0.2rem;
   margin: 0.2rem;
-  font-family: "Body";
+  font-family: "Roboto", sans-serif;
   font-size: 1rem;
   font-weight: 900;
   box-shadow: 2px 2px 2px black;
