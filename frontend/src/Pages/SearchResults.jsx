@@ -21,8 +21,9 @@ function SearchResults() {
   }, []);
 
   useEffect(() => {
+    let usersBrowsing = [];
     if (user && allUsers.length > 0) {
-      const usersBrowsing = allUsers.filter((elem) => {
+      usersBrowsing = allUsers.filter((elem) => {
         console.log("this is the elem", elem);
         console.log("this is the elem.skills", elem.skills);
         console.log("this is the params.query", params.query);
@@ -35,7 +36,7 @@ function SearchResults() {
       setSelectedUsers(usersBrowsing);
       console.log("this is the selectedusers", selectedUsers);
     }
-    if (selectedUsers.length > 0) {
+    if (usersBrowsing.length > 0) {
       const availableUsers = selectedUsers.filter((elem) => {
         return elem.availability === true;
       });
