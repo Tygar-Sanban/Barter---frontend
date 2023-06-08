@@ -45,7 +45,17 @@ function SearchResults() {
   }, [allUsers, params]);
 
   if (availableBrowsedUsers.length === 0) {
-    return <div>Loading...</div>;
+    return (
+      <div>
+        <Navbar />
+        <h2 style={{ padding: "5vh" }} className="title">
+          Whoops...
+        </h2>
+        <div style={{ textAlign: "center" }} className="indications">
+          No one is available for this service. Maybe you could lead the way ?
+        </div>{" "}
+      </div>
+    );
   }
 
   return (

@@ -429,13 +429,38 @@ STYLING NAV BAR SIDEBAR
   align-items: center;
 }
 
-.profile-info img {
-  width: 35%;
-  height: 35%;
+.profile-pic {
+  width: 80%;
   margin: 1rem;
   aspect-ratio: 1;
   border-radius: 50%;
   border: 5px solid #006d77;
+}
+
+.div-profile-pic {
+  width: 300%;
+}
+
+.name-thunasse {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.barter-bucks-profile {
+  width: 70%;
+  padding: 0.4rem;
+}
+
+.all-profile {
+  display: flex;
+  justify-content: center;
+}
+
+.wallet-container {
+  display: flex;
+  flex-direction: row;
 }
 
 .profile-info h2 {
@@ -453,18 +478,30 @@ STYLING NAV BAR SIDEBAR
 
 .profile-info div {
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
   justify-content: center;
   align-items: center;
+}
+
+.wallet-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.thunasse {
+  width: 500%;
+  text-align: end;
+  font-weight: 900;
+  font-family: "Body";
 }
 
 .barterbucks {
   display: flex;
   padding: 1rem;
+  width: 100%;
   justify-content: center;
   align-items: center;
-  border-radius: 50%;
-  border: 2px solid #e29578;
   aspect-ratio: 1;
   font-family: "Body";
   font-weight: bold;

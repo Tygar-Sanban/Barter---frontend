@@ -116,7 +116,7 @@ function ProfilePage() {
     <>
       <Navbar />
       <div style={{ paddingTop: "5vh" }}>
-        <div className="profile-info">
+        {/* <div className="profile-info">
           <img
             src={user.picture}
             alt="profile picture"
@@ -124,11 +124,40 @@ function ProfilePage() {
           />
           <div>
             <h2>{user.name}</h2>
-            <div className="divider"></div>
-            <div>
-              <h3>Your Wallet</h3>
+            <div className="wallet-container">
               <div className="barterbucks">
                 {wallet.barterBucks === 0 ? "You poor :(" : wallet.barterBucks}
+              </div>
+              <img
+                className="barter-bucks-profile"
+                src="/Pictures/tunasseV1.png"
+                alt=""
+              />
+            </div>
+          </div>
+        </div> */}
+        <div className="all-profile">
+          <div className="div-profile-pic">
+            <img
+              src={user.picture}
+              alt="profile picture"
+              className="profile-pic"
+            />
+          </div>
+          <div className="name-thunasse">
+            <div>
+              <h2>{user.name}</h2>
+            </div>
+            <div className="wallet-image">
+              <div className="thunasse">
+                {wallet.barterBucks === 0 ? "You poor :(" : wallet.barterBucks}
+              </div>
+              <div>
+                <img
+                  className="barter-bucks-profile"
+                  src="/Pictures/tunasseV1.png"
+                  alt=""
+                />
               </div>
             </div>
           </div>
