@@ -111,28 +111,37 @@ function ModifySkills() {
           <p>Loading user skills...</p>
         ) : (
           <>
-            <form onSubmit={handlePictureSubmit}>
-              <label htmlFor="picture">Post the link of your new picture</label>
-              <input
-                type="text"
-                value={picture}
-                onChange={(event) => setPicture(event.target.value)}
-              />
-              <button>Change your profile picture</button>
-            </form>
-            <form onSubmit={handleNameSubmit}>
-              <label htmlFor="name">Type your new name.</label>
-              <input
-                type="text"
-                value={name}
-                onChange={(event) => setName(event.target.value)}
-              />
-              <button>Change your name</button>
-            </form>
-            <h2>Click to remove a skill:</h2>
+            <div className="modifyProfile">
+              <div className="form-container">
+                <form onSubmit={handlePictureSubmit}>
+                  <label htmlFor="picture">
+                    Post the link of your new picture
+                  </label>
+                  <input
+                    type="text"
+                    value={picture}
+                    onChange={(event) => setPicture(event.target.value)}
+                  />
+                  <button>Change your profile picture</button>
+                </form>
+              </div>
+              <div className="form-container">
+                <form onSubmit={handleNameSubmit}>
+                  <label htmlFor="name">Type your new name.</label>
+                  <input
+                    type="text"
+                    value={name}
+                    onChange={(event) => setName(event.target.value)}
+                  />
+                  <button>Change your name</button>
+                </form>
+              </div>
+            </div>
+
+            <h2 className="center">Click to remove a skill:</h2>
 
             <div>
-              <h3>Categories</h3>
+              <h3 className="center">Categories</h3>
               <div className="category-buttons">
                 <button
                   onClick={() => handleCategoryClick("Personal")}
@@ -186,8 +195,8 @@ function ModifySkills() {
 
               {selectedCategory && (
                 <>
-                  <div>
-                    <h3>Skills</h3>
+                  <div className="category-buttons">
+                    <h3 className="center">Skills</h3>
                     <img
                       onClick={() => setSelectedCategory(null)}
                       src={"/public/Icons/close.png"}
@@ -217,10 +226,10 @@ function ModifySkills() {
           <p>Loading all skills...</p>
         ) : (
           <>
-            <h2>Click to add another skill:</h2>
+            <h2 className="center">Click to add another skill:</h2>
 
             <div>
-              <h3>Categories</h3>
+              <h3 className="center">Categories</h3>
               <div className="category-buttons">
                 <button
                   onClick={() => handleOtherCategoryClick("Personal")}
@@ -284,8 +293,8 @@ function ModifySkills() {
 
               {otherSelectedCategory && (
                 <>
-                  <div>
-                    <h3>Skills</h3>
+                  <div className="category-buttons">
+                    <h3 className="center">Skills</h3>
                     <img
                       onClick={() => setOtherSelectedCategory(null)}
                       src={"/public/Icons/close.png"}
