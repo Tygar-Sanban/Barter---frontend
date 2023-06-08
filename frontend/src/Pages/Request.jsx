@@ -98,7 +98,7 @@ function Request() {
           <div>
             <form className="request-content" onSubmit={handleSubmit}>
               <div className="form-request-context">
-                Skill requested : {providerSkill}
+                Skill requested : <b>{providerSkill}</b>
               </div>
               <div className="form-request-context">
                 <label htmlFor="Request name">Title of your request</label>

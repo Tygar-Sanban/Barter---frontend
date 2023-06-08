@@ -1,9 +1,30 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
+import service from "../service/service";
 import { useState } from "react";
 
-function Navbar() {
+function Navbar(props) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [wallet, setWallet] = useState(0);
+
+  async function handleClick() {
+    props.setTwoButtons(true);
+    props.setProviding(false);
+    props.setRequesting(false);
+  }
+
+  async function getWallet() {
+    try {
+      const response = await service.get("/wallet");
+      setWallet(response.data.barterBucks);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  useEffect(() => {
+    getWallet();
+  }, []);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);

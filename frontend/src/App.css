@@ -57,6 +57,10 @@ body {
   text-decoration: none;
 }
 
+.top-navbar img {
+  width: 100%;
+}
+
 .top-navbar a {
   color: #edf6f9;
 
@@ -139,6 +143,10 @@ STYLING NAV BAR SIDEBAR
 
 .sidebar-link:hover {
   text-decoration: underline;
+}
+
+.money {
+  color: white;
 }
 
 .bottom-navbar-component {
@@ -571,4 +579,40 @@ STYLING NAV BAR SIDEBAR
   margin: 0.2rem;
   padding: 0.5rem;
   background-color: #e29578;
+}
+
+/* Styling the current services*/
+
+.current-mission-content {
+  height: 20vh;
+  font-family: "Body";
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.current-mission-content div {
+  text-align: center;
+}
+.current-mission-content label {
+  margin: 0 2rem;
+  text-align: center;
+}
+
+.current-mission-buttons {
+  margin: 1rem;
+  display: flex;
+  justify-content: space-around;
+}
+
+.current-mission-buttons button {
+  font-family: "Body";
+  font-size: 1rem;
+  font-weight: 900;
+  box-shadow: 2px 2px 2px black;
+  border: 1px solid black;
+  border-radius: 10px;
+  margin: 0.2rem;
+  padding: 0.5rem;
 }
