@@ -130,7 +130,7 @@ function ProfilePage() {
           <SwitchComponent />
         </div>
         <div className="categories">
-          <h2>Categories you're skilled in</h2>
+          <h2>Browse categories and check the skills you have</h2>
           <div className="divider-container">
             <div className="divider"></div>
           </div>
@@ -183,7 +183,6 @@ function ProfilePage() {
 
           {selectedCategory && (
             <>
-
               <div className="category-buttons">
                 <h2>Skills details</h2>
 
@@ -195,7 +194,6 @@ function ProfilePage() {
                 />
               </div>
               <div className="category-buttons">
-
                 {user.skills.length > 0 &&
                   filteredSkills.map((elem) => (
                     <button key={elem._id}>{elem.name}</button>

@@ -54,10 +54,17 @@ function SearchResults() {
             return (
               <div className="results" key={elem._id}>
                 <Link key={elem._id} to={url}>
-                  <div>{elem.name}'s profile</div>
+                  <div>See {elem.name}'s profile</div>
                 </Link>
                 <Link to={url2}>
-                  <div>Request</div>
+                  <div className="request-container">
+                    <div>Request</div>
+                    <img
+                      src="../../public/Icons/arrow-right.png"
+                      alt="make a request"
+                      className="arrow-right"
+                    />
+                  </div>
                 </Link>
               </div>
             );

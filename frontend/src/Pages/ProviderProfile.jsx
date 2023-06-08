@@ -117,16 +117,16 @@ function ProviderProfile() {
         <Navbar />
         <div style={{ paddingTop: "8vh" }}>
           <div className="profile-info">
-            <h1>{provider.name}'s Page</h1>
             <img
               src={provider.picture}
               alt="profile-picture"
               className="profile-pic"
             />
+            <h1>{provider.name}</h1>
           </div>
-          <h2>Click on {provider.name}'s skills to make a service request.</h2>
+
           <div className="categories">
-            <h2>Tap to browse a category</h2>
+            <h2>What do I need ?</h2>
             <div className="category-buttons">
               <button
                 onClick={() => handleCategoryClick("Personal")}
