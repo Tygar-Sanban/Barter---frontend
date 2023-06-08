@@ -182,7 +182,7 @@ function ProviderProfile() {
                   <h2>Skills details</h2>
                   <img
                     onClick={() => setSelectedCategory(null)}
-                    src={"/public/Icons/close.png"}
+                    src={"/Icons/close.png"}
                     alt="Close"
                     className="close-icon"
                   />
@@ -244,7 +244,7 @@ function ProviderProfile() {
                       className="delete-commentary"
                       onClick={() => handleCommentaryClick(elem._id)}
                     >
-                      <img src="/public/Pictures/delete.png" alt="" />
+                      <img src="/Pictures/delete.png" alt="" />
                     </div>
                   ) : (
                     ""

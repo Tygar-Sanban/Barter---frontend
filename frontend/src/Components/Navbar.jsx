@@ -42,13 +42,13 @@ function Navbar(props) {
       <div className="menu-button">
         <div className="underClass">
           <img
-            src="/public/Icons/sidebar.png"
+            src="/Icons/sidebar.png"
             className="sidebar-icon"
             onClick={toggleMenu}
           />
           <img
             className="logo"
-            src="/public/Pictures/Barter.png"
+            src="/Pictures/Barter.png"
             alt="logo"
             onClick={handleMenu}
           />

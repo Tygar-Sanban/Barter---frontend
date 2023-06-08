@@ -199,7 +199,7 @@ function ModifySkills() {
                     <h3 className="center">Skills</h3>
                     <img
                       onClick={() => setSelectedCategory(null)}
-                      src={"/public/Icons/close.png"}
+                      src={"/Icons/close.png"}
                       alt="Close"
                       className="close-icon"
                     />
@@ -297,7 +297,7 @@ function ModifySkills() {
                     <h3 className="center">Skills</h3>
                     <img
                       onClick={() => setOtherSelectedCategory(null)}
-                      src={"/public/Icons/close.png"}
+                      src={"/Icons/close.png"}
                       alt="Close"
                       className="close-icon"
                     />
