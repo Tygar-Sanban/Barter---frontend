@@ -20,9 +20,15 @@ h2 {
 }
 
 h3 {
+
   /* font-family: "body"; */
   font-family: "Roboto", sans-serif;
   /* src: url("../public/Fonts/TT\ Rounds\ Neue\ Trial\ Regular.ttf"); */
+
+  font-family: "body";
+
+  src: url("../public/Fonts/TT\ Rounds\ Neue\ Trial\ Regular.ttf");
+
 }
 
 * {
