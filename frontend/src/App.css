@@ -527,7 +527,7 @@ STYLING NAV BAR SIDEBAR
   padding: 0.5rem;
 }
 
-.category-buttons button.active {
+#active {
   background-color: #e29578;
   color: white;
 }
@@ -757,6 +757,9 @@ STYLING NAV BAR SIDEBAR
 
 .login-form-element input {
   margin: 0 1rem;
+  border-radius: 5px;
+  height: 4.2vh;
+  padding: 0.7rem;
 }
 
 .link-to-signup {

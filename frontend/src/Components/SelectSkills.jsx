@@ -30,18 +30,33 @@ const SelectSkills = (props) => {
       ...current,
       event.target.dataset.value,
     ]);
+    props.setSkill((current) =>
+      current.filter((skill) => skill._id !== event.target.dataset.value)
+    );
+    getFilteredSkills();
+    console.log("those are the selected skills", props.selectedSkill);
   };
 
   function handleCategoryClick(category) {
     setSelectedCategory(category);
   }
 
+  async function getFilteredSkills() {
+    try {
+      props.skill?.length > 0 &&
+        setFilteredSkills(
+          props.skill.filter(
+            (elem) => elem.serviceCategory === selectedCategory
+          )
+        );
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   useEffect(() => {
-    props.skill?.length > 0 &&
-      setFilteredSkills(
-        props.skill.filter((elem) => elem.serviceCategory === selectedCategory)
-      );
-  }, [selectedCategory]);
+    getFilteredSkills();
+  }, [selectedCategory, props.skill]);
 
   useEffect(() => {
     console.log("those are the filteredskills", filteredSkills);
@@ -60,47 +75,43 @@ const SelectSkills = (props) => {
             <div className="selectskills-category-buttons">
               <div
                 onClick={() => handleCategoryClick("Personal")}
-                className={selectedCategory === "Personal" ? "active" : ""}
+                id={selectedCategory === "Personal" ? "active" : ""}
               >
                 Personal
               </div>
               <div
                 onClick={() => handleCategoryClick("Professional")}
-                className={selectedCategory === "Professional" ? "active" : ""}
+                id={selectedCategory === "Professional" ? "active" : ""}
               >
                 Professional
               </div>
               <div
                 onClick={() => handleCategoryClick("Health and Wellness")}
-                className={
-                  selectedCategory === "Health and Wellness" ? "active" : ""
-                }
+                id={selectedCategory === "Health and Wellness" ? "active" : ""}
               >
                 Health and Wellness
               </div>
               <div
                 onClick={() => handleCategoryClick("Educational")}
-                className={selectedCategory === "Educational" ? "active" : ""}
+                id={selectedCategory === "Educational" ? "active" : ""}
               >
                 Educational
               </div>
               <div
                 onClick={() => handleCategoryClick("Creative")}
-                className={selectedCategory === "Creative" ? "active" : ""}
+                id={selectedCategory === "Creative" ? "active" : ""}
               >
                 Creative
               </div>
               <div
                 onClick={() => handleCategoryClick("Home")}
-                className={selectedCategory === "Home" ? "active" : ""}
+                id={selectedCategory === "Home" ? "active" : ""}
               >
                 Home
               </div>
               <div
                 onClick={() => handleCategoryClick("Transportation")}
-                className={
-                  selectedCategory === "Transportation" ? "active" : ""
-                }
+                id={selectedCategory === "Transportation" ? "active" : ""}
               >
                 Transportation
               </div>
