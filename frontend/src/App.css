@@ -24,7 +24,7 @@ h3 {
   font-family: "Roboto", sans-serif;
   /* src: url("../public/Fonts/TT\ Rounds\ Neue\ Trial\ Regular.ttf"); */
 
-  font-family: "body";
+  font-family: "Body";
 
   src: url("../public/Fonts/TT\ Rounds\ Neue\ Trial\ Regular.ttf");
 }
@@ -38,6 +38,14 @@ h3 {
 
 body {
   background-color: #ffddd2;
+}
+
+.bodyFont {
+  font-family: "Body";
+}
+
+.commentary {
+  border: 1px solid black;
 }
 
 /*Styling the Navbar */
@@ -103,6 +111,7 @@ STYLING NAV BAR SIDEBAR
 
 .menu-button p {
   color: white;
+  font-family: "Body";
 }
 
 .underClass {
@@ -123,7 +132,9 @@ STYLING NAV BAR SIDEBAR
   background-color: #006d77;
   color: white;
   transition: left 0.3s ease;
+
   border-radius: 0 0 15px 0;
+
   font-family: "Body";
 }
 
@@ -179,6 +190,10 @@ STYLING NAV BAR SIDEBAR
 
 .profile-pic {
   width: 10%;
+}
+
+.provider-services {
+  font-family: "Body";
 }
 
 /* Styling the search page*/
@@ -420,7 +435,7 @@ STYLING NAV BAR SIDEBAR
   margin: 1rem;
   aspect-ratio: 1;
   border-radius: 50%;
-  border: 5px solid #e29578;
+  border: 5px solid #006d77;
 }
 
 .profile-info h2 {
@@ -451,6 +466,8 @@ STYLING NAV BAR SIDEBAR
   border-radius: 50%;
   border: 2px solid #e29578;
   aspect-ratio: 1;
+  font-family: "Body";
+  font-weight: bold;
 }
 
 .category-buttons {
@@ -459,6 +476,7 @@ STYLING NAV BAR SIDEBAR
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
+  font-family: "Body";
 }
 
 .category-buttons button {
@@ -514,6 +532,10 @@ STYLING NAV BAR SIDEBAR
   width: 100vw;
 }
 
+.services div {
+  font-family: "Body";
+}
+
 .switch {
   text-align: center;
 }
@@ -562,6 +584,10 @@ STYLING NAV BAR SIDEBAR
 
 .chat-name {
   padding-bottom: 0.4rem;
+}
+
+.margin {
+  margin: 0.7rem;
 }
 
 .request-discussion {

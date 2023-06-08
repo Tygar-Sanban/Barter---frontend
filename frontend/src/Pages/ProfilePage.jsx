@@ -19,7 +19,20 @@ function ProfilePage() {
     try {
       const response = await service.get("/wallet");
       setWallet(response.data);
-      console.log("this is the wallet response.data", response.data);
+      // console.log("this is the wallet response.data", response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async function getAllServices() {
+    try {
+      const response = await service.get("/service");
+      // console.log(response.data);
+      setUserServiceProvided(response.data.provided);
+      setUserServiceRequested(response.data.requested);
+      // console.log(userServiceProvided);
+      // console.log(userServiceRequested);
     } catch (error) {
       console.log(error);
     }
@@ -28,17 +41,17 @@ function ProfilePage() {
   async function getUserMission() {
     try {
       const response = await service.get("/current-mission");
-      console.log("response user mission", response);
-      if (response) {
+      // console.log("response user mission", response);
+      if (response && user) {
         setUserFinishedMission(
           response.data.filter((elem) => {
             console.log("this is THE ELEM", elem);
             return (
-              elem.validation === true && elem.request.provider === user._id
+              elem.validation === true && elem.request.provider._id === user._id
             );
           })
         );
-        console.log("user finished mission", userFinishedMission);
+        // console.log("user finished mission", userFinishedMission);
       }
     } catch (error) {
       console.log(error);
@@ -48,17 +61,18 @@ function ProfilePage() {
   async function getUserServicesAsked() {
     try {
       const response = await service.get("/current-mission");
-      console.log("response user mission", response);
-      if (response) {
+      // console.log("response user mission", response);
+      if (response && user) {
         setUserServicesAsked(
           response.data.filter((elem) => {
-            console.log("this is THE ELEM", elem);
+            // console.log("this is THE ELEM", elem);
             return (
-              elem.validation === true && elem.request.requester === user._id
+              elem.validation === true &&
+              elem.request.requester._id === user._id
             );
           })
         );
-        console.log("user services asked", userServicesAsked);
+        // console.log("user services asked", userServicesAsked);
       }
     } catch (error) {
       console.log(error);
@@ -67,23 +81,16 @@ function ProfilePage() {
 
   useEffect(() => {
     getAllServices();
+  }, [user]);
+
+  useEffect(() => {
     fetchWallet();
     getUserMission();
-    getUserServicesAsked();
-  }, []);
+  }, [user]);
 
-  async function getAllServices() {
-    try {
-      const response = await service.get("/service");
-      console.log(response.data);
-      setUserServiceProvided(response.data.provided);
-      setUserServiceRequested(response.data.requested);
-      console.log(userServiceProvided);
-      console.log(userServiceRequested);
-    } catch (error) {
-      console.log(error);
-    }
-  }
+  useEffect(() => {
+    getUserServicesAsked();
+  }, [user]);
 
   function handleCategoryClick(category) {
     setSelectedCategory(category);
@@ -210,7 +217,7 @@ function ProfilePage() {
 
       <div className="services">
         <div>
-          <h2>Services rendus</h2>
+          <h2>Provided services</h2>
           {userFinishedMission.length !== 0 ? (
             userFinishedMission.map((elem) => {
               return <div key={elem._id}>{elem.request.name}</div>;
@@ -220,7 +227,7 @@ function ProfilePage() {
           )}
         </div>
         <div>
-          <h2>Services demandés</h2>
+          <h2>Requested services</h2>
           {userServicesAsked.length !== 0 ? (
             userServicesAsked.map((elem) => {
               return <div key={elem._id}>{elem.request.name}</div>;
