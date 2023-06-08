@@ -26,7 +26,10 @@ function SwitchComponent() {
         onChange={handleSwitch}
         inputProps={{ "aria-label": "Switch demo" }}
       />
-      Availability: {user.availability ? "Available" : "Not Available"}
+      <p style={{ fontFamily: "Body" }}>
+        {" "}
+        Availability: {user.availability ? "Available" : "Not Available"}
+      </p>
     </div>
   );
 }

@@ -3,6 +3,7 @@ import Navbar from "../Components/Navbar";
 import service from "../service/service";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { AuthContext } from "../Context/authContext";
+import Switch from "@mui/material/Switch";
 
 function CurrentMission() {
   const params = useParams();
@@ -33,6 +34,7 @@ function CurrentMission() {
       const response = await service.patch(`/current-mission/${params.id}`, {
         validation: true,
       });
+      getSingleCurrentMission();
       const bbProvider = await service.patch(
         `/wallet/${currentMission.request.provider._id}`,
         { barterBucks: currentMission.request.bbAmount }
@@ -41,7 +43,9 @@ function CurrentMission() {
         `/wallet/${currentMission.request.requester._id}`,
         { barterBucks: currentMission.request.bbAmount * -1 }
       );
-      navigate("/current-missions");
+      setTimeout(() => {
+        navigate("/current-missions");
+      }, 1000);
     } catch (error) {
       console.log(error);
     }
@@ -90,12 +94,14 @@ function CurrentMission() {
                     Validate the success of this mission ! (You won't be able to
                     cancel the validation)
                   </label>
-                  <input
-                    type="checkbox"
-                    checked={currentMission.validation}
-                    onChange={handleSwitch}
-                  />
-                  Status: {currentMission.validation ? "Finished" : "Ongoing"}
+                  <div>
+                    <Switch
+                      checked={currentMission.validation}
+                      onChange={handleSwitch}
+                      inputProps={{ "aria-label": "Switch demo" }}
+                    />
+                    Status: {currentMission.validation ? "Finished" : "Ongoing"}
+                  </div>
                 </div>
                 <div className="current-mission-buttons">
                   <Link to={`/messages/${currentMission.request._id}`}>

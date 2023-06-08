@@ -201,40 +201,41 @@ function ProviderProfile() {
               </>
             )}
           </div>
-
-          <div style={{ textAlign: "center" }}>
-            <h2>Services rendus</h2>
-            {userFinishedMission.length !== 0 ? (
-              userFinishedMission.map((elem) => {
-                return <div key={elem._id}>{elem.request.name}</div>;
-              })
-            ) : (
-              <div>That bitch didn't provide any service yet</div>
-            )}
+          <div className="provider-services">
+            <div style={{ textAlign: "center" }}>
+              <h2>Services rendus</h2>
+              {userFinishedMission.length !== 0 ? (
+                userFinishedMission.map((elem) => {
+                  return <div key={elem._id}>{elem.request.name}</div>;
+                })
+              ) : (
+                <div>That user didn't provide any service yet</div>
+              )}
+            </div>
+          </div>
+          <div className="provider-services">
+            <form className="form" onSubmit={handleSubmit}>
+              <label htmlFor="commentaries">Leave a commentary</label>
+              <textarea
+                className="textarea"
+                type="text"
+                value={commentary}
+                onChange={(event) => setCommentary(event.target.value)}
+              />
+              <div className="bodyFont">
+                <button className="bodyFont">Post your commentary</button>
+              </div>
+            </form>
           </div>
         </div>
         <div>
-          <form className="form" onSubmit={handleSubmit}>
-            <label htmlFor="commentaries">Leave a commentary</label>
-            <textarea
-              className="textarea"
-              type="text"
-              value={commentary}
-              onChange={(event) => setCommentary(event.target.value)}
-            />
-            <div>
-              <button>Post your commentary</button>
-            </div>
-          </form>
-        </div>
-        <div>
           <h3>Commentaries about {provider.name}</h3>
-          <div>
+          <div className="bodyFont">
             {displayedCommentaries.map((elem) => {
               return (
-                <div key={elem._id}>
-                  <div>{elem.commentator.name}</div>
-                  <div>{elem.commentary}</div>
+                <div className="margin" key={elem._id}>
+                  <div className="chat-name">{elem.commentator.name} : </div>
+                  <div className="chat-bubble">{elem.commentary}</div>
                   {elem.commentator.name === user.name ? (
                     <div onClick={() => handleCommentaryClick(elem._id)}>
                       Delete this commentary
