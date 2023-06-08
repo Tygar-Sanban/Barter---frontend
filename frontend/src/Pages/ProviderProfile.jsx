@@ -235,10 +235,16 @@ function ProviderProfile() {
               return (
                 <div className="margin" key={elem._id}>
                   <div className="chat-name">{elem.commentator.name} : </div>
-                  <div className="chat-bubble">{elem.commentary}</div>
-                  {elem.commentator.name === user.name ? (
-                    <div onClick={() => handleCommentaryClick(elem._id)}>
-                      Delete this commentary
+                  <div className="chat-bubble">
+                    {" "}
+                    <div>{elem.commentary}</div>{" "}
+                  </div>
+                  {elem.commentator._id === user._id ? (
+                    <div
+                      className="delete-commentary"
+                      onClick={() => handleCommentaryClick(elem._id)}
+                    >
+                      <img src="/public/Pictures/delete.png" alt="" />
                     </div>
                   ) : (
                     ""
