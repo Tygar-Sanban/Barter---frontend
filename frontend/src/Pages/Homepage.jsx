@@ -30,7 +30,7 @@ function Homepage() {
         <h1 className="title">
           Welcome to{" "}
           <span>
-            <img src="../../public/Pictures/Barter-black.png" alt="" />
+            <img src="/public/Pictures/Barter-black.png" alt="" />
           </span>{" "}
           !
         </h1>
