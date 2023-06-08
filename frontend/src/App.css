@@ -19,9 +19,8 @@ h2 {
 
 h3 {
   font-family: "body";
-=======
-  src: url("../public/Fonts/TT\ Rounds\ Neue\ Trial\ Regular.ttf");
 
+  src: url("../public/Fonts/TT\ Rounds\ Neue\ Trial\ Regular.ttf");
 }
 
 * {
@@ -50,7 +49,6 @@ body {
 
   font-family: "Body";
   text-decoration: none;
-
 }
 
 .top-navbar a {
@@ -61,7 +59,6 @@ body {
 
 .top-navbar div {
   font-family: "Body";
-
 }
 
 .top-navbar-component {
@@ -82,7 +79,6 @@ body {
 .profilepicAndwallet {
   display: flex;
 }
-
 
 .profile-pic {
   width: 10%;
@@ -251,6 +247,7 @@ body {
 
 .request-received button {
   margin: 0.2rem;
+  height: 17vh;
   font-family: "Body";
   font-size: 1rem;
   font-weight: 900;
@@ -266,7 +263,6 @@ body {
   display: flex;
   justify-content: center;
   margin: 1rem;
-
 }
 .divider-container {
   display: flex;
