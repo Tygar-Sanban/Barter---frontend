@@ -92,8 +92,11 @@ function Messages() {
     request && (
       <>
         <Navbar />
-        <div className="request-discussion">
-          <div style={{ paddingTop: "5vh" }}>Title: {request.name}</div>
+        <div className="request-discussion bodyFont">
+          <div style={{ paddingTop: "5vh" }}>
+            {" "}
+            <b> {request.name}</b>
+          </div>
           <div>Detail : {request.firstMessage}</div>
           <div>BarterBucks amount : {request.bbAmount}</div>
         </div>
@@ -106,8 +109,8 @@ function Messages() {
                 </p>
               ) : (
                 <>
-                  <p className="chat-name">{message.sender.name} : </p>
-                  <p className="chat-bubble">{message.content}</p>
+                  <p className="chat-name bodyFont">{message.sender.name} : </p>
+                  <p className="chat-bubble bodyFont">{message.content}</p>
                 </>
               )}
             </div>

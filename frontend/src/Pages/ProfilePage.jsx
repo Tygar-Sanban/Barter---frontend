@@ -223,7 +223,7 @@ function ProfilePage() {
               return <div key={elem._id}>{elem.request.name}</div>;
             })
           ) : (
-            <div>You didn't provide any service yet, bitch</div>
+            <div>You didn't provide any service yet</div>
           )}
         </div>
         <div>
