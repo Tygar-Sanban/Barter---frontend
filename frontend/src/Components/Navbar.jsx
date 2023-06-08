@@ -75,7 +75,7 @@ function Navbar(props) {
           </div>
           <div className="sidebar-content">
             <Link to="/request-page" className="sidebar-link">
-              Requests
+              Pending Requests
             </Link>
             <Link
               onClick={() => {
