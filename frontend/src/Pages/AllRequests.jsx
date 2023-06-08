@@ -64,8 +64,8 @@ function AllRequests() {
   return (
     <>
       <Navbar />
-      <div className="title" style={{ paddingTop: "13vh" }}>
-        <h2>They're waiting for you !</h2>{" "}
+      <div className="title" style={{ paddingTop: "5vh" }}>
+        <h2 className="title">They're waiting for you !</h2>{" "}
       </div>
 
       {ownRequests &&

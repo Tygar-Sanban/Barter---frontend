@@ -115,7 +115,7 @@ function ProfilePage() {
   return (
     <>
       <Navbar />
-      <div style={{ paddingTop: "8vh" }}>
+      <div style={{ paddingTop: "5vh" }}>
         <div className="profile-info">
           <img
             src={user.picture}

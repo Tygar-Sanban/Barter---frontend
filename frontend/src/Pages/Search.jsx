@@ -6,8 +6,8 @@ function Search() {
   return (
     <div>
       <Navbar />
-      <div className="page-title" style={{ paddingTop: "13vh" }}>
-        <h2>Search</h2>
+      <div className="page-title" style={{ paddingTop: "5vh" }}>
+        <h2 className="title">Search</h2>
       </div>
       <div className="indications">
         <h3>What service are you looking for ?</h3>

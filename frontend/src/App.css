@@ -92,6 +92,11 @@ STYLING NAV BAR SIDEBAR
   z-index: 10;
 }
 
+.logo {
+  padding: 0 0 0 0.6rem;
+  width: 100%;
+}
+
 .menu-button {
   cursor: pointer;
   padding: 10px;
@@ -101,11 +106,17 @@ STYLING NAV BAR SIDEBAR
   display: flex;
   justify-content: space-between;
   align-items: center;
+  font-family: "Body";
 }
 
 .menu-button p {
   color: white;
   font-family: "Body";
+}
+
+.underClass {
+  display: flex;
+  width: 20%;
 }
 
 /* .menu-button p {
@@ -117,10 +128,13 @@ STYLING NAV BAR SIDEBAR
   top: 0;
   left: -250px; /* Hide the sidebar by default */
   width: 250px;
-  height: 100vh;
+  /* height: 100vh; */
   background-color: #006d77;
   color: white;
   transition: left 0.3s ease;
+
+  border-radius: 0 0 15px 0;
+
   font-family: "Body";
 }
 
@@ -640,4 +654,101 @@ STYLING NAV BAR SIDEBAR
   border-radius: 10px;
   margin: 0.2rem;
   padding: 0.5rem;
+}
+
+/* Styling the negociate page*/
+
+.negociate-content {
+  font-family: "Body";
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.negociate-content div {
+  margin: 0.5rem;
+}
+.negociate-content input {
+  margin: 1rem 0 1rem 0;
+  font-family: "Body";
+  width: 100%;
+}
+
+.negociate-content button {
+  font-family: "Body";
+  font-size: 1rem;
+  font-weight: 900;
+  box-shadow: 2px 2px 2px black;
+  border: 1px solid black;
+  border-radius: 10px;
+  margin: 0.2rem;
+  padding: 0.5rem;
+}
+
+/* Styling the login*/
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.login-form-element {
+  display: flex;
+  justify-content: center;
+  margin: 1rem;
+  font-family: "Body";
+}
+
+.login-form button {
+  font-family: "Body";
+  font-size: 1rem;
+  font-weight: 900;
+  box-shadow: 2px 2px 2px black;
+  border: 1px solid black;
+  border-radius: 10px;
+  margin: 1rem 0 0.2rem;
+  padding: 0.5rem;
+  width: 85%;
+}
+
+.login-button {
+  display: flex;
+  justify-content: center;
+}
+
+.login-form-element input {
+  margin: 0 1rem;
+}
+
+.link-to-signup {
+  margin: 1rem;
+  font-family: "Body";
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Styling the homepage */
+
+.homepage-indications {
+  margin: 1.5rem;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.title span {
+  margin: 0 0.3rem;
+  width: 40%;
+}
+
+.title img {
+  width: 100%;
+}
+
+.homepage-text-content {
+  text-align: center;
+  padding: 1rem;
+  font-family: "Body";
 }

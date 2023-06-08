@@ -106,7 +106,7 @@ function ModifySkills() {
   return (
     <>
       <Navbar />
-      <div style={{ paddingTop: "8vh" }}>
+      <div style={{ paddingTop: "5vh" }}>
         {isLoading ? (
           <p>Loading user skills...</p>
         ) : (
