@@ -115,7 +115,7 @@ function ProviderProfile() {
     provider && (
       <>
         <Navbar />
-        <div style={{ paddingTop: "8vh" }}>
+        <div style={{ paddingTop: "5vh" }}>
           <div className="profile-info">
             <img
               src={provider.picture}

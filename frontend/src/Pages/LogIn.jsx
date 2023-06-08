@@ -27,21 +27,33 @@ function LogIn() {
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="email">Email</label>
-        <input
-          type="email"
-          onChange={(event) => setEmail(event.target.value)}
-        />
-        <label htmlFor="password">Password</label>
-        <input
-          type="password"
-          onChange={(event) => setPassword(event.target.value)}
-        />
-        <button>Log in, bitch !</button>
+      <Navbar />
+      <h3 style={{ paddingTop: "5vh" }} className="title">
+        Enter your login information
+      </h3>
+      <form className="login-form" onSubmit={handleSubmit}>
+        <div className="login-form-element">
+          <label htmlFor="email">Email</label>
+          <input
+            type="email"
+            onChange={(event) => setEmail(event.target.value)}
+          />
+        </div>
+        <div className="login-form-element">
+          <label htmlFor="password">Password</label>
+          <input
+            type="password"
+            onChange={(event) => setPassword(event.target.value)}
+          />
+        </div>
+        <div className="login-button">
+          <button>Log in</button>
+        </div>
       </form>
-      <p>Don't have an account yet?</p>
-      <Link to={"/signup"}> Sign Up</Link>
+      <div className="link-to-signup">
+        <p>Don't have an account yet?</p>
+        <Link to={"/signup"}> Sign Up</Link>
+      </div>
     </div>
   );
 }

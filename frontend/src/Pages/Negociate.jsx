@@ -60,23 +60,25 @@ function Negociate() {
       {canUpdate && (
         <>
           <Navbar />
-          <div style={{ paddingTop: "8vh" }}>
-            Title of your request : {sentRequests.name}
+          <div style={{ paddingTop: "5vh" }}>
+            <h3 className="title">{sentRequests.name}</h3>
           </div>
-          <div>Detail of your request : {sentRequests.firstMessage}</div>
-          <div>Current Bb offer you made: {sentRequests.bbAmount}</div>
+          <div className="negociate-content">
+            <div>Detail of your request : {sentRequests.firstMessage}</div>
+            <div>Current BB offer you made: {sentRequests.bbAmount}</div>
 
-          <form onSubmit={handleNegociate}>
-            <label htmlFor="bbAmount">
-              Modify the BB Amount of this request
-            </label>
-            <input
-              type="number"
-              placeholder="Your new price"
-              onChange={(event) => setBbAmount(event.target.value)}
-            />
-            <button>Send the new BB amount</button>
-          </form>
+            <form className="negociate-content" onSubmit={handleNegociate}>
+              <label htmlFor="bbAmount">
+                Modify the BB Amount of this request
+              </label>
+              <input
+                type="number"
+                placeholder="Your new offer"
+                onChange={(event) => setBbAmount(event.target.value)}
+              />
+              <button>Send the new BB amount</button>
+            </form>
+          </div>
         </>
       )}
 

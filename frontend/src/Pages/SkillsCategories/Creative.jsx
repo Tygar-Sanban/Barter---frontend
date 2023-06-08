@@ -22,11 +22,11 @@ function Creative() {
   return (
     <div>
       <Navbar />
-      <div className="title" style={{ paddingTop: "13vh" }}>
-        <h2>Creative Services</h2>
+      <div className="title" style={{ paddingTop: "5vh" }}>
+        <h2 className="title">Creative Services</h2>
       </div>
       <div className="indications">
-        <h4>Which skill are you looking for ?</h4>
+        <h4>Which skill are you interrested in ?</h4>
       </div>
       <div className="bullet-points">
         {skills.map((elem) => {

@@ -93,7 +93,7 @@ function Messages() {
       <>
         <Navbar />
         <div className="request-discussion">
-          <div style={{ paddingTop: "8vh" }}>Title: {request.name}</div>
+          <div style={{ paddingTop: "5vh" }}>Title: {request.name}</div>
           <div>Detail : {request.firstMessage}</div>
           <div>BarterBucks amount : {request.bbAmount}</div>
         </div>

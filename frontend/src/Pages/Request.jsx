@@ -92,7 +92,7 @@ function Request() {
       {canUpdate && (
         <>
           <Navbar />
-          <div className="title" style={{ paddingTop: "13vh" }}>
+          <div className="title" style={{ paddingTop: "5vh" }}>
             <h3>Request</h3>
           </div>
           <div>
@@ -132,7 +132,7 @@ function Request() {
       {!canUpdate && (
         <div>
           <Navbar />
-          <div style={{ paddingTop: "8vh" }}>
+          <div style={{ paddingTop: "5vh" }}>
             You tried to offer more BarterBucks than you possess.
           </div>
           <button onClick={handleReset}>

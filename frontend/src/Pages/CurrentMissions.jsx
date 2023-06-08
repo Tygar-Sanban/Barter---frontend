@@ -54,6 +54,7 @@ function CurrentMissions() {
   useEffect(() => {
     if (user) {
       getCurrentMissions();
+      console.log("this is the usercurentmission", userCurrentMissions);
     }
   }, [user]);
 
@@ -106,14 +107,14 @@ function CurrentMissions() {
         setRequesting={setRequesting}
       />
       {twoButtons && (
-        <div className="request-paths" style={{ paddingTop: "13vh" }}>
+        <div className="request-paths" style={{ paddingTop: "5vh" }}>
           <button onClick={handleClickProvider}>Services you provide</button>
           <button onClick={handleClickRequester}>Services you request</button>
         </div>
       )}
       {providing && (
         <>
-          <div style={{ paddingTop: "13vh" }}>
+          <div style={{ paddingTop: "5vh" }}>
             {userCurrentMissionsOngoingProvided.length > 0 ? (
               <h3 className="title">Ongoing services</h3>
             ) : (
@@ -138,7 +139,7 @@ function CurrentMissions() {
       )}
       {requesting && (
         <>
-          <div style={{ paddingTop: "13vh" }}>
+          <div style={{ paddingTop: "5vh" }}>
             {userCurrentMissionsOngoingRequested.length > 0 ? (
               <h3 className="title">Ongoing requests</h3>
             ) : (

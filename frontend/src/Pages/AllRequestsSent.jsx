@@ -62,9 +62,9 @@ function AllRequestsSent() {
   return (
     <>
       <Navbar />
-      <div className="title" style={{ paddingTop: "13vh" }}>
+      <div className="title" style={{ paddingTop: "5vh" }}>
         {" "}
-        <h2>Sent requests</h2>{" "}
+        <h2 className="title">Sent requests</h2>{" "}
       </div>
       {sentRequests &&
         sentRequests.map((elem) => {

@@ -25,7 +25,7 @@ function Discussions() {
   return (
     <div>
       <Navbar />
-      <div style={{ paddingTop: "8vh" }}>
+      <div style={{ paddingTop: "5vh" }}>
         {allDiscussions?.map((elem) => {
           return (
             <Link key={elem._id}>

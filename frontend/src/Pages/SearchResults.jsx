@@ -43,9 +43,11 @@ function SearchResults() {
   return (
     <div>
       <Navbar />
-      <div style={{ paddingTop: "10vh" }}>
+      <div style={{ paddingTop: "5vh" }}>
         <div className="indications">
-          <h3>Pick whomever</h3>
+          <h3 style={{ textAlign: "center" }}>
+            Those people can help you out! You can choose whomever you want !
+          </h3>
         </div>
         {availableBrowsedUsers.length > 0 &&
           availableBrowsedUsers.map((elem) => {
