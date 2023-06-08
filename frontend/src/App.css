@@ -1,12 +1,12 @@
 @font-face {
   font-family: "Title";
-  src: url("../public/Fonts/Curva.ttf");
+  src: url("/public/Fonts/Curva.ttf");
 }
 
 @font-face {
   font-family: "Body";
 
-  src: url("../public/Fonts/CercoDEMO-Regular.otf");
+  src: url("/public/Fonts/CercoDEMO-Regular.otf");
 }
 
 h1 {
@@ -26,7 +26,7 @@ h3 {
 
   font-family: "Body";
 
-  src: url("../public/Fonts/TT\ Rounds\ Neue\ Trial\ Regular.ttf");
+  src: url("/public/Fonts/TT\ Rounds\ Neue\ Trial\ Regular.ttf");
 }
 
 * {

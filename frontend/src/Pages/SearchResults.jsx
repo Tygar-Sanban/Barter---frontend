@@ -62,7 +62,7 @@ function SearchResults() {
                   <div className="request-container">
                     <div>Request</div>
                     <img
-                      src="../../public/Icons/arrow-right.png"
+                      src="/public/Icons/arrow-right.png"
                       alt="make a request"
                       className="arrow-right"
                     />
