@@ -36,13 +36,12 @@ function CurrentMissions() {
     try {
       const response = await service.get("/current-mission");
       console.log("this is the response", response);
-      if (response) {
+      if (response.data) {
         setUserCurrentMissions(
           response.data.filter((elem) => {
-            console.log("this is the elem", elem);
             return (
-              elem.request.provider === user._id ||
-              elem.request.requester === user._id
+              elem.request.provider._id === user._id ||
+              elem.request.requester._id === user._id
             );
           })
         );
@@ -71,19 +70,19 @@ function CurrentMissions() {
 
   useEffect(() => {
     const requesterFinished = userCurrentMissionsFinished.filter((elem) => {
-      return elem.request.requester === user._id;
+      return elem.request.requester._id === user._id;
     });
     setUserCurrentMissionsFinishedRequested(requesterFinished);
     const providerFinished = userCurrentMissionsFinished.filter((elem) => {
-      return elem.request.provider === user._id;
+      return elem.request.provider._id === user._id;
     });
     setUserCurrentMissionsFinishedProvided(providerFinished);
     const requesterOngoing = userCurrentMissionsOngoing.filter((elem) => {
-      return elem.request.requester === user._id;
+      return elem.request.requester._id === user._id;
     });
     setUserCurrentMissionsOngoingRequested(requesterOngoing);
     const providerOngoing = userCurrentMissionsOngoing.filter((elem) => {
-      return elem.request.provider === user._id;
+      return elem.request.provider._id === user._id;
     });
     setUserCurrentMissionsOngoingProvided(providerOngoing);
   }, [userCurrentMissionsFinished, userCurrentMissionsOngoing]);
@@ -101,22 +100,22 @@ function CurrentMissions() {
 
   return (
     <>
-      <Navbar />
+      <Navbar
+        setTwoButtons={setTwoButtons}
+        setProviding={setProviding}
+        setRequesting={setRequesting}
+      />
       {twoButtons && (
-        <div className="request-paths" style={{ paddingTop: "8vh" }}>
+        <div className="request-paths" style={{ paddingTop: "13vh" }}>
           <button onClick={handleClickProvider}>Services you provide</button>
           <button onClick={handleClickRequester}>Services you request</button>
         </div>
       )}
       {providing && (
         <>
-          <div style={{ paddingTop: "8vh" }}>
-            {" "}
-            <h2>Current Missions</h2>{" "}
-          </div>
-          <div>
+          <div style={{ paddingTop: "13vh" }}>
             {userCurrentMissionsOngoingProvided.length > 0 ? (
-              <h3>Ongoing services</h3>
+              <h3 className="title">Ongoing services</h3>
             ) : (
               <div>
                 <h3>You have no ongoing services.</h3>
@@ -124,26 +123,24 @@ function CurrentMissions() {
             )}
             {userCurrentMissionsOngoingProvided.length > 0 &&
               userCurrentMissionsOngoingProvided.map((elem) => {
+                console.log("this is the elem", elem);
                 const url = `/current-mission/${elem._id}`;
                 return (
-                  <Link key={elem._id} to={url}>
-                    <div>{elem.request.name}</div>
+                  <Link className="results" key={elem._id} to={url}>
+                    <div>
+                      {elem.request.name} by {elem.request.requester.name}{" "}
+                    </div>
                   </Link>
                 );
               })}
           </div>
-          <button onClick={handleClickRequester}>Services you request</button>
         </>
       )}
       {requesting && (
         <>
-          <div style={{ paddingTop: "8vh" }}>
-            {" "}
-            <h2>Current Missions</h2>{" "}
-          </div>
-          <div>
+          <div style={{ paddingTop: "13vh" }}>
             {userCurrentMissionsOngoingRequested.length > 0 ? (
-              <h3>Ongoing requests</h3>
+              <h3 className="title">Ongoing requests</h3>
             ) : (
               <div>
                 <h3>You have no ongoing request.</h3>
@@ -154,13 +151,14 @@ function CurrentMissions() {
               userCurrentMissionsOngoingRequested.map((elem) => {
                 const url = `/current-mission/${elem._id}`;
                 return (
-                  <Link key={elem._id} to={url}>
-                    <div>{elem.request.name}</div>
+                  <Link className="results" key={elem._id} to={url}>
+                    <div>
+                      {elem.request.name} for {elem.request.provider.name}{" "}
+                    </div>
                   </Link>
                 );
               })}
           </div>
-          <button onClick={handleClickProvider}>Services you provide</button>
         </>
       )}
     </>

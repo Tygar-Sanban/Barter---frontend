@@ -72,7 +72,9 @@ function AllRequests() {
         ownRequests.map((elem) => {
           return (
             <div className="request-received" key={elem._id}>
-              <h3>{elem.name}</h3>
+              <h3>
+                {elem.name} by {elem.requester.name}{" "}
+              </h3>
               <div>Barter Bucks offered : {elem.bbAmount}</div>
               <div>Message from the requester : {elem.messages}</div>
               <div className="request-buttons">

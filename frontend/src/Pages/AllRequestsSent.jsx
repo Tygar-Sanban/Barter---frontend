@@ -71,7 +71,9 @@ function AllRequestsSent() {
           console.log("this is the elem", elem);
           return (
             <div className="request-received" key={elem._id}>
-              <div>{elem.name}</div>
+              <h3>
+                {elem.name} for {elem.provider.name}{" "}
+              </h3>
               <div>Barter Bucks offered: {elem.bbAmount}</div>
               <div className="request-buttons">
                 <Link to={`/sent-requests/${elem._id}`}>
