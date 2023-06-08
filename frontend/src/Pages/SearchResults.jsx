@@ -24,9 +24,12 @@ function SearchResults() {
     if (user && allUsers.length > 0) {
       const usersBrowsing = allUsers.filter((elem) => {
         console.log("this is the elem", elem);
+        console.log("this is the elem.skills", elem.skills);
+        console.log("this is the params.query", params.query);
         return elem._id !== user._id && elem.skills.includes(params.query);
       });
       setSelectedUsers(usersBrowsing);
+      console.log("this is the selectedusers", selectedUsers);
     }
     if (selectedUsers.length > 0) {
       const availableUsers = selectedUsers.filter((elem) => {
