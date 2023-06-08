@@ -21,13 +21,13 @@ function ProviderProfile() {
     try {
       const response = await service.get("/current-mission");
       console.log("response user mission", response);
-      if (response) {
+      if (response && provider) {
         setUserFinishedMission(
           response.data.filter((elem) => {
             console.log("this is THE ELEM", elem);
             return (
               elem.validation === true &&
-              elem.request.provider === params.provider
+              elem.request.provider._id === params.provider
             );
           })
         );
@@ -209,7 +209,7 @@ function ProviderProfile() {
                   return <div key={elem._id}>{elem.request.name}</div>;
                 })
               ) : (
-                <div>That user didn't provide any service yet</div>
+                <div>This user did not provide any service yet</div>
               )}
             </div>
           </div>
