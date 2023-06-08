@@ -542,6 +542,7 @@ STYLING NAV BAR SIDEBAR
 
 .close-icon {
   width: 1.5rem;
+  height: 1.5rem;
 }
 
 .modifyBtn {
@@ -763,6 +764,43 @@ STYLING NAV BAR SIDEBAR
   font-family: "Body";
   display: flex;
   flex-direction: column;
+  align-items: center;
+}
+
+.select-skills-signup {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.select-skills-signup h2 {
+  margin: 1.5rem;
+}
+
+.selectskills-category-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.selectskills-category-buttons div {
+  font-family: "Body";
+  background-color: #edf6f9;
+  font-size: 1rem;
+  font-weight: 900;
+  box-shadow: 2px 2px 2px black;
+  border: 1px solid black;
+  border-radius: 10px;
+  margin: 1rem 0 0.2rem;
+  padding: 0.5rem;
+  width: 85%;
+}
+
+.visible-skill-selection {
+  margin: 1rem 0 0 0;
+  display: flex;
   align-items: center;
 }
 

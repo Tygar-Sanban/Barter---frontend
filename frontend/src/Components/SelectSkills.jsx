@@ -54,79 +54,84 @@ const SelectSkills = (props) => {
         <div>Loading...</div>
       ) : (
         <>
-          <div>
-            <h2>Categories</h2>
-            <div className="category-buttons">
-              <button
+          <div className="select-skills-signup">
+            <h2>Select what skills you can offer the community.</h2>
+            <h3>Select a category.</h3>
+            <div className="selectskills-category-buttons">
+              <div
                 onClick={() => handleCategoryClick("Personal")}
                 className={selectedCategory === "Personal" ? "active" : ""}
               >
                 Personal
-              </button>
-              <button
+              </div>
+              <div
                 onClick={() => handleCategoryClick("Professional")}
                 className={selectedCategory === "Professional" ? "active" : ""}
               >
                 Professional
-              </button>
-              <button
+              </div>
+              <div
                 onClick={() => handleCategoryClick("Health and Wellness")}
                 className={
                   selectedCategory === "Health and Wellness" ? "active" : ""
                 }
               >
                 Health and Wellness
-              </button>
-              <button
+              </div>
+              <div
                 onClick={() => handleCategoryClick("Educational")}
                 className={selectedCategory === "Educational" ? "active" : ""}
               >
                 Educational
-              </button>
-              <button
+              </div>
+              <div
                 onClick={() => handleCategoryClick("Creative")}
                 className={selectedCategory === "Creative" ? "active" : ""}
               >
                 Creative
-              </button>
-              <button
+              </div>
+              <div
                 onClick={() => handleCategoryClick("Home")}
                 className={selectedCategory === "Home" ? "active" : ""}
               >
                 Home
-              </button>
-              <button
+              </div>
+              <div
                 onClick={() => handleCategoryClick("Transportation")}
                 className={
                   selectedCategory === "Transportation" ? "active" : ""
                 }
               >
                 Transportation
-              </button>
+              </div>
             </div>
 
             {selectedCategory && (
               <>
-                <div className="category-buttons">
-                  <h2>Skills</h2>
+                <div
+                  style={{ marginTop: "2rem" }}
+                  className="visible-skill-selection"
+                >
+                  <h3>Select a skill.</h3>
                   <img
                     onClick={() => setSelectedCategory(null)}
                     src={"/Icons/close.png"}
                     alt="Close"
                     className="close-icon"
+                    style={{ marginLeft: "0.5rem" }}
                   />
                 </div>
-                <div className="category-buttons">
+                <div className="selectskills-category-buttons">
                   {filteredSkills &&
                     filteredSkills.length > 0 &&
                     filteredSkills.map((elem) => (
-                      <button
+                      <div
                         key={elem._id}
                         data-value={elem._id}
                         onClick={handleSkillSelection}
                       >
                         {elem.name}
-                      </button>
+                      </div>
                     ))}
                 </div>
               </>

@@ -30,7 +30,7 @@ function SignUp() {
     };
     try {
       await service.post("/auth/signup", objectToPost);
-      navigate("/");
+      navigate("/login");
     } catch (error) {
       console.log(error);
     }
@@ -38,7 +38,6 @@ function SignUp() {
 
   return (
     <div>
-      <Navbar />
       <h3 style={{ paddingTop: "5vh" }} className="title">
         Enter your informations
       </h3>
@@ -92,7 +91,7 @@ function SignUp() {
           setSelectedSkill={setSelectedSkill}
         />
 
-        <div className="login-button">
+        <div style={{ marginTop: "1.5rem" }} className="login-button">
           <button>Sign up !</button>
         </div>
       </form>
