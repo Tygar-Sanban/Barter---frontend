@@ -111,7 +111,7 @@ const SelectSkills = (props) => {
                   <h2>Skills</h2>
                   <img
                     onClick={() => setSelectedCategory(null)}
-                    src={"/public/Icons/close.png"}
+                    src={"/Icons/close.png"}
                     alt="Close"
                     className="close-icon"
                   />
