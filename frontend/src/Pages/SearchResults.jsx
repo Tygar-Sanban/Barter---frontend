@@ -34,10 +34,10 @@ function SearchResults() {
         return elem._id !== user._id && elem.skills.includes(params.query);
       });
       setSelectedUsers(usersBrowsing);
-      console.log("this is the selectedusers", selectedUsers);
+      console.log("this is the selectedusers", usersBrowsing);
     }
     if (usersBrowsing.length > 0) {
-      const availableUsers = selectedUsers.filter((elem) => {
+      const availableUsers = usersBrowsing.filter((elem) => {
         return elem.availability === true;
       });
       setAvailableBrowsedUsers(availableUsers);
