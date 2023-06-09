@@ -19,7 +19,7 @@ function LogIn() {
       localStorage.setItem("token", response.data.token);
       console.log("this is the response.data.token", response.data.token);
       await authenticateUser();
-      navigate("/profile");
+      navigate("/");
     } catch (error) {
       console.log(error);
     }
