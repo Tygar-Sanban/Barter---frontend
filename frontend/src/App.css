@@ -97,6 +97,10 @@ STYLING NAV BAR SIDEBAR
   width: 100%;
 }
 
+.title span img {
+  width: 100%;
+}
+
 .menu-button {
   cursor: pointer;
   padding: 10px;

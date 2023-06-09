@@ -27,13 +27,13 @@ function Homepage() {
     <div>
       <Navbar />
       <div style={{ paddingTop: "5vh" }}>
-        <h1 className="title">
+        <h2 className="title">
           Welcome to{" "}
           <span>
             <img src="/Pictures/Barter-black.png" alt="" />
           </span>{" "}
           !
-        </h1>
+        </h2>
         <div className="homepage-indications">
           <h2 className="indications">
             Trade services, earn BarterBucks, and embrace the spirit of
