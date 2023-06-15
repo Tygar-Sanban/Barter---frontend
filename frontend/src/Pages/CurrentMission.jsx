@@ -61,7 +61,7 @@ function CurrentMission() {
       <Navbar />
       {currentMission && (
         <div style={{ paddingTop: "5vh" }}>
-          <h2 className="title">{currentMission.request.name}</h2>
+          <h2 className="titles">{currentMission.request.name}</h2>
           <div className="current-mission-content">
             {user?._id === currentMission.request.provider._id ? (
               <div>

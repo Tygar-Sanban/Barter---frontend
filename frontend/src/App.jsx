@@ -41,10 +41,27 @@ import Cart from "./Pages/Cart";
 import CurrentProducts from "./Pages/CurrentProducts";
 import CurrentProduct from "./Pages/CurrentProduct";
 
-// import { ToastContainer } from "react-toastify";
-// import "react-toastify/dist/ReactToastify.css";
+import { io } from "socket.io-client";
 
 function App() {
+  // useEffect(() => {
+  //   const socket = io("http://localhost:5005");
+
+  //   socket.on("notification", (data) => {
+  //     console.log("Received notification:", data);
+  //     // Display a push notification
+  //     if (Notification.permission === "granted") {
+  //       new Notification("You've been requested", {
+  //         body: data.message,
+  //       });
+  //     }
+  //   });
+
+  //   return () => {
+  //     // Clean up the socket connection when the component unmounts
+  //     socket.disconnect();
+  //   };
+  // }, []); // Empty dependency array to run the effect only once
   return (
     <>
       <Routes>

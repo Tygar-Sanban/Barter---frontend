@@ -22,8 +22,8 @@ function Transportation() {
   return (
     <div>
       <Navbar />
-      <div className="title" style={{ paddingTop: "5vh" }}>
-        <h2 className="title">Transportation Services</h2>
+      <div className="titles" style={{ paddingTop: "5vh" }}>
+        <h2 className="titles">Transportation Services</h2>
       </div>
       <div className="indications">
         <h4>Which skill are you interrested in ?</h4>
@@ -34,7 +34,9 @@ function Transportation() {
             const url = `/search-result/${elem._id}`;
             return (
               <Link key={elem._id} to={url}>
-                <button>{elem.name}</button>
+                <div className="skill-container transportationBorder">
+                  {elem.name}
+                </div>
               </Link>
             );
           }

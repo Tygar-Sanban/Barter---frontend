@@ -22,8 +22,8 @@ function Professional() {
   return (
     <div>
       <Navbar />
-      <div className="title" style={{ paddingTop: "5vh" }}>
-        <h2 className="title">Professional Services</h2>
+      <div className="titles" style={{ paddingTop: "5vh" }}>
+        <h2 className="titles">Professional Services</h2>
       </div>
       <div className="indications">
         <h4>Which skill are you interrested in ?</h4>
@@ -34,7 +34,9 @@ function Professional() {
             const url = `/search-result/${elem._id}`;
             return (
               <Link key={elem._id} to={url}>
-                <button>{elem.name}</button>
+                <div className="skill-container ProfessionalBorder">
+                  {elem.name}
+                </div>
               </Link>
             );
           }

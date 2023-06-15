@@ -14,6 +14,7 @@ function ProfilePage() {
   const [filteredSkills, setFilteredSkills] = useState([]);
   const [userFinishedMission, setUserFinishedMission] = useState([]);
   const [userServicesAsked, setUserServicesAsked] = useState([]);
+  const [className, setClassName] = useState("");
 
   async function fetchWallet() {
     try {
@@ -45,12 +46,16 @@ function ProfilePage() {
       if (response && user) {
         setUserFinishedMission(
           response.data.filter((elem) => {
-            console.log("this is THE ELEM", elem);
+            console.log(
+              "this is THE ELEM",
+              elem.request.category.serviceCategory
+            );
             return (
               elem.validation === true && elem.request.provider._id === user._id
             );
           })
         );
+
         // console.log("user finished mission", userFinishedMission);
       }
     } catch (error) {
@@ -115,27 +120,7 @@ function ProfilePage() {
   return (
     <>
       <Navbar />
-      <div style={{ paddingTop: "5vh" }}>
-        {/* <div className="profile-info">
-          <img
-            src={user.picture}
-            alt="profile picture"
-            className="profile-pic"
-          />
-          <div>
-            <h2>{user.name}</h2>
-            <div className="wallet-container">
-              <div className="barterbucks">
-                {wallet.barterBucks === 0 ? "You poor :(" : wallet.barterBucks}
-              </div>
-              <img
-                className="barter-bucks-profile"
-                src="/Pictures/tunasseV1.png"
-                alt=""
-              />
-            </div>
-          </div>
-        </div> */}
+      <div>
         <div className="all-profile">
           <div className="div-profile-pic">
             <img
@@ -165,61 +150,124 @@ function ProfilePage() {
         <div className="switch">
           <SwitchComponent />
         </div>
+
+        {/* CARDS FOR CATEGORIES */}
         <div className="categories">
           <h2>Browse categories and check the skills you have</h2>
-          <div className="divider-container">
-            <div className="divider"></div>
-          </div>
-          <div className="category-buttons">
-            <button
-              onClick={() => handleCategoryClick("Personal")}
-              className={selectedCategory === "Personal" ? "active" : ""}
-            >
-              Personal
-            </button>
-            <button
-              onClick={() => handleCategoryClick("Professional")}
-              className={selectedCategory === "Professional" ? "active" : ""}
-            >
-              Professional
-            </button>
-            <button
-              onClick={() => handleCategoryClick("Health and Wellness")}
-              className={
-                selectedCategory === "Health and Wellness" ? "active" : ""
-              }
-            >
-              Health and Wellness
-            </button>
-            <button
-              onClick={() => handleCategoryClick("Educational")}
-              className={selectedCategory === "Educational" ? "active" : ""}
-            >
-              Educational
-            </button>
-            <button
-              onClick={() => handleCategoryClick("Creative")}
-              className={selectedCategory === "Creative" ? "active" : ""}
-            >
-              Creative
-            </button>
-            <button
-              onClick={() => handleCategoryClick("Home")}
-              className={selectedCategory === "Home" ? "active" : ""}
-            >
-              Home
-            </button>
-            <button
-              onClick={() => handleCategoryClick("Transportation")}
-              className={selectedCategory === "Transportation" ? "active" : ""}
-            >
-              Transportation
-            </button>
+          <div className="scrollable-container">
+            <div className="scrollable-content">
+              <div
+                className={`scrollable-item ${
+                  selectedCategory === "Personal" ? "active" : ""
+                } `}
+                onClick={() => handleCategoryClick("Personal")}
+              >
+                <div className="image-wrapper">
+                  <img
+                    src="/Icons/user.png"
+                    alt="image category"
+                    className="image"
+                    style={{ transform: "scale(0.8)" }}
+                  />
+                </div>
+                <div className="PersonalBG title">Personal</div>
+              </div>
+              <div
+                className={`scrollable-item ${
+                  selectedCategory === "Professional" ? "active" : ""
+                } `}
+                onClick={() => handleCategoryClick("Professional")}
+              >
+                <div className="image-wrapper">
+                  <img
+                    src="/Icons/professional.png"
+                    alt="image category"
+                    className="image"
+                  />
+                </div>
+                <div className="ProfessionalBG title">Professional</div>
+              </div>
+              <div
+                className={`scrollable-item   ${
+                  selectedCategory === "Health and Wellness" ? "active" : ""
+                } `}
+                onClick={() => handleCategoryClick("Health and Wellness")}
+              >
+                <div className="image-wrapper">
+                  <img
+                    src="/Icons/health.png"
+                    alt="image category"
+                    className="image"
+                  />
+                </div>
+                <div className="healthBG title">Health</div>
+              </div>
+              <div
+                className={`scrollable-item ${
+                  selectedCategory === "Educational" ? "active" : ""
+                } `}
+                onClick={() => handleCategoryClick("Educational")}
+              >
+                <div className="image-wrapper">
+                  <img
+                    src="/Icons/education.png"
+                    alt="image category"
+                    className="image"
+                  />
+                </div>
+                <div className="EducationalBG title">Educational</div>
+              </div>
+              <div
+                className={`scrollable-item ${
+                  selectedCategory === "Creative" ? "active" : ""
+                } `}
+                onClick={() => handleCategoryClick("Creative")}
+              >
+                <div className="image-wrapper">
+                  <img
+                    src="/Icons/creative.png"
+                    alt="image category"
+                    className="image"
+                  />
+                </div>
+                <div className="creativeBG title">Creative</div>
+              </div>
+              <div
+                className={`scrollable-item ${
+                  selectedCategory === "Home" ? "active" : ""
+                } `}
+                onClick={() => handleCategoryClick("Home")}
+              >
+                <div className="image-wrapper">
+                  <img
+                    src="/Icons/home.png"
+                    alt="image category"
+                    className="image"
+                  />
+                </div>
+                <div className="homeBG title">Home</div>
+              </div>
+              <div
+                className={`scrollable-item ${
+                  selectedCategory === "Transportation" ? "active" : ""
+                } `}
+                onClick={() => handleCategoryClick("Transportation")}
+              >
+                <div className="image-wrapper">
+                  <img
+                    src="/Icons/transportation.png"
+                    alt="image category"
+                    className="image"
+                  />
+                </div>
+                <div className="transportationBG title">Transports</div>
+              </div>
+            </div>
           </div>
 
           {selectedCategory && (
             <>
-              <div className="category-buttons">
+              <div className="skill-info">
                 <h2>Skills details</h2>
 
                 <img
@@ -229,10 +277,31 @@ function ProfilePage() {
                   className="close-icon"
                 />
               </div>
-              <div className="category-buttons">
+              <div className="skill-info">
                 {user.skills.length > 0 &&
                   filteredSkills.map((elem) => (
-                    <button key={elem._id}>{elem.name}</button>
+                    <div
+                      className={`skill-container ${
+                        elem.serviceCategory === "Personal"
+                          ? "PersonalBorder"
+                          : elem.serviceCategory === "Professional"
+                          ? "ProfessionalBorder"
+                          : elem.serviceCategory === "Health and Wellness"
+                          ? "healthBorder"
+                          : elem.serviceCategory === "Educational"
+                          ? "EducationalBorder"
+                          : elem.serviceCategory === "Creative"
+                          ? "creativeBorder"
+                          : elem.serviceCategory === "Home"
+                          ? "homeBorder"
+                          : elem.serviceCategory === "Transportation"
+                          ? "transportationBorder"
+                          : ""
+                      }`}
+                      key={elem._id}
+                    >
+                      {elem.name}
+                    </div>
                   ))}
               </div>
             </>
@@ -249,17 +318,135 @@ function ProfilePage() {
           <h2>Provided services</h2>
           {userFinishedMission.length !== 0 ? (
             userFinishedMission.map((elem) => {
-              return <div key={elem._id}>{elem.request.name}</div>;
+              return (
+                <>
+                  <div className="skill-info">
+                    <div
+                      className={`skill-container ${
+                        elem.request.category.serviceCategory === "Personal"
+                          ? "PersonalBorder"
+                          : elem.request.category.serviceCategory ===
+                            "Professional"
+                          ? "ProfessionalBorder"
+                          : elem.request.category.serviceCategory ===
+                            "Health and Wellness"
+                          ? "healthBorder"
+                          : elem.request.category.serviceCategory ===
+                            "Educational"
+                          ? "EducationalBorder"
+                          : elem.request.category.serviceCategory === "Creative"
+                          ? "creativeBorder"
+                          : elem.request.category.serviceCategory === "Home"
+                          ? "homeBorder"
+                          : elem.request.category.serviceCategory ===
+                            "Transportation"
+                          ? "transportationBorder"
+                          : ""
+                      }`}
+                      key={elem._id}
+                    >
+                      <div
+                        className={`${
+                          elem.request.category.serviceCategory === "Personal"
+                            ? "PersonalText"
+                            : elem.request.category.serviceCategory ===
+                              "Professional"
+                            ? "ProfessionalText"
+                            : elem.request.category.serviceCategory ===
+                              "Health and Wellness"
+                            ? "healthText"
+                            : elem.request.category.serviceCategory ===
+                              "Educational"
+                            ? "EducationalText"
+                            : elem.request.category.serviceCategory ===
+                              "Creative"
+                            ? "creativeText"
+                            : elem.request.category.serviceCategory === "Home"
+                            ? "homeBorder"
+                            : elem.request.category.serviceCategory ===
+                              "Transportation"
+                            ? "transportationText"
+                            : ""
+                        }`}
+                      >
+                        {elem.request.category.serviceCategory}
+                      </div>
+                      <br />
+                      {elem.request.name}
+                    </div>
+                  </div>
+                </>
+              );
             })
           ) : (
             <div>You didn't provide any service yet</div>
           )}
         </div>
+
         <div>
           <h2>Requested services</h2>
           {userServicesAsked.length !== 0 ? (
             userServicesAsked.map((elem) => {
-              return <div key={elem._id}>{elem.request.name}</div>;
+              return (
+                <>
+                  <div className="skill-info">
+                    <div
+                      className={`skill-container ${
+                        elem.request.category.serviceCategory === "Personal"
+                          ? "PersonalBorder"
+                          : elem.request.category.serviceCategory ===
+                            "Professional"
+                          ? "ProfessionalBorder"
+                          : elem.request.category.serviceCategory ===
+                            "Health and Wellness"
+                          ? "healthBorder"
+                          : elem.request.category.serviceCategory ===
+                            "Educational"
+                          ? "EducationalBorder"
+                          : elem.request.category.serviceCategory === "Creative"
+                          ? "creativeBorder"
+                          : elem.request.category.serviceCategory === "Home"
+                          ? "homeBorder"
+                          : elem.request.category.serviceCategory ===
+                            "Transportation"
+                          ? "transportationBorder"
+                          : ""
+                      }`}
+                      key={elem._id}
+                    >
+                      <div
+                        className={`${
+                          elem.request.category.serviceCategory === "Personal"
+                            ? "PersonalText"
+                            : elem.request.category.serviceCategory ===
+                              "Professional"
+                            ? "ProfessionalText"
+                            : elem.request.category.serviceCategory ===
+                              "Health and Wellness"
+                            ? "healthText"
+                            : elem.request.category.serviceCategory ===
+                              "Educational"
+                            ? "EducationalText"
+                            : elem.request.category.serviceCategory ===
+                              "Creative"
+                            ? "creativeText"
+                            : elem.request.category.serviceCategory === "Home"
+                            ? "homeBorder"
+                            : elem.request.category.serviceCategory ===
+                              "Transportation"
+                            ? "transportationText"
+                            : ""
+                        }`}
+                      >
+                        {elem.request.category.serviceCategory}
+                      </div>
+
+                      <br />
+                      {elem.request.name}
+                    </div>
+                  </div>
+                </>
+              );
             })
           ) : (
             <div>No one answered your requests ...</div>
