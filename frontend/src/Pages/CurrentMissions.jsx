@@ -116,7 +116,7 @@ function CurrentMissions() {
         <>
           <div style={{ paddingTop: "5vh" }}>
             {userCurrentMissionsOngoingProvided.length > 0 ? (
-              <h3 className="title">Ongoing services</h3>
+              <h3 className="titles">Ongoing services</h3>
             ) : (
               <div>
                 <h3>You have no ongoing services.</h3>
@@ -141,7 +141,7 @@ function CurrentMissions() {
         <>
           <div style={{ paddingTop: "5vh" }}>
             {userCurrentMissionsOngoingRequested.length > 0 ? (
-              <h3 className="title">Ongoing requests</h3>
+              <h3 className="titles">Ongoing requests</h3>
             ) : (
               <div>
                 <h3>You have no ongoing request.</h3>

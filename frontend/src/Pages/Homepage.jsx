@@ -3,6 +3,7 @@ import { Link, Navigate, useNavigate } from "react-router-dom";
 import Navbar from "../Components/Navbar";
 import { AuthContext } from "../Context/authContext";
 import service from "../service/service";
+import ActionAreaCard from "../Components/Card";
 
 function Homepage() {
   const { user } = useContext(AuthContext);
@@ -26,13 +27,11 @@ function Homepage() {
   return (
     <div>
       <Navbar />
-      <div style={{ paddingTop: "5vh" }}>
+      <div className="blur" style={{ paddingTop: "5vh" }}>
         <h2 className="title">
-          Welcome to{" "}
           <span>
             <img src="/Pictures/Barter-black.png" alt="" />
           </span>{" "}
-          !
         </h2>
         <div className="homepage-indications">
           <h2 className="indications">
@@ -44,21 +43,39 @@ function Homepage() {
 
       {user ? (
         <div>
+          <Link to="/search">
+            <ActionAreaCard
+              image="/Pictures/gradiant.jpg"
+              title="Make a request"
+              description={
+                <React.Fragment>
+                  You have{" "}
+                  <span style={{ color: "#006D77", fontWeight: "900" }}>
+                    {wallet}
+                  </span>{" "}
+                  BarterBucks! Go ahead and click <Link to="/search">here</Link>{" "}
+                  to look for someone available to help you out!
+                </React.Fragment>
+              }
+            />
+          </Link>
+          <Link to="/profile">
+            <ActionAreaCard
+              image="/Pictures/gradiant2.jpg"
+              title="Visit your profile"
+              description={
+                <React.Fragment>
+                  <div>
+                    visit your profile and update your skills and your
+                    availability for other users to request your help.
+                  </div>
+                </React.Fragment>
+              }
+            />
+          </Link>
+
           <div className="homepage-text-content">
-            You have{" "}
-            <span style={{ color: "#006D77", fontWeight: "900" }}>
-              {wallet}
-            </span>{" "}
-            BarterBucks ! Go ahead and click <Link to="/search">here</Link> to
-            look for someone available to help you out !
-          </div>
-          <div className="homepage-text-content">
-            You can also <Link to="/profile">visit your profile</Link> and
-            update your skills and your availability for other users to request
-            your help.
-          </div>
-          <div className="homepage-text-content">
-            Enjoy and have a great time with your community !
+            Enjoy and have a great time <br /> with your community !
           </div>
         </div>
       ) : (

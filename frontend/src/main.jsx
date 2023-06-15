@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
 import "./index.css";
@@ -8,16 +8,18 @@ import "@fontsource/roboto/300.css";
 import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
-// import { ToastContainer, toast } from "react-toastify";
-// import "react-toastify/dist/ReactToastify.css";
 // import { io } from "socket.io-client";
 
-// const socket = io();
+// const socket = io("http://localhost:5005");
 
-// socket.on("databaseChange", () => {
-//   console.log("socket on is working");
-//   // Display toast notification using react-toastify
-//   toast("A change occurred in the database!");
+// socket.on("notification", (data) => {
+//   console.log("Received notification:", data);
+//   // Display a push notification
+//   if (Notification.permission === "granted") {
+//     new Notification("You've been requested", {
+//       body: data.message,
+//     });
+//   }
 // });
 
 ReactDOM.createRoot(document.getElementById("root")).render(

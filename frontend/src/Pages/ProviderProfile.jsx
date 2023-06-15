@@ -82,7 +82,7 @@ function ProviderProfile() {
   }, []);
   useEffect(() => {
     getUserMission();
-  }, []);
+  }, [provider]);
 
   useEffect(() => {
     provider &&
@@ -115,17 +115,193 @@ function ProviderProfile() {
     provider && (
       <>
         <Navbar />
-        <div style={{ paddingTop: "5vh" }}>
+        <div>
           <div className="profile-info">
             <img
               src={provider.picture}
               alt="profile-picture"
-              className="profile-pic"
+              className="profile-pic-provider"
             />
             <h1>{provider.name}</h1>
           </div>
 
           <div className="categories">
+            <h2>Browse categories to check {provider.name}'s skills</h2>
+            <div className="scrollable-container">
+              <div className="scrollable-content">
+                <div
+                  className={`scrollable-item ${
+                    selectedCategory === "Personal" ? "active" : ""
+                  } `}
+                  onClick={() => handleCategoryClick("Personal")}
+                >
+                  <div className="image-wrapper">
+                    <img
+                      src="/Icons/user.png"
+                      alt="image category"
+                      className="image"
+                      style={{ transform: "scale(0.8)" }}
+                    />
+                  </div>
+                  <div className="PersonalBG title">Personal</div>
+                </div>
+                <div
+                  className={`scrollable-item ${
+                    selectedCategory === "Professional" ? "active" : ""
+                  } `}
+                  onClick={() => handleCategoryClick("Professional")}
+                >
+                  <div className="image-wrapper">
+                    <img
+                      src="/Icons/professional.png"
+                      alt="image category"
+                      className="image"
+                    />
+                  </div>
+                  <div className="ProfessionalBG title">Professional</div>
+                </div>
+                <div
+                  className={`scrollable-item   ${
+                    selectedCategory === "Health and Wellness" ? "active" : ""
+                  } `}
+                  onClick={() => handleCategoryClick("Health and Wellness")}
+                >
+                  <div className="image-wrapper">
+                    <img
+                      src="/Icons/health.png"
+                      alt="image category"
+                      className="image"
+                    />
+                  </div>
+                  <div className="healthBG title">Health</div>
+                </div>
+                <div
+                  className={`scrollable-item ${
+                    selectedCategory === "Educational" ? "active" : ""
+                  } `}
+                  onClick={() => handleCategoryClick("Educational")}
+                >
+                  <div className="image-wrapper">
+                    <img
+                      src="/Icons/education.png"
+                      alt="image category"
+                      className="image"
+                    />
+                  </div>
+                  <div className="EducationalBG title">Educational</div>
+                </div>
+                <div
+                  className={`scrollable-item ${
+                    selectedCategory === "Creative" ? "active" : ""
+                  } `}
+                  onClick={() => handleCategoryClick("Creative")}
+                >
+                  <div className="image-wrapper">
+                    <img
+                      src="/Icons/creative.png"
+                      alt="image category"
+                      className="image"
+                    />
+                  </div>
+                  <div className="creativeBG title">Creative</div>
+                </div>
+                <div
+                  className={`scrollable-item ${
+                    selectedCategory === "Home" ? "active" : ""
+                  } `}
+                  onClick={() => handleCategoryClick("Home")}
+                >
+                  <div className="image-wrapper">
+                    <img
+                      src="/Icons/home.png"
+                      alt="image category"
+                      className="image"
+                    />
+                  </div>
+                  <div className="homeBG title">Home</div>
+                </div>
+                <div
+                  className={`scrollable-item ${
+                    selectedCategory === "Transportation" ? "active" : ""
+                  } `}
+                  onClick={() => handleCategoryClick("Transportation")}
+                >
+                  <div className="image-wrapper">
+                    <img
+                      src="/Icons/transportation.png"
+                      alt="image category"
+                      className="image"
+                    />
+                  </div>
+                  <div className="transportationBG title">Transports</div>
+                </div>
+              </div>
+            </div>
+
+            {selectedCategory && (
+              <>
+                <div className="skill-info">
+                  <h2>Skills details</h2>
+
+                  <img
+                    onClick={() => setSelectedCategory(null)}
+                    src={"/Icons/close.png"}
+                    alt="Close"
+                    className="close-icon"
+                  />
+                </div>
+                <div className="skill-info">
+                  {user.skills.length > 0 &&
+                    filteredSkills.map((elem) => (
+                      <div
+                        className={`skill-container ${
+                          elem.serviceCategory === "Personal"
+                            ? "PersonalBorder"
+                            : elem.serviceCategory === "Professional"
+                            ? "ProfessionalBorder"
+                            : elem.serviceCategory === "Health and Wellness"
+                            ? "healthBorder"
+                            : elem.serviceCategory === "Educational"
+                            ? "EducationalBorder"
+                            : elem.serviceCategory === "Creative"
+                            ? "creativeBorder"
+                            : elem.serviceCategory === "Home"
+                            ? "homeBorder"
+                            : elem.serviceCategory === "Transportation"
+                            ? "transportationBorder"
+                            : ""
+                        }`}
+                        key={elem._id}
+                      >
+                        {elem.name}
+                      </div>
+                    ))}
+                </div>
+              </>
+            )}
+          </div>
+
+          <div className="services">
+            <div style={{ textAlign: "center" }}>
+              <h2>Services rendus</h2>
+              {userFinishedMission.length !== 0 ? (
+                userFinishedMission.map((elem) => {
+                  return (
+                    <>
+                      <div className="skill-info">
+                        <div className="skill-container" key={elem._id}>
+                          {elem.request.name}
+                        </div>
+                      </div>
+                    </>
+                  );
+                })
+              ) : (
+                <div>This user did not provide any service yet</div>
+              )}
+            </div>
+          </div>
+          {/* <div className="categories">
             <h2>What do I need ?</h2>
             <div className="category-buttons">
               <button
@@ -252,7 +428,7 @@ function ProviderProfile() {
                 </div>
               );
             })}
-          </div>
+          </div> */}
         </div>
       </>
     )

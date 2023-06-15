@@ -4,6 +4,8 @@ import { Navigate, Link, useParams, useNavigate } from "react-router-dom";
 import service from "../service/service.js";
 import Navbar from "./../Components/Navbar";
 
+import { io } from "socket.io-client";
+
 function Request() {
   const { user } = useContext(AuthContext);
   const params = useParams();
@@ -16,6 +18,38 @@ function Request() {
   const [bbAmount, setBbAmount] = useState(0);
   const [providerSkill, setProviderSkill] = useState("");
   const navigate = useNavigate();
+
+  // function notifRequest() {
+  const socket = io("http://localhost:5005");
+
+  socket.on("notification", (data) => {
+    console.log("Received notification:", data);
+    // Display a push notification
+    if (Notification.permission === "granted") {
+      new Notification("You've been requested", {
+        body: data.message,
+      });
+    }
+    // socket.emit("notifToServer", (data))
+  });
+
+  function storeUserSocket(userId) {
+    socket.emit("storeUserSocket", userId);
+  }
+
+  useEffect(() => {
+    // Call the storeUserSocket function after the socket connection is established and the user is authenticated
+    if (provider && user) {
+      storeUserSocket(provider._id);
+    }
+  }, [provider, user]);
+  //   socket.emit("notifRequest");
+  // }
+
+  // notifRequest();
+  useEffect(() => {
+    console.log("this is the provider use effect", provider);
+  }, [provider]);
 
   async function getProvider() {
     try {
@@ -42,7 +76,7 @@ function Request() {
   useEffect(() => {
     getProvider();
     getSkillCategory();
-  }, []);
+  }, [user]);
 
   useEffect(() => {
     getWalletBB();

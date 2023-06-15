@@ -97,10 +97,13 @@ function Messages() {
             {" "}
             <b> {request.name}</b>
           </div>
-          <div>Detail : {request.firstMessage}</div>
+          <div>Request detail : {request.firstMessage}</div>
           <div>BarterBucks amount : {request.bbAmount}</div>
         </div>
-        <div style={{ paddingTop: "2vh" }}>
+        <div className="divider-container">
+          <div className="divider"></div>
+        </div>
+        <div style={{ padding: "1rem" }}>
           {messages.map((message, index) => (
             <div key={index}>
               {message.sender === user._id ? (
@@ -118,12 +121,17 @@ function Messages() {
           <div className="textarea-container">
             <div>
               <textarea
+                placeholder="Type your message"
                 type="text"
                 value={newMessage}
                 onChange={(event) => setNewMessage(event.target.value)}
               />
             </div>
-            <button onClick={postMessage}>Send</button>
+            <img
+              style={{ width: "15%", padding: ".5rem" }}
+              src="/Icons/send.png"
+              onClick={postMessage}
+            />
           </div>
         </div>
       </>
