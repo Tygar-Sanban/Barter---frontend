@@ -27,6 +27,19 @@ import Messages from "./Pages/Messages";
 import CurrentMissions from "./Pages/CurrentMissions";
 import CurrentMission from "./Pages/CurrentMission";
 import RequestPage from "./Pages/RequestPage";
+import Product from "./Pages/Product";
+import Automotive from "./Pages/ProductsCategories/Automotive";
+import BooksMoviesAndMusic from "./Pages/ProductsCategories/BooksMoviesAndMusic";
+import Electronics from "./Pages/ProductsCategories/Electronics";
+import FashionAndAccessories from "./Pages/ProductsCategories/FashionAndAccessories";
+import HealthAndBeauty from "./Pages/ProductsCategories/HealthAndBeauty";
+import HomeAndFurniture from "./Pages/ProductsCategories/HomeAndFurniture";
+import SportAndFitness from "./Pages/ProductsCategories/SportAndFitness";
+import ToysAndGames from "./Pages/ProductsCategories/ToysAndGames";
+import ProductSheet from "./Pages/ProductSheet";
+import Cart from "./Pages/Cart";
+import CurrentProducts from "./Pages/CurrentProducts";
+import CurrentProduct from "./Pages/CurrentProduct";
 
 // import { ToastContainer } from "react-toastify";
 // import "react-toastify/dist/ReactToastify.css";
@@ -52,19 +65,32 @@ function App() {
         <Route path="/modifySkills" element={<ModifySkills />}></Route>
         <Route path="/request/:query/:skill" element={<Request />}></Route>
         <Route path="/my-requests" element={<AllRequests />}></Route>
-
         <Route path="/sent-requests" element={<AllRequestsSent />}></Route>
         <Route path="/sent-requests/:query" element={<Negociate />}></Route>
         <Route path="/messages/:query" element={<Messages />}></Route>
-
         <Route path="/current-missions" element={<CurrentMissions />}></Route>
+        <Route path="/current-products" element={<CurrentProducts />}></Route>
+        <Route
+          path="/current-products/:id"
+          element={<CurrentProduct />}
+        ></Route>
         <Route path="/current-mission/:id" element={<CurrentMission />}></Route>
-
+        <Route path="/product" element={<Product />} />
+        <Route path="/automotive" element={<Automotive />} />
+        <Route path="/books" element={<BooksMoviesAndMusic />} />
+        <Route path="/electronics" element={<Electronics />} />
+        <Route path="/fashion" element={<FashionAndAccessories />} />
+        <Route path="/health" element={<HealthAndBeauty />} />
+        <Route path="/home-and-furniture" element={<HomeAndFurniture />} />
+        <Route path="/sport" element={<SportAndFitness />} />
+        <Route path="/toys" element={<ToysAndGames />} />
+        <Route path="/product/:id" element={<ProductSheet />} />
         <Route
           path="/provider-profile/:provider"
           element={<ProviderProfile />}
         ></Route>
         <Route path="/request-page" element={<RequestPage />} />
+        <Route path="/cart" element={<Cart />} />
       </Routes>
       {/* <ToastContainer position="top-right" autoClose={3000} hideProgressBar /> */}
     </>

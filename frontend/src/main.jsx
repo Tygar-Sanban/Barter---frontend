@@ -21,12 +21,12 @@ import "@fontsource/roboto/700.css";
 // });
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
-    <BrowserRouter>
-      <AuthContextWrapper>
-        <App />
-      </AuthContextWrapper>
-      {/* <ToastContainer position="top-right" autoClose={3000} hideProgressBar /> */}
-    </BrowserRouter>
-  </React.StrictMode>
+  // <React.StrictMode>
+  <BrowserRouter>
+    <AuthContextWrapper>
+      <App />
+    </AuthContextWrapper>
+    {/* <ToastContainer position="top-right" autoClose={3000} hideProgressBar /> */}
+  </BrowserRouter>
+  // </React.StrictMode>
 );

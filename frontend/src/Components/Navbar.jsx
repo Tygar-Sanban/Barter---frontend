@@ -62,6 +62,13 @@ function Navbar(props) {
         )}
         {user && (
           <div>
+            <Link to="/product">
+              <p>Product</p>
+            </Link>
+          </div>
+        )}
+        {user && (
+          <div>
             <Link to="/profile">
               <p>Profile</p>
             </Link>
@@ -92,6 +99,12 @@ function Navbar(props) {
             </Link>
             <Link to="/profile" className="sidebar-link">
               Profile
+            </Link>
+            <Link to="/current-products" className="sidebar-link">
+              Current Products
+            </Link>
+            <Link to="/cart" className="sidebar-link">
+              Cart
             </Link>
           </div>
         </div>

@@ -43,35 +43,35 @@ function SignUp() {
       </h3>
       <form className="login-form" onSubmit={handleSubmit}>
         <div className="login-form-element">
-          <label htmlFor="email">Email</label>
+          <label htmlFor="email">Email *</label>
           <input
             type="email"
             onChange={(event) => setEmail(event.target.value)}
           />
         </div>
         <div className="login-form-element">
-          <label htmlFor="password">Password</label>
+          <label htmlFor="password">Password *</label>
           <input
             type="password"
             onChange={(event) => setPassword(event.target.value)}
           />
         </div>
         <div className="login-form-element">
-          <label htmlFor="phone">Phone number</label>
+          <label htmlFor="phone">Phone number *</label>
           <input
             type="tel"
             onChange={(event) => setPhone(event.target.value)}
           />
         </div>
         <div className="login-form-element">
-          <label htmlFor="name">User Name</label>
+          <label htmlFor="name">User Name *</label>
           <input
             type="text"
             onChange={(event) => setName(event.target.value)}
           />
         </div>
         <div className="login-form-element">
-          <label htmlFor="location">Location</label>
+          <label htmlFor="location">Location *</label>
           <input
             type="text"
             onChange={(event) => setlocation(event.target.value)}
