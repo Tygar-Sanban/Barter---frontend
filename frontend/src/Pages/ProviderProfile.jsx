@@ -253,28 +253,34 @@ function ProviderProfile() {
                 <div className="skill-info">
                   {user.skills.length > 0 &&
                     filteredSkills.map((elem) => (
-                      <div
-                        className={`skill-container ${
-                          elem.serviceCategory === "Personal"
-                            ? "PersonalBorder"
-                            : elem.serviceCategory === "Professional"
-                            ? "ProfessionalBorder"
-                            : elem.serviceCategory === "Health and Wellness"
-                            ? "healthBorder"
-                            : elem.serviceCategory === "Educational"
-                            ? "EducationalBorder"
-                            : elem.serviceCategory === "Creative"
-                            ? "creativeBorder"
-                            : elem.serviceCategory === "Home"
-                            ? "homeBorder"
-                            : elem.serviceCategory === "Transportation"
-                            ? "transportationBorder"
-                            : ""
-                        }`}
+                      <Link
                         key={elem._id}
+                        to={`/request/${provider._id}/${elem._id}`}
                       >
-                        {elem.name}
-                      </div>
+                        <div
+                          style={{ color: "black" }}
+                          className={`skill-container ${
+                            elem.serviceCategory === "Personal"
+                              ? "PersonalBorder"
+                              : elem.serviceCategory === "Professional"
+                              ? "ProfessionalBorder"
+                              : elem.serviceCategory === "Health and Wellness"
+                              ? "healthBorder"
+                              : elem.serviceCategory === "Educational"
+                              ? "EducationalBorder"
+                              : elem.serviceCategory === "Creative"
+                              ? "creativeBorder"
+                              : elem.serviceCategory === "Home"
+                              ? "homeBorder"
+                              : elem.serviceCategory === "Transportation"
+                              ? "transportationBorder"
+                              : ""
+                          }`}
+                          key={elem._id}
+                        >
+                          {elem.name}
+                        </div>
+                      </Link>
                     ))}
                 </div>
               </>
@@ -289,7 +295,31 @@ function ProviderProfile() {
                   return (
                     <>
                       <div className="skill-info">
-                        <div className="skill-container" key={elem._id}>
+                        <div
+                          className={`skill-container ${
+                            elem.request.category.serviceCategory === "Personal"
+                              ? "PersonalBorder"
+                              : elem.request.category.serviceCategory ===
+                                "Professional"
+                              ? "ProfessionalBorder"
+                              : elem.request.category.serviceCategory ===
+                                "Health and Wellness"
+                              ? "healthBorder"
+                              : elem.request.category.serviceCategory ===
+                                "Educational"
+                              ? "EducationalBorder"
+                              : elem.request.category.serviceCategory ===
+                                "Creative"
+                              ? "creativeBorder"
+                              : elem.request.category.serviceCategory === "Home"
+                              ? "homeBorder"
+                              : elem.request.category.serviceCategory ===
+                                "Transportation"
+                              ? "transportationBorder"
+                              : ""
+                          }`}
+                          key={elem._id}
+                        >
                           {elem.request.name}
                         </div>
                       </div>
@@ -404,7 +434,8 @@ function ProviderProfile() {
             </form>
           </div>
         </div>
-        <div>
+        <div>*/}
+
           <h3>Commentaries about {provider.name}</h3>
           <div className="bodyFont">
             {displayedCommentaries.map((elem) => {
@@ -428,7 +459,7 @@ function ProviderProfile() {
                 </div>
               );
             })}
-          </div> */}
+          </div>
         </div>
       </>
     )

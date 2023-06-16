@@ -15,7 +15,7 @@ export default function ActionAreaCard({ image, title, description }) {
             height="140"
             image={image}
             alt={title}
-            style={{ backgroundColor: "pink", width: "100%" }}
+            style={{ width: "100%" }}
           />
           <CardContent style={{ backgroundColor: "rgba(41, 94, 219, 0.05)" }}>
             <Typography gutterBottom variant="h5" component="div">
