@@ -116,7 +116,7 @@ function CurrentProducts() {
         <>
           <div style={{ paddingTop: "5vh" }}>
             {userCurrentProductsOngoingProvided.length > 0 ? (
-              <h3 className="title">Pending sales</h3>
+              <h3 className="titles">Pending sales</h3>
             ) : (
               <div>
                 <h3>You have no pending sales.</h3>
@@ -129,7 +129,7 @@ function CurrentProducts() {
                 return (
                   <Link className="results" key={elem._id} to={url}>
                     <div>
-                      {elem.product.name} by {elem.product.requester.name}{" "}
+                      {elem.product.name} for {elem.product.requester.name}{" "}
                     </div>
                   </Link>
                 );
@@ -141,7 +141,7 @@ function CurrentProducts() {
         <>
           <div style={{ paddingTop: "5vh" }}>
             {userCurrentProductsOngoingRequested.length > 0 ? (
-              <h3 className="title">Incoming products</h3>
+              <h3 className="titles">Incoming products</h3>
             ) : (
               <div>
                 <h3>You have no incoming products.</h3>
@@ -154,7 +154,7 @@ function CurrentProducts() {
                 return (
                   <Link className="results" key={elem._id} to={url}>
                     <div>
-                      {elem.product.name} for {elem.product.provider.name}{" "}
+                      {elem.product.name} from {elem.product.provider.name}{" "}
                     </div>
                   </Link>
                 );

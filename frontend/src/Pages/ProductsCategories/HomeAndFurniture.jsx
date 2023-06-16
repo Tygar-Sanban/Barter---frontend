@@ -44,20 +44,48 @@ function HomeAndFurniture() {
     <div>
       <Navbar />
       <div style={{ paddingTop: "5vh" }}>
-        <div onClick={() => setSubCategory("Furniture")}>Furniture</div>
-        <div onClick={() => setSubCategory("Home Decor and Accessories")}>
-          Home Decor and Accessories
+        <div className="titles">
+          <h2 className="titles">Home</h2>
         </div>
-        <div onClick={() => setSubCategory("Kitchen and Dining Essentials")}>
-          Kitchen and Dining Essentials
+        <div className="indications">
+          <h4>Which item category are you interrested in ?</h4>
         </div>
-        <div onClick={() => setSubCategory("Bedding and Bath")}>
-          Bedding and Bath
+        <div
+          className="bullet-points"
+          onClick={() => setSubCategory("Furniture")}
+        >
+          <button>Furniture</button>
         </div>
-        <div onClick={() => setSubCategory("Lighting and Fixtures")}>
-          Lighting and Fixtures
+        <div
+          className="bullet-points"
+          onClick={() => setSubCategory("Home Decor and Accessories")}
+        >
+          <button>Home Decor and Accessories</button>
         </div>
-        <div onClick={() => setSubCategory("Appliances")}>Appliances</div>
+        <div
+          className="bullet-points"
+          onClick={() => setSubCategory("Kitchen and Dining Essentials")}
+        >
+          <button>Kitchen and Dining Essentials</button>
+        </div>
+        <div
+          className="bullet-points"
+          onClick={() => setSubCategory("Bedding and Bath")}
+        >
+          <button>Bedding and Bath</button>
+        </div>
+        <div
+          className="bullet-points"
+          onClick={() => setSubCategory("Lighting and Fixtures")}
+        >
+          <button>Lighting and Fixtures</button>
+        </div>
+        <div
+          className="bullet-points"
+          onClick={() => setSubCategory("Appliances")}
+        >
+          <button>Appliances</button>
+        </div>
       </div>
       {products.length > 0 && (
         <div>
@@ -69,7 +97,11 @@ function HomeAndFurniture() {
           const url = `/product/${elem._id}`;
           return (
             <Link key={elem._id} to={url}>
-              <div>{elem.name}</div>
+              <div className="bullet-points">
+                <button>
+                  {elem.name} contributed by {elem.provider.name}
+                </button>
+              </div>
             </Link>
           );
         })}

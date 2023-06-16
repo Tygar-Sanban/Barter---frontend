@@ -61,7 +61,7 @@ function Negociate() {
         <>
           <Navbar />
           <div style={{ paddingTop: "5vh" }}>
-            <h3 className="title">{sentRequests.name}</h3>
+            <h3 className="titles">{sentRequests.name}</h3>
           </div>
           <div className="negociate-content">
             <div>Detail of your request : {sentRequests.firstMessage}</div>

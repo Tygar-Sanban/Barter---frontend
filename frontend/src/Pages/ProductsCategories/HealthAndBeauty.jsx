@@ -44,23 +44,47 @@ function HealthAndBeauty() {
     <div>
       <Navbar />
       <div style={{ paddingTop: "5vh" }}>
-        <div onClick={() => setSubCategory("Skincare and Cosmetics")}>
-          Skincare and Cosmetics
+        <div className="titles">
+          <h2 className="titles">Health</h2>
         </div>
-        <div onClick={() => setSubCategory("Haircare and Styling Products")}>
-          Haircare and Styling Products
+        <div className="indications">
+          <h4>Which item category are you interrested in ?</h4>
         </div>
-        <div onClick={() => setSubCategory("Personal Care and Hygiene")}>
-          Personal Care and Hygiene
+        <div
+          className="bullet-points"
+          onClick={() => setSubCategory("Skincare and Cosmetics")}
+        >
+          <button>Skincare and Cosmetics</button>
         </div>
-        <div onClick={() => setSubCategory("Vitamins and Supplements")}>
-          Vitamins and Supplements
+        <div
+          className="bullet-points"
+          onClick={() => setSubCategory("Haircare and Styling Products")}
+        >
+          <button>Haircare and Styling Products</button>
         </div>
-        <div onClick={() => setSubCategory("Fragrances and Perfumes")}>
-          Fragrances and Perfumes
+        <div
+          className="bullet-points"
+          onClick={() => setSubCategory("Personal Care and Hygiene")}
+        >
+          <button>Personal Care and Hygiene</button>
         </div>
-        <div onClick={() => setSubCategory("Wellness and Relaxation Products")}>
-          Wellness and Relaxation Products
+        <div
+          className="bullet-points"
+          onClick={() => setSubCategory("Vitamins and Supplements")}
+        >
+          <button>Vitamins and Supplements</button>
+        </div>
+        <div
+          className="bullet-points"
+          onClick={() => setSubCategory("Fragrances and Perfumes")}
+        >
+          <button>Fragrances and Perfumes</button>
+        </div>
+        <div
+          className="bullet-points"
+          onClick={() => setSubCategory("Wellness and Relaxation Products")}
+        >
+          <button>Wellness and Relaxation Products</button>
         </div>
       </div>
       {products.length > 0 && (
@@ -73,7 +97,11 @@ function HealthAndBeauty() {
           const url = `/product/${elem._id}`;
           return (
             <Link key={elem._id} to={url}>
-              <div>{elem.name}</div>
+              <div className="bullet-points">
+                <button>
+                  {elem.name} contributed by {elem.provider.name}
+                </button>
+              </div>
             </Link>
           );
         })}

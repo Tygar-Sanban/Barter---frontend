@@ -44,23 +44,47 @@ function Automotive() {
     <div>
       <Navbar />
       <div style={{ paddingTop: "5vh" }}>
-        <div onClick={() => setSubCategory("Car Parts and Accessories")}>
-          Car Parts and Accessories
+        <div className="titles">
+          <h2 className="titles">Automotive</h2>
         </div>
-        <div onClick={() => setSubCategory("Motorcycles and Scooters")}>
-          Motorcycles and Scooters
+        <div className="indications">
+          <h4>Which item category are you interrested in ?</h4>
         </div>
-        <div onClick={() => setSubCategory("Tools and Equipment")}>
-          Tools and Equipment
+        <div
+          className="bullet-points"
+          onClick={() => setSubCategory("Car Parts and Accessories")}
+        >
+          <button>Car Parts and Accessories</button>
         </div>
-        <div onClick={() => setSubCategory("Car Care and Maintenance")}>
-          Car Care and Maintenance
+        <div
+          className="bullet-points"
+          onClick={() => setSubCategory("Motorcycles and Scooters")}
+        >
+          <button>Motorcycles and Scooters</button>
         </div>
-        <div onClick={() => setSubCategory("GPS and Navigation Systems")}>
-          GPS and Navigation Systems
+        <div
+          className="bullet-points"
+          onClick={() => setSubCategory("Tools and Equipment")}
+        >
+          <button>Tools and Equipment</button>
         </div>
-        <div onClick={() => setSubCategory("Car Electronics")}>
-          Car Electronics
+        <div
+          className="bullet-points"
+          onClick={() => setSubCategory("Car Care and Maintenance")}
+        >
+          <button>Car Care and Maintenance</button>
+        </div>
+        <div
+          className="bullet-points"
+          onClick={() => setSubCategory("GPS and Navigation Systems")}
+        >
+          <button>GPS and Navigation Systems</button>
+        </div>
+        <div
+          className="bullet-points"
+          onClick={() => setSubCategory("Car Electronics")}
+        >
+          <button>Car Electronics</button>
         </div>
       </div>
       {products.length > 0 && (
@@ -73,9 +97,39 @@ function Automotive() {
           const url = `/product/${elem._id}`;
           return (
             <Link key={elem._id} to={url}>
-              <div>{elem.name}</div>
+              <div className="bullet-points">
+                <button>
+                  {elem.name} contributed by {elem.provider.name}
+                </button>
+              </div>
             </Link>
           );
+        })}
+      </div>
+    </div>
+  );
+
+  return (
+    <div>
+      <Navbar />
+      <div className="titles" style={{ paddingTop: "5vh" }}>
+        <h2 className="titles">Creative Services</h2>
+      </div>
+      <div className="indications">
+        <h4>Which skill are you interrested in ?</h4>
+      </div>
+      <div className="bullet-points">
+        {skills.map((elem) => {
+          if (elem.serviceCategory === "Creative") {
+            const url = `/search-result/${elem._id}`;
+            return (
+              <Link key={elem._id} to={url}>
+                <div className="skill-container creativeBorder">
+                  {elem.name}
+                </div>
+              </Link>
+            );
+          }
         })}
       </div>
     </div>

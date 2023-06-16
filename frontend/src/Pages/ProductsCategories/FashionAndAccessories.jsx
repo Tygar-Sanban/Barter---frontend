@@ -44,20 +44,48 @@ function FashionAndAccessories() {
     <div>
       <Navbar />
       <div style={{ paddingTop: "5vh" }}>
-        <div onClick={() => setSubCategory("Clothing")}>Clothing</div>
-        <div onClick={() => setSubCategory("Shoes and Footwear")}>
-          Shoes and Footwear
+        <div className="titles">
+          <h2 className="titles">Fashion</h2>
         </div>
-        <div onClick={() => setSubCategory("Jewelry and Watches")}>
-          Jewelry and Watches
+        <div className="indications">
+          <h4>Which item category are you interrested in ?</h4>
         </div>
-        <div onClick={() => setSubCategory("Bags and Luggage")}>
-          Bags and Luggage
+        <div
+          className="bullet-points"
+          onClick={() => setSubCategory("Clothing")}
+        >
+          <button>Clothing</button>
         </div>
-        <div onClick={() => setSubCategory("Sunglasses and Eyewear")}>
-          Sunglasses and Eyewear
+        <div
+          className="bullet-points"
+          onClick={() => setSubCategory("Shoes and Footwear")}
+        >
+          <button>Shoes and Footwear</button>
         </div>
-        <div onClick={() => setSubCategory("Accessories")}>Accessories</div>
+        <div
+          className="bullet-points"
+          onClick={() => setSubCategory("Jewelry and Watches")}
+        >
+          <button>Jewelry and Watches</button>
+        </div>
+        <div
+          className="bullet-points"
+          onClick={() => setSubCategory("Bags and Luggage")}
+        >
+          <button>Bags and Luggage</button>
+        </div>
+        <div
+          className="bullet-points"
+          onClick={() => setSubCategory("Sunglasses and Eyewear")}
+        >
+          <button>Sunglasses and Eyewear</button>
+        </div>
+        <div
+          className="bullet-points"
+          onClick={() => setSubCategory("Accessories")}
+        >
+          <button>Accessories</button>
+        </div>
       </div>
       {products.length > 0 && (
         <div>
@@ -69,7 +97,11 @@ function FashionAndAccessories() {
           const url = `/product/${elem._id}`;
           return (
             <Link key={elem._id} to={url}>
-              <div>{elem.name}</div>
+              <div className="bullet-points">
+                <button>
+                  {elem.name} contributed by {elem.provider.name}
+                </button>
+              </div>
             </Link>
           );
         })}

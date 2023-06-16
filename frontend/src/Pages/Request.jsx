@@ -126,7 +126,7 @@ function Request() {
       {canUpdate && (
         <>
           <Navbar />
-          <div className="title" style={{ paddingTop: "5vh" }}>
+          <div className="titles" style={{ paddingTop: "5vh" }}>
             <h3>Request</h3>
           </div>
           <div>

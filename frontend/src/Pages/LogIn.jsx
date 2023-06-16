@@ -28,7 +28,7 @@ function LogIn() {
   return (
     <div>
       <Navbar />
-      <h3 style={{ paddingTop: "5vh" }} className="title">
+      <h3 style={{ paddingTop: "5vh" }} className="titles">
         Enter your login information
       </h3>
       <form className="login-form" onSubmit={handleSubmit}>

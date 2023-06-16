@@ -38,7 +38,7 @@ function SignUp() {
 
   return (
     <div>
-      <h3 style={{ paddingTop: "5vh" }} className="title">
+      <h3 style={{ paddingTop: "5vh" }} className="titles">
         Enter your informations
       </h3>
       <form className="login-form" onSubmit={handleSubmit}>
@@ -82,6 +82,7 @@ function SignUp() {
           <input
             type="text"
             onChange={(event) => setPicture(event.target.value)}
+            placeholder="Insert hypertext link"
           />
         </div>
         <SelectSkills
