@@ -44,23 +44,47 @@ function Electronics() {
     <div>
       <Navbar />
       <div style={{ paddingTop: "5vh" }}>
-        <div onClick={() => setSubCategory("Computers and Laptops")}>
-          Computers and Laptops
+        <div className="titles">
+          <h2 className="titles">Electronics</h2>
         </div>
-        <div onClick={() => setSubCategory("Smartphones and Accessories")}>
-          Smartphones and Accessories
+        <div className="indications">
+          <h4>Which item category are you interrested in ?</h4>
         </div>
-        <div onClick={() => setSubCategory("Audio and Video Equipment")}>
-          Audio and Video Equipment
+        <div
+          className="bullet-points"
+          onClick={() => setSubCategory("Computers and Laptops")}
+        >
+          <button>Computers and Laptops</button>
         </div>
-        <div onClick={() => setSubCategory("Cameras and Photography Gear")}>
-          Cameras and Photography Gear
+        <div
+          className="bullet-points"
+          onClick={() => setSubCategory("Smartphones and Accessories")}
+        >
+          <button>Smartphones and Accessories</button>
         </div>
-        <div onClick={() => setSubCategory("Gaming Consoles and Accessories")}>
-          Gaming Consoles and Accessories
+        <div
+          className="bullet-points"
+          onClick={() => setSubCategory("Audio and Video Equipment")}
+        >
+          <button>Audio and Video Equipment</button>
         </div>
-        <div onClick={() => setSubCategory("Home Appliances")}>
-          Home Appliances
+        <div
+          className="bullet-points"
+          onClick={() => setSubCategory("Cameras and Photography Gear")}
+        >
+          <button>Cameras and Photography Gear</button>
+        </div>
+        <div
+          className="bullet-points"
+          onClick={() => setSubCategory("Gaming Consoles and Accessories")}
+        >
+          <button>Gaming Consoles and Accessories</button>
+        </div>
+        <div
+          className="bullet-points"
+          onClick={() => setSubCategory("Home Appliances")}
+        >
+          <button>Home Appliances</button>
         </div>
       </div>
       {products.length > 0 && (
@@ -73,7 +97,11 @@ function Electronics() {
           const url = `/product/${elem._id}`;
           return (
             <Link key={elem._id} to={url}>
-              <div>{elem.name}</div>
+              <div className="bullet-points">
+                <button>
+                  {elem.name} contributed by {elem.provider.name}
+                </button>
+              </div>
             </Link>
           );
         })}

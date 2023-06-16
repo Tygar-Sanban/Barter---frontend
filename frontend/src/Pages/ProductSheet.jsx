@@ -40,14 +40,18 @@ function ProductSheet() {
       <Navbar />
       <div style={{ paddingTop: "5vh" }}>
         {product && (
-          <div>
-            <div>{product.productCategory}</div>
-            <div>
-              <img src={product.picture} alt="product-picture" />
+          <div className="product-card">
+            <div className="titles">{product.productCategory}</div>
+            <div className="product-img-name">
+              <img
+                style={{ width: "50%" }}
+                src={product.picture}
+                alt="product-picture"
+              />
               <h2>{product.name}</h2>
             </div>
-            <div>{product.description}</div>
-            <div>
+            <div className="product-description">{product.description}</div>
+            <div className="product-thunasse">
               {product.bbAmount}{" "}
               <img
                 style={{ width: "15%" }}
@@ -56,14 +60,20 @@ function ProductSheet() {
               />
             </div>
             {cart && cart.products.some((item) => item._id === product._id) ? (
-              <div>This item is in your cart.</div>
+              <div className="titles">This item is in your cart.</div>
             ) : (
-              <button onClick={handleAdd}>Add to cart</button>
+              <div className="flex">
+                <button className="product-button" onClick={handleAdd}>
+                  Add to cart
+                </button>
+              </div>
             )}
 
-            <Link to="/cart">
-              <button>Go to cart</button>
-            </Link>
+            <div className="flex">
+              <Link to="/cart">
+                <button className="product-button">Go to cart</button>
+              </Link>
+            </div>
           </div>
         )}
       </div>

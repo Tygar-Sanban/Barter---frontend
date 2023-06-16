@@ -22,8 +22,11 @@ function CurrentProduct() {
 
   async function deleteProduct() {
     try {
+      await service.patch(`product/${currentProduct.product._id}`, {
+        reserved: false,
+      });
+      await service.delete(`/current-product/${params.id}`);
       navigate("/current-products");
-      const response = await service.delete(`/current-product/${params.id}`);
     } catch (error) {
       console.log(error);
     }
@@ -60,12 +63,17 @@ function CurrentProduct() {
     <div>
       <Navbar />
       {currentProduct && (
-        <div style={{ paddingTop: "5vh" }}>
-          <h2 className="title">{currentProduct.product.name}</h2>
+        <div className="top-current-product" style={{ paddingTop: "5vh" }}>
+          <h2 className="titles">{currentProduct.product.name}</h2>
+          <img
+            src={currentProduct.product.picture}
+            style={{ width: "25%" }}
+            alt=""
+          />
           <div className="current-mission-content">
             {user?._id === currentProduct.product.provider._id ? (
               <div>
-                You still need to accomplish this service for{" "}
+                You still need to bring it to{" "}
                 {currentProduct.product.requester.name}.
               </div>
             ) : (

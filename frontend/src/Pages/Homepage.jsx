@@ -28,9 +28,13 @@ function Homepage() {
     <div>
       <Navbar />
       <div className="blur" style={{ paddingTop: "5vh" }}>
-        <h2 className="title">
+        <h2 className="titles">
           <span>
-            <img src="/Pictures/Barter-black.png" alt="" />
+            <img
+              style={{ width: "50%" }}
+              src="/Pictures/Barter-black.png"
+              alt=""
+            />
           </span>{" "}
         </h2>
         <div className="homepage-indications">

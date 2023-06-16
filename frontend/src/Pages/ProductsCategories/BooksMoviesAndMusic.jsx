@@ -44,21 +44,41 @@ function BooksMoviesAndMusic() {
     <div>
       <Navbar />
       <div style={{ paddingTop: "5vh" }}>
-        <div onClick={() => setSubCategory("Fiction and Non-fiction Books")}>
-          Fiction and Non-fiction Books
+        <div className="titles">
+          <h2 className="titles">Multimedia</h2>
+        </div>
+        <div className="indications">
+          <h4>Which item category are you interrested in ?</h4>
         </div>
         <div
+          className="bullet-points"
+          onClick={() => setSubCategory("Fiction and Non-fiction Books")}
+        >
+          <button>Fiction and Non-fiction Books</button>
+        </div>
+        <div
+          className="bullet-points"
           onClick={() => setSubCategory("Textbooks and Educational Materials")}
         >
-          Textbooks and Educational Materials
+          <button>Textbooks and Educational Materials</button>
         </div>
-        <div onClick={() => setSubCategory("Movies")}>Movies</div>
-        <div onClick={() => setSubCategory("Music")}>Music</div>
-        <div onClick={() => setSubCategory("E-books and Audiobooks")}>
-          E-books and Audiobooks
+        <div
+          className="bullet-points"
+          onClick={() => setSubCategory("E-books and Audiobooks")}
+        >
+          <button>E-books and Audiobooks</button>
         </div>
-        <div onClick={() => setSubCategory("Musical Instruments")}>
-          Musical Instruments
+        <div
+          className="bullet-points"
+          onClick={() => setSubCategory("Musical Instruments")}
+        >
+          <button>Musical Instruments</button>
+        </div>
+        <div className="bullet-points" onClick={() => setSubCategory("Movies")}>
+          <button>Movies</button>
+        </div>
+        <div className="bullet-points" onClick={() => setSubCategory("Music")}>
+          <button>Music</button>
         </div>
       </div>
       {products.length > 0 && (
@@ -71,7 +91,11 @@ function BooksMoviesAndMusic() {
           const url = `/product/${elem._id}`;
           return (
             <Link key={elem._id} to={url}>
-              <div>{elem.name}</div>
+              <div className="bullet-points">
+                <button>
+                  {elem.name} contributed by {elem.provider.name}
+                </button>
+              </div>
             </Link>
           );
         })}

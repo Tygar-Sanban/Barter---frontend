@@ -44,27 +44,49 @@ function ToysAndGames() {
     <div>
       <Navbar />
       <div style={{ paddingTop: "5vh" }}>
-        <div onClick={() => setSubCategory("Board Games and Puzzles")}>
-          Board Games and Puzzles
+        <div className="titles">
+          <h2 className="titles">Toys and Games</h2>
         </div>
-        <div onClick={() => setSubCategory("Action Figures and Collectibles")}>
-          Action Figures and Collectibles
+        <div className="indications">
+          <h4>Which item category are you interrested in ?</h4>
         </div>
         <div
+          className="bullet-points"
+          onClick={() => setSubCategory("Board Games and Puzzles")}
+        >
+          <button>Board Games and Puzzles</button>
+        </div>
+        <div
+          className="bullet-points"
+          onClick={() => setSubCategory("Action Figures and Collectibles")}
+        >
+          <button>Action Figures and Collectibles</button>
+        </div>
+        <div
+          className="bullet-points"
           onClick={() =>
             setSubCategory("Building Blocks and Construction Sets")
           }
         >
-          Building Blocks and Construction Sets
+          <button>Building Blocks and Construction Sets</button>
         </div>
-        <div onClick={() => setSubCategory("Dolls and Accessories")}>
-          Dolls and Accessories
+        <div
+          className="bullet-points"
+          onClick={() => setSubCategory("Dolls and Accessories")}
+        >
+          <button>Dolls and Accessories</button>
         </div>
-        <div onClick={() => setSubCategory("Educational Toys")}>
-          Educational Toys
+        <div
+          className="bullet-points"
+          onClick={() => setSubCategory("Educational Toys")}
+        >
+          <button>Educational Toys</button>
         </div>
-        <div onClick={() => setSubCategory("Outdoor Play Equipment")}>
-          Outdoor Play Equipment
+        <div
+          className="bullet-points"
+          onClick={() => setSubCategory("Outdoor Play Equipment")}
+        >
+          <button>Outdoor Play Equipment</button>
         </div>
       </div>
       {products.length > 0 && (
@@ -77,7 +99,11 @@ function ToysAndGames() {
           const url = `/product/${elem._id}`;
           return (
             <Link key={elem._id} to={url}>
-              <div>{elem.name}</div>
+              <div className="bullet-points">
+                <button>
+                  {elem.name} contributed by {elem.provider.name}
+                </button>
+              </div>
             </Link>
           );
         })}

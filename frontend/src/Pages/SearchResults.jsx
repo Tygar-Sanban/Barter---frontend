@@ -48,7 +48,7 @@ function SearchResults() {
     return (
       <div>
         <Navbar />
-        <h2 style={{ padding: "5vh" }} className="title">
+        <h2 style={{ padding: "5vh" }} className="titles">
           Whoops...
         </h2>
         <div style={{ textAlign: "center" }} className="indications">

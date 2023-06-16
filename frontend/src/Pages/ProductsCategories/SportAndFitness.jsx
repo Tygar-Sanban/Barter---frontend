@@ -44,25 +44,47 @@ function SportAndFitness() {
     <div>
       <Navbar />
       <div style={{ paddingTop: "5vh" }}>
-        <div onClick={() => setSubCategory("Exercise Equipment")}>
-          Exercise Equipment
+        <div className="titles">
+          <h2 className="titles">Sport</h2>
         </div>
-        <div onClick={() => setSubCategory("Sports Gear and Apparel")}>
-          Sports Gear and Apparel
+        <div className="indications">
+          <h4>Which item category are you interrested in ?</h4>
         </div>
         <div
+          className="bullet-points"
+          onClick={() => setSubCategory("Exercise Equipment")}
+        >
+          <button>Exercise Equipment</button>
+        </div>
+        <div
+          className="bullet-points"
+          onClick={() => setSubCategory("Sports Gear and Apparel")}
+        >
+          <button>Sports Gear and Apparel</button>
+        </div>
+        <div
+          className="bullet-points"
           onClick={() => setSubCategory("Outdoor Gear and Camping Equipment")}
         >
-          Outdoor Gear and Camping Equipment
+          <button>Outdoor Gear and Camping Equipment</button>
         </div>
-        <div onClick={() => setSubCategory("Bicycles and Accessories")}>
-          Bicycles and Accessories
+        <div
+          className="bullet-points"
+          onClick={() => setSubCategory("Bicycles and Accessories")}
+        >
+          <button>Bicycles and Accessories</button>
         </div>
-        <div onClick={() => setSubCategory("Fitness Trackers and Wearables")}>
-          Fitness Trackers and Wearables
+        <div
+          className="bullet-points"
+          onClick={() => setSubCategory("Fitness Trackers and Wearables")}
+        >
+          <button>Fitness Trackers and Wearables</button>
         </div>
-        <div onClick={() => setSubCategory("Sports Memorabilia")}>
-          Sports Memorabilia
+        <div
+          className="bullet-points"
+          onClick={() => setSubCategory("Sports Memorabilia")}
+        >
+          <button>Sports Memorabilia</button>
         </div>
       </div>
       {products.length > 0 && (
@@ -75,7 +97,11 @@ function SportAndFitness() {
           const url = `/product/${elem._id}`;
           return (
             <Link key={elem._id} to={url}>
-              <div>{elem.name}</div>
+              <div className="bullet-points">
+                <button>
+                  {elem.name} contributed by {elem.provider.name}
+                </button>
+              </div>
             </Link>
           );
         })}

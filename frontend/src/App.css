@@ -275,6 +275,12 @@ STYLING NAV BAR SIDEBAR
   color: black;
 }
 
+.top-current-product {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .bullet-points {
   margin: 0.5rem;
 }
@@ -1045,4 +1051,66 @@ STYLING NAV BAR SIDEBAR
 
 .transportationText {
   color: #581516;
+}
+
+/*Styling the cart*/
+
+.total-cart {
+  display: flex;
+  justify-content: center;
+}
+
+/*Styling the product sheet*/
+
+.product-img-name {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: 1rem 0 2rem;
+}
+
+.product-description {
+  display: flex;
+  font-family: "Body";
+  padding: 1rem;
+  text-align: center;
+}
+
+.product-thunasse {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Body";
+  font-size: 1.5rem;
+}
+.product-button {
+  width: 50%;
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  cursor: pointer;
+  padding: 10px;
+  background-color: #006d77;
+  color: white;
+  height: 8vh;
+  justify-content: center;
+  align-items: center;
+  font-family: "Body";
+  margin: 1rem;
+}
+
+.flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex a {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.product-card {
+  margin: 0 0 6rem 0;
 }

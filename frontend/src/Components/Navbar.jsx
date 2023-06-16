@@ -56,7 +56,7 @@ function Navbar(props) {
         {user && (
           <div>
             <Link to="/search">
-              <p>Search</p>
+              <p>Service</p>
             </Link>
           </div>
         )}
@@ -92,19 +92,29 @@ function Navbar(props) {
               to="/current-missions"
               className="sidebar-link"
             >
-              Current Services
+              Ongoing Services
             </Link>
-            <Link to="/search" className="sidebar-link">
-              Search
-            </Link>
-            <Link to="/profile" className="sidebar-link">
-              Profile
-            </Link>
-            <Link to="/current-products" className="sidebar-link">
-              Current Products
+            <Link
+              onClick={() => {
+                toggleMenu();
+                handleClick();
+              }}
+              to="/current-products"
+              className="sidebar-link"
+            >
+              Awaiting Products
             </Link>
             <Link to="/cart" className="sidebar-link">
               Cart
+            </Link>
+            <Link to="/search" className="sidebar-link">
+              Service
+            </Link>
+            <Link to="/product" className="sidebar-link">
+              Product
+            </Link>
+            <Link to="/profile" className="sidebar-link">
+              Profile
             </Link>
           </div>
         </div>
