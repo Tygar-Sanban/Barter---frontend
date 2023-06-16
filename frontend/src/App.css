@@ -613,6 +613,11 @@ STYLING NAV BAR SIDEBAR
   align-items: center; */
   text-align: center;
   width: 100vw;
+  padding-bottom: 2rem;
+}
+
+.services h2 {
+  padding: 2rem;
 }
 
 .services div {
@@ -921,8 +926,8 @@ STYLING NAV BAR SIDEBAR
   width: 100%;
   overflow-x: auto;
   white-space: nowrap;
-  padding-bottom: 5%;
-  padding-bottom: 3rem;
+
+  padding-bottom: 2rem;
 }
 
 .scrollable-content {

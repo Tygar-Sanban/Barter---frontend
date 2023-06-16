@@ -45,7 +45,7 @@ function Homepage() {
         <div>
           <Link to="/search">
             <ActionAreaCard
-              image="/Pictures/gradiant.jpg"
+              image="/public/Pictures/gradiant.jpg"
               title="Make a request"
               description={
                 <React.Fragment>
@@ -61,7 +61,7 @@ function Homepage() {
           </Link>
           <Link to="/profile">
             <ActionAreaCard
-              image="/Pictures/gradiant2.jpg"
+              image="/public/Pictures/gradiant2.jpg"
               title="Visit your profile"
               description={
                 <React.Fragment>
